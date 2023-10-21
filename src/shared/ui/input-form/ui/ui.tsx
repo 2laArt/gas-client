@@ -1,3 +1,4 @@
+import { inputOptions } from '../lib/input-options'
 import style from './style.module.scss'
 import { FC } from 'react'
 import type {
@@ -31,10 +32,11 @@ export const InputForm: FC<IInputProps> = ({
   name,
   type,
   errors,
-  options,
+  options: optionSettings,
   register,
   ...props
 }) => {
+  const options = inputOptions[type](optionSettings)
   return (
     register && (
       <label className={style.label}>

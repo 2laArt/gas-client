@@ -1,19 +1,16 @@
 import type { RegisterOptions } from 'react-hook-form'
 
-export type addOptionsType = Omit<
+type addOptionsType = Omit<
   RegisterOptions,
   'pattern' | 'valueAsNumber' | 'valueAsDate'
 >
+type defaultOptionType = (addOptions?: addOptionsType) => RegisterOptions
 
-export const customInputOption = (
-  addOptions: RegisterOptions
-): RegisterOptions => ({
+const customInputOption = (addOptions: RegisterOptions): RegisterOptions => ({
   ...addOptions,
 })
 
-export type defaultOption = (addOptions?: addOptionsType) => RegisterOptions
-
-export const emailOptions: defaultOption = (addOptions) => ({
+const emailOptions: defaultOptionType = (addOptions) => ({
   required: 'This field is required',
   maxLength: {
     value: 32,
@@ -30,7 +27,7 @@ export const emailOptions: defaultOption = (addOptions) => ({
   ...addOptions,
 })
 
-export const telOptions: defaultOption = (addOptions) => ({
+const telOptions: defaultOptionType = (addOptions) => ({
   required: 'This field is required',
   maxLength: {
     value: 12,
@@ -46,7 +43,7 @@ export const telOptions: defaultOption = (addOptions) => ({
   },
   ...addOptions,
 })
-export const passwordOptions: defaultOption = (addOptions) => ({
+const passwordOptions: defaultOptionType = (addOptions) => ({
   required: 'This field is required',
   maxLength: {
     value: 32,
@@ -58,3 +55,16 @@ export const passwordOptions: defaultOption = (addOptions) => ({
   },
   ...addOptions,
 })
+
+const handler = {
+  get: function (target: any, name: any) {
+    return target.hasOwnProperty(name) ? target[name] : customInputOption
+  },
+}
+
+const defaultOptions = {
+  tel: telOptions,
+  email: emailOptions,
+  password: passwordOptions,
+}
+export const inputOptions = new Proxy(defaultOptions, handler)

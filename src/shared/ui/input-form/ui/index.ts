@@ -1,1 +1,1 @@
-export { InputForm, type IInputProps } from '../ui'
+export { InputForm, type IInputProps } from './ui'
