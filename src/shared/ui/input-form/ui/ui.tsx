@@ -34,24 +34,27 @@ export const InputForm: FC<IInputProps> = ({
   options,
   register,
   ...props
-}) =>
-  register && (
-    <label className={style.label}>
-      <input
-        className={style.input}
-        placeholder={`Enter ${name}`}
-        type={type}
-        autoComplete={name === 'password' ? 'on' : 'off'}
-        {...register(name, options)}
-        {...props}
-      />
-      {errors && (
-        <span className={style.input__error}>
-          {inputError({ errors, name })}
-        </span>
-      )}
-    </label>
+}) => {
+  return (
+    register && (
+      <label className={style.label}>
+        <input
+          className={style.input}
+          placeholder={`Enter ${name}`}
+          type={type}
+          autoComplete={name === 'password' ? 'on' : 'off'}
+          {...register(name, options)}
+          {...props}
+        />
+        {errors && (
+          <span className={style.input__error}>
+            {inputError({ errors, name })}
+          </span>
+        )}
+      </label>
+    )
   )
+}
 
 const inputError = ({ errors, name }: IErrorInput): string | undefined => {
   const errorName = errors[name as keyof typeof errors]
