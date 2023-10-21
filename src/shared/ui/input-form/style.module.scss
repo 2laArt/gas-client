@@ -1,0 +1,26 @@
+/* input,
+textarea {
+	@apply w-full rounded-sm border border-light-gray bg-transparent shadow-none focus:shadow-none dark:border-gray dark:shadow-none;
+} */
+/* textarea {
+	@apply mt-6 min-h-[100px] pt-2;
+}
+label {
+	> span {
+		@apply -bottom-2;
+	}
+} */
+
+.label {
+  @apply relative  pb-6;
+}
+.input {
+  @apply my-1 h-10 w-80 rounded-lg border-0 bg-ice-blue pl-6 text-xs shadow-form outline-none transition-[shadow-box] dark:bg-black dark:shadow-form-dark max-[512px]:w-60;
+  &:focus {
+    box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.2),
+      inset -4px -4px 4px rgba(0, 0, 0, 0.1);
+  }
+  &__error {
+    @apply absolute bottom-2 left-0 w-full text-xs text-tomato;
+  }
+}

@@ -29,10 +29,12 @@ module.exports = {
 
   // Область. Она характеризует фрагмент кода, которую затронули изменения
   scopes: [
-    { name: 'components' },
-    { name: 'tutorial' },
-    { name: 'catalog' },
-    { name: 'product' },
+    { name: 'app' },
+    { name: 'entities' },
+    { name: 'features' },
+    { name: 'pages' },
+    { name: 'shared' },
+    { name: 'widgets' },
   ],
 
   // Возможность задать спец ОБЛАСТЬ для определенного типа коммита (пример для 'fix')
@@ -56,7 +58,7 @@ module.exports = {
     body: 'Напишите ПОДРОБНОЕ описание (опционально). Используйте "|" для новой строки:\n',
     breaking: 'Список BREAKING CHANGES (опционально):\n',
     footer:
-      'Место для мета данных (тикетов, ссылок и остального). Например: SECRETMRKT-700, SECRETMRKT-800:\n',
+      'Место для мета данных (тикетов, ссылок и остального). Например: API_KEY, SECRETMRKT-800:\n',
     confirmCommit: 'Вас устраивает получившийся коммит?',
   },
 
