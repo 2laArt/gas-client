@@ -1,0 +1,19 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+body {
+  @apply bg-aqua dark:bg-black;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    @apply rounded-3xl bg-aqua dark:bg-dark-gray;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @apply rounded-3xl bg-gray;
+  }
+}

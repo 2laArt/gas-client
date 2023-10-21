@@ -1,0 +1,40 @@
+.container {
+  @apply mx-auto px-1
+  max-md:min-w-full md:max-w-6xl;
+}
+.card {
+  @apply rounded-md bg-white shadow-section dark:bg-black;
+}
+.dark_mode {
+  @apply text-black;
+}
+.hidden {
+  @apply overflow-hidden;
+}
+.overlay {
+  @apply visible fixed left-0 top-0 z-[15] h-full w-full bg-dark bg-opacity-50 dark:bg-opacity-80 md:hidden;
+}
+.skeleton {
+  @apply animate-[wave_2s_ease-out_infinite] bg-skeleton-200 bg-skeleton bg-[800px,100px];
+}
+@keyframes wave {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+.small_scroll {
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    @apply rounded-3xl bg-aqua dark:bg-dark-gray;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @apply rounded-3xl bg-gray;
+  }
+}

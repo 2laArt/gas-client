@@ -1,0 +1,27 @@
+@layer base {
+  @font-face {
+    font-family: Quicksand;
+    font-weight: 300;
+    src: url(/client/public/fonts/Quicksand-Light.ttf) format('ttf');
+  }
+  @font-face {
+    font-family: Quicksand;
+    font-weight: 400;
+    src: url(/client/public/fonts/Quicksand-Regular.ttf) format('ttf');
+  }
+  @font-face {
+    font-family: Quicksand;
+    font-weight: 500;
+    src: url(/client/public/fonts/Quicksand-Medium.ttf) format('ttf');
+  }
+  @font-face {
+    font-family: Quicksand;
+    font-weight: 600;
+    src: url(/client/public/fonts/Quicksand-SemiBold.ttf) format('ttf');
+  }
+  @font-face {
+    font-family: Quicksand;
+    font-weight: 700;
+    src: url(/client/public/fonts/Quicksand-Bold.ttf) format('ttf');
+  }
+}
