@@ -1,5 +1,5 @@
 .box {
-  @apply absolute left-0 top-0 flex h-full w-full items-center justify-center p-[4px];
+  @apply absolute left-0 top-0 flex h-full w-full items-center justify-center;
 }
 .spinner {
   border: var(--spinner-stroke) solid rgba(0, 0, 0, 0.1);

@@ -2,7 +2,7 @@ import style from './style.module.scss'
 import clsx from 'clsx'
 import type { CSSProperties, FC } from 'react'
 
-interface SpinnerProps {
+export interface SpinnerProps {
   className?: string
   color?: string
   size?: number

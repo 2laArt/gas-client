@@ -1,1 +1,1 @@
-export { Spinner } from './ui'
+export { Spinner, type SpinnerProps } from './ui'
