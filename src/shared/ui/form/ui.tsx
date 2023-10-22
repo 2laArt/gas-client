@@ -6,7 +6,7 @@ export interface IOnSubmit<T> {
   data: T
   resetField: UseFormResetField<any>
 }
-export interface IForm<T> {
+export interface IFormProps<T> {
   defaultValues: DefaultValues<T> | undefined
   onSubmit: ({ data, resetField }: IOnSubmit<T>) => void
   children: ReactNode
@@ -16,7 +16,7 @@ export const Form = <T extends object>({
   defaultValues,
   onSubmit,
   children,
-}: IForm<T>) => {
+}: IFormProps<T>) => {
   const {
     register,
     handleSubmit,

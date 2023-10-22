@@ -1,0 +1,19 @@
+.title {
+  @apply inline-flex items-center font-bold;
+}
+
+.small {
+  @apply text-lg leading-7 max-sm:text-base max-sm:leading-6;
+}
+
+.medium {
+  @apply text-xl font-medium leading-7 max-sm:text-lg max-sm:leading-6;
+}
+
+.large {
+  @apply text-3xl font-semibold leading-10 max-sm:text-2xl max-sm:leading-8;
+}
+
+.xl {
+  @apply text-4xl leading-[49px] max-sm:text-xl max-sm:leading-9;
+}

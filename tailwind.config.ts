@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+
 const colors = require('tailwindcss/colors')
 const constants = {
   colors: {
@@ -32,9 +33,11 @@ const config: Config = {
     },
     extend: {
       screens: {
+        xxs: ' 375px',
         xs: '518px',
       },
       fontSize: {
+        xxs: '0.65rem',
         xs: '0.82rem',
         sm: '0.98rem',
         base: '1.15rem',
