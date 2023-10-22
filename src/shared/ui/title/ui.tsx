@@ -1,4 +1,4 @@
-import styles from './styles.module.scss'
+import styles from './style.module.scss'
 import clsx from 'clsx'
 import type { ComponentProps, ElementType, ReactNode } from 'react'
 

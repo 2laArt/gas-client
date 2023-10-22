@@ -1,0 +1,8 @@
+.box {
+  @apply absolute left-0 top-0 flex h-full w-full items-center justify-center p-[4px];
+}
+.spinner {
+  border: var(--spinner-stroke) solid rgba(0, 0, 0, 0.1);
+  @apply aspect-square h-[var(--spinner-size)] w-[var(--spinner-size)] animate-spin
+    rounded-full  border-t-[color:var(--spinner-color)];
+}

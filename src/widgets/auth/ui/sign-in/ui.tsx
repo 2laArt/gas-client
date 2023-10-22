@@ -1,6 +1,5 @@
 import style from '../auth.module.scss'
 import clsx from 'clsx'
-import { useRouter } from 'next/navigation'
 import { FC, useState } from 'react'
 import { Form, IOnSubmit, InputForm } from 'shared/ui'
 
@@ -9,7 +8,7 @@ export interface ISignIn {
   password: string
 }
 export const SignIn: FC = () => {
-  const router = useRouter()
+  // const router = useRouter()
   const [spinner, setSpinner] = useState<boolean>(false)
   const onSubmit = ({ data, resetField }: IOnSubmit<ISignIn>) => {
     // !spinner && signInFx({ data, resetField, setSpinner, router })
@@ -29,13 +28,9 @@ export const SignIn: FC = () => {
       <InputForm
         name="username"
         type="username"
-        // options={inputOption({ required: 'This field is required' })}
+        options={{ required: 'This field is required' }}
       />
-      <InputForm
-        name="password"
-        type="password"
-        //  options={passwordOptions()}
-      />
+      <InputForm name="password" type="password" />
 
       <a className={style.form__link}>Forgot your password?</a>
       <button className={clsx(style.form__button, style.button, style.submit)}>
