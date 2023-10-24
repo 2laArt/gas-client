@@ -42,12 +42,4 @@
 .auth {
   @apply mt-12 border-none  tracking-[1.15px] shadow-form outline-none transition-[shadow-box,transform] hover:scale-[0.985] hover:bg-blue active:scale-[0.97] dark:shadow-form-dark;
   white-space: nowrap;
-
-  @media (max-width: 768px) {
-    @apply mt-0 h-44 min-w-[3rem] max-w-[3rem];
-    // -webkit-writing-mode: vertical-lr;
-    // writing-mode: vertical-lr;
-    // -webkit-text-orientation: upright;
-    // text-orientation: upright;
-  }
 }

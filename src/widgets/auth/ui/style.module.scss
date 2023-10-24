@@ -1,0 +1,38 @@
+$duration: 1.25s;
+$transition: left $duration ease;
+.main {
+  @apply relative h-screen min-h-[500px] w-full overflow-hidden bg-ice-blue p-6 dark:bg-black dark:text-white;
+}
+
+.is_txr {
+  @apply left-[60%] origin-left transition-bg  max-md:left-[calc(100%-80px)];
+  transition: $transition;
+}
+.is_txl {
+  @apply left-0 origin-right;
+  transition: $transition;
+}
+.is_z200 {
+  @apply z-40;
+  transition: $transition;
+}
+.is_hidden {
+  @apply invisible absolute opacity-0;
+  transition: opacity $duration ease;
+  transition: $transition;
+}
+.is_gx {
+  /* transition: $transition; */
+  animation: is_gx $duration;
+}
+@keyframes is_gx {
+  0%,
+  10%,
+  100% {
+    /* @apply w-[40%]; */
+  }
+  30%,
+  50% {
+    @apply w-2/3;
+  }
+}

@@ -1,9 +1,9 @@
 import { Spinner, SpinnerProps } from '../spinner'
 import style from './style.module.scss'
 import clsx from 'clsx'
-import { FC, PropsWithChildren } from 'react'
+import { ButtonHTMLAttributes, FC } from 'react'
 
-export interface ButtonProps extends PropsWithChildren {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string
   loading?: boolean
   rounded?: boolean
@@ -43,6 +43,7 @@ export const Button: FC<ButtonProps> = ({
         className
       )}
       disabled={loading || disabled}
+      {...props}
     >
       {loading && <Spinner {...spinner} />}
       <span className={clsx(loading && style.opacity)}>{children}</span>

@@ -1,0 +1,12 @@
+$duration: 1.25s;
+$transition: left $duration ease;
+.container {
+  @apply absolute top-0 flex h-full w-[60%] items-center justify-center bg-ice-blue p-6 transition-all dark:bg-black max-md:w-[calc(100%-80px)];
+  transition: $transition, z-index $duration ease;
+}
+.a_container {
+  @apply left-[40%] z-30 max-md:left-20;
+}
+.b_container {
+  @apply left-[40%] z-0 max-md:left-20;
+}

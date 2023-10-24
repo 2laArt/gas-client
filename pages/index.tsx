@@ -1,14 +1,8 @@
 import { FC } from 'react'
-import { Button } from 'shared/ui/button'
+import { AuthPage } from 'widgets/auth/ui'
 
 const index: FC = () => {
-  return (
-    <div>
-      <Button loading size="regular" color="blue" disabled>
-        Hello
-      </Button>
-    </div>
-  )
+  return <AuthPage />
 }
 
 export default index
