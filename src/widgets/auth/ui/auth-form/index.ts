@@ -1,1 +1,2 @@
-export { AuthForm, type ISignIn } from './ui'
+export { SignIn } from './SignIn'
+export { SignUp } from './SignUp'
