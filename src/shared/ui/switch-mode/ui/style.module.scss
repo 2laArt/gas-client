@@ -1,0 +1,15 @@
+.theme {
+  @apply flex justify-end;
+
+  > input {
+    @apply relative inline-block h-7 w-14 cursor-pointer appearance-none overflow-hidden rounded-3xl border-none bg-black outline-none transition-[background-color] duration-[300ms];
+
+    &::before {
+      @apply absolute left-[1px] top-[1px] z-[2] flex h-[26px] w-[26px] items-center justify-center whitespace-nowrap rounded-full   bg-dark indent-[1px] text-base leading-7 text-white transition-all duration-[300ms] ease-[cubic-bezier(0.3,1.5,0.7,1)] content-['🌚'];
+    }
+
+    &:checked {
+      @apply border-black bg-white before:left-[28px] before:bg-white before:content-['🔆'];
+    }
+  }
+}
