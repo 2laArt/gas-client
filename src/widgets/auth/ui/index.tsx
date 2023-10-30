@@ -3,6 +3,7 @@ import { IntroSwitch } from './intro-switch/ui'
 import style from './style.module.scss'
 import clsx from 'clsx'
 import { useRef, useState, type FC, type MutableRefObject } from 'react'
+import { SwitchMode } from 'shared/ui/switch-mode/ui'
 
 interface ITexts {
   title: string
@@ -25,7 +26,6 @@ const texts: { signIn: ITexts; signUp: ITexts } = {
 
 export const AuthPage: FC = () => {
   const [isAnimated, setIsAnimated] = useState<boolean>(true)
-  const isMedia768 = true
   const switchC1 = useRef() as MutableRefObject<HTMLDivElement>
   const switchC2 = useRef() as MutableRefObject<HTMLDivElement>
   const switchCtn = useRef() as MutableRefObject<HTMLDivElement>
@@ -56,6 +56,9 @@ export const AuthPage: FC = () => {
   }
   return (
     <div className={clsx(style.main)}>
+      <div className={style.mood}>
+        <SwitchMode />
+      </div>
       <div
         className={clsx(style.container, style.a_container)}
         ref={aContainer}

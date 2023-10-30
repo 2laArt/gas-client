@@ -4,3 +4,9 @@
 .description {
   @apply text-center text-xs leading-relaxed tracking-[0.25px];
 }
+.btn {
+  @apply flex items-center justify-center text-center;
+  @media not all and (min-width: 768px) {
+    @apply mt-0 min-h-[160px] min-w-[50px];
+  }
+}

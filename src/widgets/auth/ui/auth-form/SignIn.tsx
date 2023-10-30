@@ -1,5 +1,4 @@
 import style from './style.module.scss'
-import clsx from 'clsx'
 import { useState } from 'react'
 import { Form, IOnSubmit, InputForm } from 'shared/ui'
 import { Button } from 'shared/ui/button'
@@ -18,9 +17,7 @@ export const SignIn = <E extends ISignIn>({}: IForm<E>) => {
   }
   return (
     <Form defaultValues={{} as ISignIn} onSubmit={onSubmit}>
-      <h2 className={clsx(style.form_title, style.title)}>
-        Sign in to Website
-      </h2>
+      <h2 className={style.title}>Sign in to Website</h2>
 
       <span className={style.form__span}>or use your email account</span>
 

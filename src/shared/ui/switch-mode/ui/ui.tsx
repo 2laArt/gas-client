@@ -1,10 +1,10 @@
 import { useMode } from '../lib/use-mode'
 import style from './style.module.scss'
 import { useStore } from 'effector-react'
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { $mode } from 'shared/store'
 
-export const SwitchMode: FC = () => {
+export const SwitchMode: FC = memo(() => {
   const { changeMode } = useMode()
   const mode = useStore($mode)
   return (
@@ -12,4 +12,4 @@ export const SwitchMode: FC = () => {
       <input type="checkbox" checked={mode === 'light'} onChange={changeMode} />
     </div>
   )
-}
+})

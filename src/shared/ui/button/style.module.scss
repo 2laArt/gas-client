@@ -1,5 +1,5 @@
 .button {
-  @apply relative inline-flex cursor-pointer items-center justify-center rounded-[4px] border-solid border-transparent text-dark transition-colors disabled:pointer-events-none dark:text-white;
+  @apply relative inline-flex cursor-pointer flex-wrap items-center justify-center rounded-[4px] border-solid border-transparent text-dark transition-colors disabled:pointer-events-none dark:text-white;
 }
 .opacity {
   @apply opacity-0;
