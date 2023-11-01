@@ -1,0 +1,6 @@
+.link {
+  @apply capitalize transition-colors hover:text-yellow;
+  &_active {
+    @apply text-yellow;
+  }
+}
