@@ -12,7 +12,7 @@ export const paths = {
   dashboard: '/dashboard',
   about: '/about',
   order: '/order',
-  contact: '/contact',
+  contacts: '/contacts',
   shoppingPayment: '/shopping-payment',
   wholesaleBuyers: '/wholesale-buyers',
 

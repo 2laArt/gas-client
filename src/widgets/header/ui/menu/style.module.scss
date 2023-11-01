@@ -1,0 +1,16 @@
+.nav {
+  @apply z-20 transition-[width0.5slinear] max-md:absolute max-md:-top-2 max-md:left-0;
+  > div {
+    @apply relative max-md:flex max-md:min-h-screen max-md:w-64 max-md:flex-col 
+		max-md:bg-bg-white max-md:px-3 max-md:pb-2 max-md:pt-16 max-md:text-lg max-md:text-black max-md:dark:bg-dark max-md:dark:text-white;
+    > a {
+      @apply last:mb-0 max-md:mb-5 md:mx-3;
+    }
+    > button {
+      @apply text-left transition-colors;
+    }
+  }
+}
+.nav.close {
+  @apply max-md:-left-full max-md:-z-50;
+}

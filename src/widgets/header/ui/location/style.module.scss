@@ -1,0 +1,6 @@
+.location {
+  @apply transition-colors hover:text-yellow;
+  &_box {
+    @apply relative ml-2;
+  }
+}
