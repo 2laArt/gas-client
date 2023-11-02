@@ -1,1 +1,1 @@
-export { IntroSwitch } from './ui'
+export { IntroSwitch, type IIntroTexts } from './ui'

@@ -1,0 +1,20 @@
+.burger {
+  &_menu {
+    @apply relative z-30  cursor-pointer;
+  }
+  > div {
+    @apply first:absolute first:z-30 first:h-7 first:w-7;
+  }
+  &_box {
+    @apply relative -z-10 h-5 w-7;
+  }
+  &_box span {
+    @apply absolute block h-[2px] w-full rounded-sm bg-white duration-300 ease-[0.8,0.5,0.2,1.4] first:left-0 first:top-0 last:bottom-0 last:left-0
+    even:left-0 even:top-[9px] even:opacity-100 dark:bg-white;
+  }
+}
+.burger_menu.open {
+  .burger_box span {
+    @apply top-[13px] bg-black first:rotate-45 last:top-[13px] last:-rotate-45 even:opacity-0 dark:bg-white;
+  }
+}

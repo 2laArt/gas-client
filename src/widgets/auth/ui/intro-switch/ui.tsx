@@ -4,10 +4,12 @@ import { type FC } from 'react'
 import { useMediaQuery } from 'shared/lib'
 import { Button } from 'shared/ui/button'
 
-export interface IIntroSwitch {
+export interface IIntroTexts {
   title: string
   description: string
   buttonText: string
+}
+interface IIntroSwitch extends IIntroTexts {
   spinner: boolean
   switchForm: () => void
 }

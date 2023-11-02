@@ -1,28 +1,10 @@
 import { SignIn, SignUp } from './auth-form'
+import { texts } from './config'
 import { IntroSwitch } from './intro-switch/ui'
 import style from './style.module.scss'
 import clsx from 'clsx'
 import { useRef, useState, type FC, type MutableRefObject } from 'react'
 import { SwitchMode } from 'shared/ui/switch-mode/ui'
-
-interface ITexts {
-  title: string
-  description: string
-  buttonText: string
-}
-const texts: { signIn: ITexts; signUp: ITexts } = {
-  signIn: {
-    title: 'Welcome Back !',
-    description:
-      'To keep connected with us please login with your personal info',
-    buttonText: 'SIGN IN',
-  },
-  signUp: {
-    title: 'Hello Friend !',
-    description: 'Enter your personal details and start journey with us',
-    buttonText: 'SIGN UP',
-  },
-}
 
 export const AuthPage: FC = () => {
   const [isAnimated, setIsAnimated] = useState<boolean>(true)
