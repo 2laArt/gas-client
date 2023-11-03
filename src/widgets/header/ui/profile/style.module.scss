@@ -1,0 +1,21 @@
+.profile {
+  @apply relative text-left;
+}
+.profile__dropdown {
+  @apply absolute right-0 top-9 z-30 w-auto;
+  > div {
+    @apply bg-black p-3;
+    > button {
+      @apply w-full  text-left transition-[color];
+      > span {
+        @apply transition-[margin];
+      }
+      &:hover {
+        @apply text-gray;
+        > span {
+          @apply ml-8;
+        }
+      }
+    }
+  }
+}

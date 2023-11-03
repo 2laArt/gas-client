@@ -1,8 +1,7 @@
 import { FC } from 'react'
-import { AuthPage } from 'widgets/auth/ui'
 
 const index: FC = () => {
-  return <AuthPage />
+  return <></>
 }
 
 export default index

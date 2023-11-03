@@ -2,7 +2,7 @@ import style from './style.module.scss'
 import clsx from 'clsx'
 import { FC, useState } from 'react'
 import { toast } from 'react-toastify'
-import { Spinner } from 'shared/ui/spinner'
+import { Button } from 'shared/ui/button'
 
 export const Location: FC = () => {
   const city = 'city'
@@ -18,14 +18,14 @@ export const Location: FC = () => {
     navigator.geolocation.getCurrentPosition(successFunction, errorFunction)
   }
   return (
-    <button
+    <Button
+      loading={spinner}
       onClick={getUserPosition}
+      disabled={!!city}
       className={clsx(style.location, city && 'pointer-events-none')}
     >
       <span className="inline-block -rotate-45">➢</span>
-      <span className={style.location_box}>
-        {spinner ? <Spinner /> : city ? city : 'Location...'}
-      </span>
-    </button>
+      <span className={style.location_box}>{city ? city : 'Location...'}</span>
+    </Button>
   )
 }
