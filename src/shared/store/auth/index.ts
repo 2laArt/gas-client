@@ -1,3 +1,3 @@
-export * from './effector'
-export * from './store'
-export * from './type'
+export { loginCheckFx, logoutFx, signInFx, signUpFx } from './effector'
+export { $auth, setAuth } from './store'
+export type { ISignInFields, ISignUpFields } from './type'

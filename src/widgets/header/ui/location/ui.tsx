@@ -1,15 +1,18 @@
 import style from './style.module.scss'
 import clsx from 'clsx'
+import { useStore } from 'effector-react'
 import { FC, useState } from 'react'
 import { toast } from 'react-toastify'
+import { getUserCityFx } from 'shared/store'
+import { $userCity } from 'shared/store/city/store'
 import { Button } from 'shared/ui/button'
 
 export const Location: FC = () => {
-  const city = 'city'
+  const { city } = useStore($userCity)
   const [spinner, setSpinner] = useState<boolean>(false)
   const successFunction = (position: GeolocationPosition) => {
     const { latitude: lat, longitude: lon } = position.coords
-    // getUserCityFx
+    getUserCityFx({ coords: { lat, lon }, setSpinner })
   }
   const errorFunction = () => {
     toast.error('Geocoder failed')
