@@ -1,0 +1,52 @@
+.select {
+  @apply relative  my-1 flex min-w-[50%] cursor-pointer bg-white transition-[min-width] dark:bg-black  max-md:min-w-[calc(100%-70px)];
+
+  &_open {
+    @apply z-[16] max-md:min-w-full;
+  }
+  > input {
+    @apply block h-10 w-full rounded-md bg-transparent py-1 pl-2 pr-20 transition-shadow;
+    &:focus {
+      @apply outline-none;
+      //   box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
+    }
+  }
+}
+.list {
+  @apply absolute left-0 top-full z-[1] grid w-full grid-rows-[0fr] overflow-hidden rounded-b-sm bg-white transition-[grid-template-rows] dark:bg-black;
+  &_open {
+    @apply grid-rows-[1fr];
+    > ul {
+      @apply border-t border-gray;
+    }
+  }
+  > ul {
+    @apply max-h-[350px] min-h-0 overflow-y-scroll;
+  }
+  &__item {
+    @apply px-2 py-3 transition-colors hover:bg-[rgba(0,0,0,.2)];
+    &_active {
+      @apply bg-dark-teal hover:bg-dark-teal hover:brightness-110;
+    }
+  }
+}
+.search__btn {
+  @apply absolute right-0 top-1/2 -translate-y-1/2 p-2 text-blue transition-[filter] hover:brightness-150;
+  &:disabled {
+    @apply pointer-events-none opacity-20;
+  }
+}
+.spinner {
+  @apply absolute right-9 h-5 w-5;
+}
+.cancel__btn {
+  @apply w-0 overflow-hidden  text-blue transition-[filter,padding,width] hover:hover:brightness-150;
+  &_show {
+    @apply w-8 px-2;
+  }
+}
+@media screen and (max-height: 400px) {
+  .list > ul {
+    @apply max-h-[calc(100vh-97px)];
+  }
+}

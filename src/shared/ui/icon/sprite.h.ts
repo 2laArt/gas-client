@@ -1,3 +1,3 @@
 export interface SpritesMap {
-  common: 'profile'
+  common: 'profile' | 'search'
 }

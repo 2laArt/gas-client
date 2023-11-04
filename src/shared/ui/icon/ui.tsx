@@ -13,7 +13,7 @@ export function Icon<Group extends keyof SpritesMap = 'common'>({
 }: IconProps<Group>) {
   return (
     <svg className="icon">
-      <use xlinkHref={`/sprite/${type}.svg#${name}`} />
+      <use xlinkHref={`/images/${type}.svg#${name}`} />
     </svg>
   )
 }
