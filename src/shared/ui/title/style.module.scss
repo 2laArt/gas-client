@@ -3,7 +3,7 @@
 }
 
 .small {
-  @apply text-lg leading-7 max-sm:text-base max-sm:leading-6;
+  @apply text-lg font-medium leading-7 max-sm:text-base max-sm:leading-6;
 }
 
 .medium {
