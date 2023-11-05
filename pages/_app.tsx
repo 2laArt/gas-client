@@ -1,11 +1,4 @@
-import '../src/app/styles/index.scss'
-import { AppProps } from 'next/app'
+import 'app/styles/index.scss'
+import 'react-toastify/dist/ReactToastify.css'
 
-function App({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      <Component {...pageProps} />
-    </>
-  )
-}
-export default App
+export { default } from 'app'
