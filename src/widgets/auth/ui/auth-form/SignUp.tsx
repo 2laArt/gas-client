@@ -1,23 +1,20 @@
 import style from './style.module.scss'
-import { useState, type PropsWithChildren } from 'react'
+import { useState } from 'react'
+import { ISignUpData } from 'shared/api'
+import { signUpFx } from 'shared/store'
 import { Form, IOnSubmit, InputForm } from 'shared/ui'
 import { Button } from 'shared/ui/button'
 
-export interface ISignUp {
-  username: string
-  email: string
-  password: string
+interface IForm {
+  switchForm: () => void
 }
-interface IForm<E extends object> extends PropsWithChildren {
-  onSubmit?: ({}: IOnSubmit<E>) => void
-}
-export const SignUp = <E extends ISignUp>({ children }: IForm<E>) => {
+export const SignUp = ({ switchForm }: IForm) => {
   const [spinner, setSpinner] = useState<boolean>(false)
-  const onSubmit = ({ data, resetField }: IOnSubmit<ISignUp>) => {
-    console.log(data)
+  const onSubmit = ({ data, resetField }: IOnSubmit<ISignUpData>) => {
+    !spinner && signUpFx({ data, resetField, setSpinner, switchForm })
   }
   return (
-    <Form defaultValues={{} as ISignUp} onSubmit={onSubmit}>
+    <Form defaultValues={{} as ISignUpData} onSubmit={onSubmit}>
       <h2 className={style.title}>Sign in to Website</h2>
 
       <span className={style.form__span}>or use your email account</span>
@@ -30,7 +27,7 @@ export const SignUp = <E extends ISignUp>({ children }: IForm<E>) => {
       <InputForm name="email" type="email" />
       <InputForm name="password" type="password" />
 
-      <Button color="blue" auth size="big" rounded>
+      <Button color="blue" auth size="big" loading={spinner} rounded>
         Button Text
       </Button>
     </Form>

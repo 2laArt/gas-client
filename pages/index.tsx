@@ -1,7 +1,1 @@
-import { FC } from 'react'
-
-const index: FC = () => {
-  return <></>
-}
-
-export default index
+export { AuthPage as default } from 'pages/auth'

@@ -46,7 +46,7 @@ export const AuthPage: FC = () => {
         ref={aContainer}
       >
         {/* form sign up */}
-        <SignUp />
+        <SignUp switchForm={switchForm} />
       </div>
       <div
         className={clsx(style.container, style.b_container)}
