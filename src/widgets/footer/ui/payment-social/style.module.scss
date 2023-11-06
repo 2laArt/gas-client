@@ -1,0 +1,20 @@
+.section {
+  @apply my-3 flex border-y border-dark-gray py-3 max-md:ml-2 max-md:flex-wrap;
+
+  > div {
+    @apply flex w-1/2 items-center gap-2 max-md:w-full max-md:flex-wrap;
+    > h6 {
+      @apply mr-4 max-md:mt-4 max-md:w-full;
+    }
+  }
+}
+.payment {
+  > svg {
+    @apply h-[48px] w-[70px];
+  }
+}
+.social {
+  > svg {
+    @apply h-[48px] w-[48px];
+  }
+}

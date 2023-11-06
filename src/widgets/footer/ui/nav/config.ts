@@ -1,4 +1,4 @@
-import { IFooterContacts } from './ui/contact/ui'
+import type { IFooterContact } from './ui/contact'
 import { paths } from 'shared/routing'
 
 export const navItems = {
@@ -35,7 +35,7 @@ export const navItems = {
 }
 interface IContacts {
   title: string
-  items: IFooterContacts[]
+  items: IFooterContact[]
 }
 export const contacts: IContacts = {
   title: 'Contacts',

@@ -8,7 +8,7 @@ export interface IconProps<Group extends keyof Sprite> {
   type?: Group
 }
 
-export function Icon<Group extends keyof Sprite = 'common'>({
+export function Icon<Group extends keyof Sprite>({
   type,
   name,
 }: IconProps<Group>) {

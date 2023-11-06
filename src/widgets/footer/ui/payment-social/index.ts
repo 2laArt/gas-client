@@ -1,0 +1,1 @@
+export { PaymentSocial } from './ui'
