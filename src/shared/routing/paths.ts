@@ -15,13 +15,13 @@ export const paths = {
   contacts: '/contacts',
   shoppingPayment: '/shopping-payment',
   wholesaleBuyers: '/wholesale-buyers',
+  catalog: '/catalog',
+  // catalog: (params: ICatalogParams): string => {
+  //   const searchParams = new URLSearchParams({ ...params })
+  //   const url = `/catalog?${searchParams}`
 
-  catalog: (params: ICatalogParams): string => {
-    const searchParams = new URLSearchParams({ ...params })
-    const url = `/catalog?${searchParams}`
-
-    return url
-  },
+  //   return url
+  // },
 
   catalogProduct: (id: Id): string => `/catalog/${id}`,
 }

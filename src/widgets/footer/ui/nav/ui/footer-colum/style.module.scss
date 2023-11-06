@@ -1,0 +1,11 @@
+.col {
+  @apply relative w-1/2 border-dark-gray py-2 pl-2 text-[11px] text-gray max-xs:w-full max-xs:border-b xs:border-l xs:first:border-0;
+  h6 {
+    @apply relative mb-2 block w-full text-left text-xs font-semibold text-white;
+  }
+}
+.content {
+  > div {
+    @apply mb-1;
+  }
+}

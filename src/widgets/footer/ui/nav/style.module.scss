@@ -1,0 +1,9 @@
+.nav {
+  @apply flex py-4 max-md:flex-wrap;
+}
+.logo {
+  @apply inline-block;
+  > span {
+    @apply mr-2 inline-block h-10 w-7;
+  }
+}
