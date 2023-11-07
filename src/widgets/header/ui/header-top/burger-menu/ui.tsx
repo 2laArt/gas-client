@@ -12,7 +12,6 @@ export const BurgerMenu: FC<IBurger> = ({ isOpen, setIsOpen }) => {
       onClick={() => setIsOpen((prev) => !prev)}
       className={clsx(style.burger_menu, isOpen && style.open)}
     >
-      <div data-include="is-included"></div>
       <div className={style.burger_box}>
         <span />
         <span />

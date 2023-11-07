@@ -1,0 +1,10 @@
+.menu {
+  @apply w-full bg-black py-2 text-xs text-bg-white;
+  > div {
+    @apply relative flex items-center justify-between;
+  }
+}
+
+.logo {
+  @apply inline-block h-10 w-7;
+}

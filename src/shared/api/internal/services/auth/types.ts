@@ -4,7 +4,7 @@ export interface ISignInData {
 }
 export interface ICheckAuth {
   username: string
-  userId: string
+  userId: number
   email: string
 }
 export interface ICheckAuthMsg {
