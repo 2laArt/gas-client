@@ -23,9 +23,9 @@ export const Header: FC = () => {
   }, [userId])
 
   return (
-    <div>
+    <header>
       <HeaderTop />
       <HeaderBottom />
-    </div>
+    </header>
   )
 }

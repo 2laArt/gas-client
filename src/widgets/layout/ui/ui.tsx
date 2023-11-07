@@ -8,9 +8,7 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className={style.layout}>
       <Header />
-      <section className={clsx(`${style.section_my} container`)}>
-        {children}
-      </section>
+      <main className={clsx(`${style.main} container`)}>{children}</main>
       <Footer />
     </div>
   )
