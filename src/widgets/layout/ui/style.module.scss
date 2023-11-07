@@ -1,0 +1,6 @@
+.layout {
+  @apply flex min-h-screen flex-col justify-between overflow-hidden bg-bg-white dark:bg-dark dark:text-white;
+}
+.section_my {
+  @apply my-7 max-md:my-5;
+}
