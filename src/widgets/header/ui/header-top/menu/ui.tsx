@@ -20,7 +20,7 @@ export const Menu = forwardRef<HTMLElement, IMenu>(
     return (
       <>
         <nav
-          className={clsx(style.nav, isOpen && style.close, className)}
+          className={clsx(style.nav, !isOpen && style.close, className)}
           ref={ref as LegacyRef<HTMLElement>}
         >
           <div>

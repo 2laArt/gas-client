@@ -22,11 +22,7 @@ const constants = {
 }
 const config: Config = {
   darkMode: ['class', "[class~='dark']"],
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     colors: {
       transparent: colors.transparent,

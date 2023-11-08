@@ -3,13 +3,16 @@ import { AppProps } from 'next/app'
 import NextNProgress from 'nextjs-progressbar'
 import { ToastContainer } from 'react-toastify'
 import { $mode } from 'shared/store'
+import { Layout } from 'widgets/layout'
 
 const App = ({ Component, pageProps }: AppProps) => {
   const mode = useStore($mode)
   return (
     <>
       <NextNProgress />
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
       <ToastContainer
         theme={mode}
         position="top-right"

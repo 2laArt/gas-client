@@ -17,7 +17,14 @@ export const useClickOutside = (initialState: boolean): IUseOutSide => {
   const [isOpen, setIsOpen] = useState<boolean>(initialState)
   const ref = useRef<HTMLElement>(null)
   const handlerClick = (event: AnyEvent) => {
-    if (ref.current && !ref.current.contains(event.target as Node)) {
+    if (
+      ref.current &&
+      !ref.current.contains(event.target as Node) &&
+      !(
+        (event.target as HTMLElement).getAttribute('data-include') ===
+        'included'
+      )
+    ) {
       setIsOpen(false)
     }
   }

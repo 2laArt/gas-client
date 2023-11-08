@@ -17,7 +17,7 @@ export const ActiveLink: FC<IActiveLink> = ({
   const isActive = asPath.includes(href)
   return (
     <Link
-      href={'/' + href}
+      href={href}
       className={clsx(style.link, isActive && style.link_active, className)}
     >
       {children}

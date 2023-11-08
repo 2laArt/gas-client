@@ -1,5 +1,8 @@
 .location {
   @apply transition-colors hover:text-yellow;
+  > span {
+    @apply inline-block first:-rotate-45;
+  }
   &_box {
     @apply relative ml-2;
   }

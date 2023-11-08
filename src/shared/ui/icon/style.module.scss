@@ -1,5 +1,5 @@
 .icon {
-  @apply inline-block h-full w-full;
+  &,
   > use {
     @apply inline-block h-full w-full;
   }

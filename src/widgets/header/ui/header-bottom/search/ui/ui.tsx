@@ -12,7 +12,7 @@ import { Icon, Spinner } from 'shared/ui'
 export const SearchInput: FC = () => {
   const router = useRouter()
   const { isOpen, ref, setIsOpen } = useClickOutside(false)
-  const Overlay = useLockedBody(isOpen, 'md:block')
+  const Overlay = useLockedBody({ isOpen })
   const [products, setProducts] = useState<IBoilerPart[]>([])
   const [spinner, setSpinner] = useState<boolean>(false)
   const [searchValue, setSearchValue] = useState<string>('')
@@ -93,7 +93,7 @@ export const SearchInput: FC = () => {
             ))}
           </ul>
         </div>
-        {spinner && <Spinner />}
+        {spinner && <Spinner className={style.spinner} />}
         <button
           className={style.search__btn}
           disabled={spinner}

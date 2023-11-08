@@ -6,5 +6,11 @@
 }
 
 .logo {
-  @apply inline-block h-10 w-7;
+  @apply inline-flex items-center;
+  > svg {
+    @apply h-10 w-7;
+  }
+  > span {
+    @apply ml-3;
+  }
 }

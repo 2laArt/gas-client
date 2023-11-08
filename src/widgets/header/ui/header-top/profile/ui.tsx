@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import { FC } from 'react'
 import { useClickOutside } from 'shared/lib'
 import { $auth, logoutFx } from 'shared/store'
-import { Button } from 'shared/ui/button'
 import { Dropdown } from 'shared/ui/dropdown'
 import { Icon } from 'shared/ui/icon'
 
@@ -17,9 +16,9 @@ export const Profile: FC = () => {
   }
   return (
     <div className={style.profile} ref={ref}>
-      <Button onClick={() => setIsOpen((prev) => !prev)} color="transparent">
+      <button onClick={() => setIsOpen((prev) => !prev)}>
         <Icon type="common" name="profile" />
-      </Button>
+      </button>
       <Dropdown
         isOpen={isOpen && !!user.username}
         className={style.profile__dropdown}

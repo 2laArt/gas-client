@@ -1,8 +1,10 @@
 import { SearchInput } from './search'
 import style from './style.module.scss'
 import clsx from 'clsx'
+import Link from 'next/link'
 import { type FC } from 'react'
 import { useMediaQuery } from 'shared/lib'
+import { paths } from 'shared/routing'
 import { Icon } from 'shared/ui'
 import { SwitchMode } from 'shared/ui/switch-mode/ui'
 
@@ -12,8 +14,10 @@ const HeaderBottom: FC = () => {
     <div className={style.bottom}>
       <div className="container">
         {!isMedia768 && (
-          <div className={clsx(style.side, style.icon)}>
-            <Icon type="common" name="logo" />
+          <div className={clsx(style.side, style.logo)}>
+            <Link href={paths.dashboard} className={style.logo}>
+              <Icon type="common" name="logo" /> <span>GAS</span>
+            </Link>
           </div>
         )}
         <SearchInput />

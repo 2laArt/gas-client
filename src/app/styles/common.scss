@@ -12,7 +12,10 @@
   @apply overflow-hidden;
 }
 .overlay {
-  @apply visible fixed left-0 top-0 z-[15] h-full w-full bg-dark bg-opacity-50 dark:bg-opacity-80 md:hidden;
+  @apply visible fixed left-0 top-0 z-[15] h-full w-full bg-dark bg-opacity-50 dark:bg-opacity-80;
+  &_hidden {
+    @apply md:hidden;
+  }
 }
 .skeleton {
   @apply animate-[wave_2s_ease-out_infinite] bg-skeleton-200 bg-skeleton bg-[800px,100px];

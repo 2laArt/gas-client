@@ -1,5 +1,8 @@
 .profile {
   @apply relative text-left;
+  svg {
+    @apply h-8 w-8;
+  }
 }
 .profile__dropdown {
   @apply absolute right-0 top-9 z-30 w-auto;

@@ -26,12 +26,18 @@
   &__item {
     @apply px-2 py-3 transition-colors hover:bg-[rgba(0,0,0,.2)];
     &_active {
-      @apply bg-dark-teal hover:bg-dark-teal hover:brightness-110;
+      /* @apply bg-dark-teal hover:brightness-110; */
     }
   }
 }
+.spinner {
+  @apply absolute right-9 h-5 w-5;
+}
 .search__btn {
-  @apply absolute right-0 top-1/2 w-7 h-7 -translate-y-1/2 p-2 text-blue transition-[filter] hover:brightness-150;
+  @apply absolute right-0 top-1/2 -translate-y-1/2 p-2 text-blue transition-[filter] hover:brightness-150;
+  > svg {
+    @apply h-5 w-5;
+  }
   &:disabled {
     @apply pointer-events-none opacity-20;
   }

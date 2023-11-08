@@ -5,7 +5,7 @@ import { FC, useState } from 'react'
 import { toast } from 'react-toastify'
 import { getUserCityFx } from 'shared/store'
 import { $userCity } from 'shared/store/city/store'
-import { Button } from 'shared/ui/button'
+import { Spinner } from 'shared/ui'
 
 export const Location: FC = () => {
   const { city } = useStore($userCity)
@@ -21,14 +21,16 @@ export const Location: FC = () => {
     navigator.geolocation.getCurrentPosition(successFunction, errorFunction)
   }
   return (
-    <Button
-      loading={spinner}
-      onClick={getUserPosition}
-      disabled={!!city}
-      className={clsx(style.location, city && 'pointer-events-none')}
-    >
-      <span className="inline-block -rotate-45">➢</span>
-      <span className={style.location_box}>{city ? city : 'Location...'}</span>
-    </Button>
+    <>
+      <button
+        onClick={getUserPosition}
+        className={clsx(style.location, city && 'pointer-events-none')}
+      >
+        <span>➢</span>
+        <span className={style.location_box}>
+          {spinner ? <Spinner /> : city ? city : 'Location...'}
+        </span>
+      </button>
+    </>
   )
 }
