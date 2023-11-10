@@ -1,0 +1,44 @@
+.item_box {
+  @apply p-3 pb-0 last:pb-3;
+}
+.item {
+  @apply relative flex justify-between border-t border-gray pt-3  text-black  dark:text-white;
+  container-type: inline-size;
+  @container (max-width: 768px) {
+    @apply items-center;
+  }
+}
+
+.left_part {
+  @apply flex w-full flex-col;
+  @container (min-width: 768px) {
+    @apply flex-row items-center justify-between;
+  }
+}
+.img_title {
+  @apply flex  items-center;
+  > img {
+    @apply mr-3;
+  }
+  > h6 {
+    @apply text-left;
+  }
+  @container (min-width: 768px) {
+    @apply w-[370px];
+  }
+}
+
+.right_part {
+  @apply flex  items-center;
+  @container (max-width: 768px) {
+    @apply w-[75px];
+  }
+  @container (max-width: 518px) {
+    @apply w-[20px];
+  }
+  .price {
+    @container (max-width: 768px) {
+      @apply absolute bottom-0 right-2;
+    }
+  }
+}
