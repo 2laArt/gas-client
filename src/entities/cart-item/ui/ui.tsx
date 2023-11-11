@@ -5,7 +5,11 @@ import { type FC } from 'react'
 import { ICartItem } from 'shared/api'
 import { formatToCurrency } from 'shared/lib'
 
-export const CartItem: FC<ICartItem> = ({
+interface ICartItemComponent<D = any, C = any> extends ICartItem {
+  DeleteItem: FC<D>
+  CounterItem: FC<C>
+}
+export const CartItem: FC<ICartItemComponent> = ({
   count: countState,
   partId,
   image,
@@ -14,6 +18,8 @@ export const CartItem: FC<ICartItem> = ({
   in_stock,
   boiler_manufacturer,
   parts_manufacturer,
+  DeleteItem,
+  CounterItem,
 }) => {
   const title = getTitleNoDots(name, boiler_manufacturer, parts_manufacturer)
 
@@ -32,14 +38,14 @@ export const CartItem: FC<ICartItem> = ({
             />
             <h6>{title}</h6>
           </div>
-          {/* Counter */}
+          <CounterItem count={countState} partId={partId} inStock={in_stock} />
         </div>
         <div className={style.right_part}>
           <div className={style.price}>
             {formatToCurrency(price * countState)}
           </div>
 
-          {/* /Delete */}
+          <DeleteItem partId={partId} />
         </div>
       </div>
     </div>

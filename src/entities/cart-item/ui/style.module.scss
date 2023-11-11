@@ -29,16 +29,14 @@
 }
 
 .right_part {
-  @apply flex  items-center;
+  @apply flex items-center justify-between;
   @container (max-width: 768px) {
     @apply w-[75px];
   }
-  @container (max-width: 518px) {
-    @apply w-[20px];
-  }
   .price {
+    @apply mr-10;
     @container (max-width: 768px) {
-      @apply absolute bottom-0 right-2;
+      @apply absolute bottom-0 right-2 mr-0;
     }
   }
 }

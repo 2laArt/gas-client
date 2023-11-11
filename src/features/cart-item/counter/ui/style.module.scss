@@ -1,0 +1,15 @@
+.counter {
+  @apply relative mx-auto mt-0 flex max-h-7 max-w-[100px] justify-between border border-[#d3ebfc];
+  @container (max-width: 768px) {
+    @apply mx-0 mt-4;
+  }
+  .count {
+    @apply relative;
+  }
+  > button {
+    @apply relative px-3 py-1 text-base leading-none transition-bg hover:bg-[rgba(0,0,0,.1)] hover:text-gray disabled:pointer-events-none disabled:opacity-25;
+  }
+  .warning {
+    @apply absolute -top-8 w-full cursor-pointer rounded-lg bg-tomato text-white;
+  }
+}

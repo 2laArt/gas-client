@@ -1,0 +1,25 @@
+.delete {
+  @container (max-width: 768px) {
+    @apply absolute right-2 top-3;
+  }
+
+  > span {
+    @apply transition-opacity hover:opacity-80;
+  }
+  &_cross {
+    @apply hidden text-blue;
+    > svg {
+      @apply h-4 w-4;
+    }
+
+    @container (max-width: 518px) {
+      @apply inline-block;
+    }
+  }
+  &_text {
+    @apply inline-block text-blue;
+    @container (max-width: 518px) {
+      @apply hidden;
+    }
+  }
+}
