@@ -20,8 +20,9 @@ export const useAccessedPages = (pathname: string) => {
     if (shouldCheckPage.current) {
       shouldCheckPage.current = false
       checkAuth()
+      setTimeout(() => (shouldCheckPage.current = true))
     }
-  }, [])
+  }, [pathname])
 
   const checkAuth = async () => {
     const user = await loginCheckFx()
@@ -33,7 +34,9 @@ export const useAccessedPages = (pathname: string) => {
       return
     }
     if (user) {
+      console.log(user)
       setAuth(user as ICheckAuth)
+      console.log()
       setShouldLoadContent(true)
       return
     }

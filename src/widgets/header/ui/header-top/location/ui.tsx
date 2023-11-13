@@ -24,11 +24,22 @@ export const Location: FC = () => {
     <>
       <button
         onClick={getUserPosition}
-        className={clsx(style.location, city && 'pointer-events-none')}
+        className={clsx(
+          style.location,
+          (city || spinner) && 'pointer-events-none'
+        )}
       >
         <span>➢</span>
         <span className={style.location_box}>
-          {spinner ? <Spinner /> : city ? city : 'Location...'}
+          {spinner ? (
+            <span className={style.spinner}>
+              <Spinner size={20} />
+            </span>
+          ) : city ? (
+            city
+          ) : (
+            'Location...'
+          )}
         </span>
       </button>
     </>

@@ -11,7 +11,7 @@
 .payment {
   @apply md:mr-3;
   > svg {
-    @apply aspect-video w-[60px];
+    @apply aspect-video h-10 w-[60px];
   }
 }
 .social {

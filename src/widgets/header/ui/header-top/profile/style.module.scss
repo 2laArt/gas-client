@@ -9,7 +9,7 @@
   > div {
     @apply bg-black p-3;
     > button {
-      @apply w-full  text-left transition-[color];
+      @apply mt-3 w-full text-left transition-[color];
       > span {
         @apply transition-[margin];
       }

@@ -41,7 +41,7 @@ export const IntroSwitch: FC<IIntroSwitch> = ({
         loading={spinner}
         onClick={switchForm}
         className={style.btn}
-        spinner={{ color: '#fff' }}
+        spinner={{ color: 'bg-white' }}
       >
         {buttonText}
       </Button>

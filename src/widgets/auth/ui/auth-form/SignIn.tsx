@@ -25,8 +25,15 @@ export const SignIn = () => {
       />
       <InputForm name="password" type="password" />
 
-      <Button color="blue" auth size="big" loading={spinner} rounded>
-        Button Text
+      <Button
+        auth
+        size="big"
+        color="blue"
+        rounded
+        loading={spinner}
+        spinner={{ color: 'bg-white' }}
+      >
+        Sign In
       </Button>
     </Form>
   )

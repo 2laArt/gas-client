@@ -27,8 +27,15 @@ export const SignUp = ({ switchForm }: IForm) => {
       <InputForm name="email" type="email" />
       <InputForm name="password" type="password" />
 
-      <Button color="blue" auth size="big" loading={spinner} rounded>
-        Button Text
+      <Button
+        auth
+        size="big"
+        color="blue"
+        rounded
+        loading={spinner}
+        spinner={{ color: 'bg-white' }}
+      >
+        Sign Up
       </Button>
     </Form>
   )

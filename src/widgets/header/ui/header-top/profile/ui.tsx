@@ -14,6 +14,7 @@ export const Profile: FC = () => {
   const logout = () => {
     logoutFx().then(() => router.push('/'))
   }
+
   return (
     <div className={style.profile} ref={ref}>
       <button onClick={() => setIsOpen((prev) => !prev)}>
