@@ -1,4 +1,5 @@
 import { useAccessedPages } from './lib/use-accessed-pages'
+import { withSeo } from './providers'
 import { useStore } from 'effector-react'
 import { AppProps } from 'next/app'
 import NextNProgress from 'nextjs-progressbar'
@@ -36,4 +37,4 @@ const App = ({ Component, pageProps, ...appProps }: AppProps) => {
     )
   )
 }
-export default App
+export default withSeo(App)
