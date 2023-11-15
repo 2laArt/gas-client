@@ -1,0 +1,22 @@
+.footer {
+  @apply mb-2 mt-4 w-full p-4 text-right;
+  &_sticky {
+    @apply sticky -bottom-3 mb-0;
+  }
+  > div {
+    @apply flex justify-between p-1;
+    > span {
+      @apply last:font-bold;
+    }
+  }
+  &_btn {
+    @apply mt-4 w-[220px] rounded-sm bg-blue px-4 py-1 text-sm text-white transition-colors hover:text-gray;
+    @container (max-width: 400px) {
+      @apply w-full;
+    }
+    &:disabled {
+      @apply bg-gray;
+      pointer-events: none;
+    }
+  }
+}

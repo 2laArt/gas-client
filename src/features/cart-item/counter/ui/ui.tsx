@@ -1,9 +1,9 @@
-import style from './style.module.scss'
 import { FC, useState } from 'react'
 import { updateCountCartItemFx } from 'shared/store/cart'
 import { Spinner } from 'shared/ui'
+import style from './style.module.scss'
 
-interface ICartItemCounter {
+export interface ICartItemCounter {
   count: number
   inStock: number
   partId: number
@@ -46,7 +46,7 @@ export const CartItemCounter: FC<ICartItemCounter> = ({
         <span> &#8722; </span>
       </button>
       <span className={style.count}>
-        {spinner ? <Spinner size={16} color="#fff" /> : count}
+        {spinner ? <Spinner size={16} /> : count}
       </span>
       <button onClick={countIncrement} disabled={spinner}>
         <span>+</span>

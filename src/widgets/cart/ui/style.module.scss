@@ -1,0 +1,24 @@
+.cart {
+  @apply min-w-full max-w-[815px];
+  container-type: inline-size;
+  &_btn {
+    @apply relative;
+    > span {
+      @apply first:text-lg last:text-xs;
+    }
+    &_dot {
+      @apply absolute -right-3 top-0 flex h-4 w-4 items-center justify-center rounded-full bg-blue text-xs text-white;
+    }
+  }
+}
+
+.cart_box {
+  @apply flex w-full min-w-[300px] flex-col justify-between;
+}
+
+.middle {
+  @apply flex min-h-[150px] w-full items-center justify-center px-1 text-center text-gray;
+  > div {
+    @apply w-full;
+  }
+}

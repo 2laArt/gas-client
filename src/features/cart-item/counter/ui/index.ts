@@ -1,1 +1,1 @@
-export { CartItemCounter } from './ui'
+export { CartItemCounter, type ICartItemCounter } from './ui'
