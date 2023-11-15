@@ -1,0 +1,33 @@
+.cart {
+  @apply relative;
+  &_btn {
+    @apply relative;
+    > span {
+      @apply last:text-xs last:max-lg:hidden;
+      &:first-child {
+        @apply -mb-1  inline-block text-lg;
+      }
+    }
+    &_dot {
+      @apply absolute -right-2 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-blue text-xxs text-white;
+    }
+  }
+  &_icon {
+    @apply inline-block h-7 w-7;
+    > svg {
+      @apply mb-1;
+    }
+  }
+  &_header {
+    @apply mb-4 flex w-full items-center  px-2 py-4 text-lg font-bold first:text-blue;
+    &_icon {
+      @apply mb-1 mr-3 inline-block h-8 w-8;
+    }
+  }
+  &_drop {
+    @apply absolute right-0 top-[55px]  z-30 max-h-[350px] w-full min-w-[300px] overflow-y-auto;
+    &_box {
+      @apply flex min-h-[300px] flex-col justify-between;
+    }
+  }
+}

@@ -34,9 +34,7 @@ export const useAccessedPages = (pathname: string) => {
       return
     }
     if (user) {
-      console.log(user)
       setAuth(user as ICheckAuth)
-      console.log()
       setShouldLoadContent(true)
       return
     }

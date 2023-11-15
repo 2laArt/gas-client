@@ -1,3 +1,4 @@
+import { HeaderCart } from './cart'
 import { SearchInput } from './search'
 import style from './style.module.scss'
 import clsx from 'clsx'
@@ -23,8 +24,7 @@ const HeaderBottom: FC = () => {
         <SearchInput />
         <div className={style.side}>
           {!isMedia768 && <SwitchMode />}
-          {/* <CartNav /> */}
-          Cart
+          <HeaderCart />
         </div>
       </div>
     </div>

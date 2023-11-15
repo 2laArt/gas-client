@@ -7,6 +7,14 @@ const nextConfig = {
   env: {
     SERVER_URL: process.env.NEXT_PUBLIC_SERVER_URL,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'loremflickr.com',
+      },
+    ],
+  },
 }
 
 module.exports = nextConfig

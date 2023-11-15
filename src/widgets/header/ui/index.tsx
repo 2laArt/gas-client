@@ -14,11 +14,11 @@ export const Header: FC = () => {
   useEffect(() => {
     const paymentId = sessionStorage.getItem('paymentId')
     if (paymentId && !checkedPaymentStatus)
-      checkPayment({ paymentId, userId: userId as number })
+      checkPayment({ paymentId, userId: userId })
   }, [])
   useEffect(() => {
     if (cartQueryStatus === 'start' && userId) {
-      getCartFx(+userId)
+      getCartFx(userId)
     }
   }, [userId])
 
