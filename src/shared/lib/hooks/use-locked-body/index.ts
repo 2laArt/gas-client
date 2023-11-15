@@ -1,3 +1,4 @@
+import { useMediaQuery } from '../use-media-query'
 import clsx from 'clsx'
 import React, { useEffect } from 'react'
 import { COLORS } from 'shared/config'
@@ -9,6 +10,13 @@ interface ILockedBody {
 }
 
 export const useLockedBody = ({ isOpen, bpHidden, className }: ILockedBody) => {
+  const breakpoints = {
+    lg: 1024,
+    md: 768,
+    sm: 640,
+    xs: 518,
+  }
+  const bp = bpHidden ? useMediaQuery(breakpoints[bpHidden]) : true
   useEffect(() => {
     const isMobile =
       navigator.userAgent.includes('Android') ||
@@ -28,10 +36,11 @@ export const useLockedBody = ({ isOpen, bpHidden, className }: ILockedBody) => {
   }, [isOpen])
   return (
     isOpen &&
+    bp &&
     React.createElement(
       'div',
       {
-        className: clsx('overlay', bpHidden && `${bpHidden}:hidden`, className),
+        className: clsx('overlay', className),
       },
       undefined
     )

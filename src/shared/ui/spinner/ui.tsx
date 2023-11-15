@@ -1,7 +1,7 @@
 import style from './style.module.scss'
 import clsx from 'clsx'
 import type { CSSProperties, FC } from 'react'
-import { type COLORS } from 'shared/config'
+import { COLORS } from 'shared/config'
 
 export interface SpinnerProps {
   className?: string
@@ -21,7 +21,7 @@ export const Spinner: FC<SpinnerProps> = ({
       style={
         {
           '--spinner-size': `${size}px`,
-          '--spinner-color': `${color ?? 'dark'}`,
+          '--spinner-color': `${color && COLORS[color]}`,
           '--spinner-stroke': `${strokeWidth}px`,
           [style.default]: !color,
         } as CSSProperties

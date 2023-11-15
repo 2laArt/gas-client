@@ -26,8 +26,14 @@ export const Profile: FC = () => {
       >
         <div>
           <div className={style.profile__dropdown__info}>
-            <h6>{user.username}</h6>
-            <div>{user.email}</div>
+            <div className={style.row_info}>
+              <h6>Username:</h6>
+              <span>{user.username}</span>
+            </div>
+            <div className={style.row_info}>
+              <h6>Email:</h6>
+              <span>{user.email}</span>
+            </div>
           </div>
           <button onClick={logout}>
             EXIT <span>&#10140;</span>

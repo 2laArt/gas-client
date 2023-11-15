@@ -4,12 +4,18 @@
     @apply h-8 w-8;
   }
 }
+.row_info {
+  @apply mb-2 flex;
+  > h6 {
+    @apply mr-2 text-gray;
+  }
+}
 .profile__dropdown {
   @apply absolute right-0 top-9 z-30 w-auto;
   > div {
     @apply bg-black p-3;
     > button {
-      @apply mt-3 w-full text-left transition-[color];
+      @apply mt-1 w-full text-left transition-[color];
       > span {
         @apply transition-[margin];
       }

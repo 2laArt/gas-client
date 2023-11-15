@@ -93,7 +93,7 @@ export const SearchInput: FC = () => {
             ))}
           </ul>
         </div>
-        {spinner && <Spinner className={style.spinner} />}
+        {spinner && <Spinner className={style.spinner} color="blue" />}
         <button
           className={style.search__btn}
           disabled={spinner}
