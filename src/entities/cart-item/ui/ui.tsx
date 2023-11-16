@@ -5,7 +5,10 @@ import { type FC } from 'react'
 import { ICartItem } from 'shared/api'
 import { formatToCurrency } from 'shared/lib'
 
-interface ICartItemComponent<D = any, C = any> extends ICartItem {
+type ConditionalType = { [key: string]: string | number }
+
+interface ICartItemComponent<D = ConditionalType, C = ConditionalType>
+  extends ICartItem {
   DeleteItem: FC<D>
   CounterItem: FC<C>
 }

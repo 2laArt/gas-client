@@ -1,0 +1,27 @@
+.product_item {
+  @apply m-2 w-64 rounded-md px-3 pb-3 pt-2  max-lg:w-52;
+  & > * {
+    @apply overflow-hidden text-ellipsis whitespace-nowrap;
+  }
+  &_image {
+    @apply mb-2;
+  }
+  &_name {
+    @apply pb-2;
+    a {
+      @apply relative;
+      &:after {
+        @apply absolute left-0 z-10 block h-[3px] w-0 border-0 bg-cyan transition-[width] content-[''];
+      }
+    }
+  }
+  &_vender {
+    @apply my-3 text-xs text-gray;
+  }
+  &_price {
+    @apply flex items-center justify-between text-base font-semibold;
+  }
+  &:hover &_name a {
+    @apply after:w-full;
+  }
+}
