@@ -6,8 +6,7 @@ import Link from 'next/link'
 import { type FC } from 'react'
 import { useMediaQuery } from 'shared/lib'
 import { paths } from 'shared/routing'
-import { Icon } from 'shared/ui'
-import { SwitchMode } from 'shared/ui/switch-mode/ui'
+import { Icon, SwitchMode } from 'shared/ui'
 
 const HeaderBottom: FC = () => {
   const isMedia768 = useMediaQuery(768)

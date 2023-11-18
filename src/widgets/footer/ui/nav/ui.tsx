@@ -12,7 +12,6 @@ export const FooterNav: FC = () => {
   const { asPath } = useRouter()
   return (
     <div className={style.nav}>
-      {/* <SwitchMode /> */}
       <FooterColum
         title={
           <a href={paths.dashboard} className={style.logo}>

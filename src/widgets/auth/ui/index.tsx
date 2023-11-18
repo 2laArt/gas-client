@@ -4,7 +4,7 @@ import { IntroSwitch } from './intro-switch/ui'
 import style from './style.module.scss'
 import clsx from 'clsx'
 import { useRef, useState, type FC, type MutableRefObject } from 'react'
-import { SwitchMode } from 'shared/ui/switch-mode/ui'
+import { SwitchMode } from 'shared/ui'
 
 export const AuthPage: FC = () => {
   const [isAnimated, setIsAnimated] = useState<boolean>(true)

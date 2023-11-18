@@ -25,7 +25,6 @@ export const CartItem: FC<ICartItemComponent> = ({
   CounterItem,
 }) => {
   const title = getTitleNoDots(name, boiler_manufacturer, parts_manufacturer)
-
   return (
     <div className={style.item_box}>
       <div className={style.item}>

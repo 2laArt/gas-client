@@ -5,8 +5,8 @@ import clsx from 'clsx'
 import { useRouter } from 'next/router'
 import { LegacyRef, forwardRef } from 'react'
 import { useMediaQuery } from 'shared/lib'
+import { SwitchMode } from 'shared/ui'
 import { ActiveLink } from 'shared/ui/active-link'
-import { SwitchMode } from 'shared/ui/switch-mode/ui'
 
 interface IMenu {
   className?: string

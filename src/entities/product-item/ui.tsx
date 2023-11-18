@@ -2,17 +2,20 @@ import style from './style.module.scss'
 import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
-import { type FC } from 'react'
-import { type IBoilerPart } from 'shared/api'
+import { type FC, type ReactNode } from 'react'
 import { formatToCurrency } from 'shared/lib'
 import { paths } from 'shared/routing'
 
-type ConditionalType = { [key: string]: string | number }
-
-interface IProductItem<T = ConditionalType> extends IBoilerPart {
+interface IProductItem {
   className?: string
-  CartToggle: FC<T>
+  images: string
+  id: number
+  name: string
+  price: number
+  vendor_code: string
+  toggleBtn: ReactNode
 }
+
 export const ProductItem: FC<IProductItem> = ({
   images,
   id,
@@ -20,7 +23,7 @@ export const ProductItem: FC<IProductItem> = ({
   vendor_code,
   price,
   className,
-  CartToggle,
+  toggleBtn,
 }) => {
   return (
     <div className={clsx('card', style.product_item, className)}>
@@ -44,7 +47,7 @@ export const ProductItem: FC<IProductItem> = ({
       <div className={style.product_item_price}>
         {formatToCurrency(price)}
         {/*  */}
-        <CartToggle />
+        {toggleBtn}
         {/*  */}
       </div>
     </div>
