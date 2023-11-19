@@ -7,7 +7,7 @@ export const navItems = {
     items: [
       {
         text: 'Catalog',
-        href: paths.catalog,
+        href: paths.catalog(),
       },
       {
         text: 'Shopping and payment',
