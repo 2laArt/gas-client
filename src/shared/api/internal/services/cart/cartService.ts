@@ -1,35 +1,58 @@
-import { axiosClassic } from '../../config'
-import { IAddToCart, ICartItem, IUpdateCountCartItem } from './types'
+import { BasicService } from '../../config'
+import { IAddToCart, IUpdateCountCartItem, IUpdateTotalPrice } from './types'
+import { AxiosRequestConfig } from 'axios'
 
-export const cartService = {
-  getCart: async (userId: number): Promise<ICartItem[]> => {
-    const { data } = await axiosClassic.get(`/shopping-cart/${userId}`)
-    return data
-  },
-  addToCart: async (requestData: IAddToCart): Promise<ICartItem> => {
-    const { data } = await axiosClassic.post(`/shopping-cart/add`, requestData)
-    return data
-  },
-  updateCount: async ({ count, partId }: IUpdateCountCartItem) => {
-    const { data } = await axiosClassic.patch(
-      `/shopping-cart/count/${partId}`,
-      { count }
-    )
-    return data
-  },
-  updateTotalPrice: async (partId: number, totalPrice: number) => {
-    const { data } = await axiosClassic.patch(
-      `/shopping-cart/total-price/${partId}`,
-      { totalPrice }
-    )
-    return data
-  },
-  deleteOneFromCart: async (partId: number) => {
-    const { data } = await axiosClassic.delete(`/shopping-cart/one/${partId}`)
-    return data
-  },
-  deleteAll: async (userId: number) => {
-    const { data } = await axiosClassic.delete(`/shopping-cart/all/${userId}`)
-    return data
-  },
+class CartService extends BasicService<string> {
+  getCart(userId: number, config: Partial<AxiosRequestConfig> = {}) {
+    return this._instance({
+      ...config,
+      method: 'get',
+      url: this._baseUrl(`/${userId}`),
+    })
+  }
+  addToCart(requestData: IAddToCart, config: Partial<AxiosRequestConfig> = {}) {
+    return this._instance({
+      ...config,
+      method: 'post',
+      url: this._baseUrl('/add'),
+      data: requestData,
+    })
+  }
+  updateCount(
+    { count, partId }: IUpdateCountCartItem,
+    config: Partial<AxiosRequestConfig> = {}
+  ) {
+    return this._instance({
+      ...config,
+      method: 'patch',
+      url: this._baseUrl(`/count/${partId}`),
+      data: { count },
+    })
+  }
+  updateTotalPrice(
+    { partId, totalPrice }: IUpdateTotalPrice,
+    config: Partial<AxiosRequestConfig> = {}
+  ) {
+    return this._instance({
+      ...config,
+      method: 'patch',
+      url: this._baseUrl(`/total-price/${partId}`),
+      data: { totalPrice },
+    })
+  }
+  deleteOneFromCart(partId: number, config: Partial<AxiosRequestConfig> = {}) {
+    return this._instance({
+      ...config,
+      method: 'delete',
+      url: this._baseUrl(`/one/${partId}`),
+    })
+  }
+  deleteAll(userId: number, config: Partial<AxiosRequestConfig> = {}) {
+    return this._instance({
+      ...config,
+      method: 'delete',
+      url: this._baseUrl(`/all/${userId}`),
+    })
+  }
 }
+export const cartService = new CartService('shopping-cart')

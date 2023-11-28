@@ -1,27 +1,55 @@
-import { axiosClassic } from '../../config'
-import { IBoilerParts } from './types'
+import { BasicService } from '../../config'
+import { IFilters } from './types'
+import { AxiosRequestConfig } from 'axios'
 
-export const boilerService = {
-  new: async (): Promise<IBoilerParts> => {
-    const { data } = await axiosClassic.get('/boiler-parts/new')
-    return data
-  },
-  bestsellers: async (): Promise<IBoilerParts> => {
-    const { data } = await axiosClassic.get('/boiler-parts/bestsellers')
-    return data
-  },
-  findById: async (partId: number): Promise<IBoilerParts> => {
-    const { data } = await axiosClassic.get(`/boiler-parts/find/${partId}`)
-    return data
-  },
-  search: async (search: string): Promise<IBoilerParts> => {
-    const { data } = await axiosClassic.post(`/boiler-parts/search`, {
-      search,
+class BoilerService extends BasicService<string> {
+  constructor(baseUrl: string) {
+    super(baseUrl)
+  }
+  new(config: Partial<AxiosRequestConfig> = {}) {
+    return this._instance({
+      ...config,
+      method: 'get',
+      url: this._baseUrl('/new'),
     })
-    return data
-  },
-  getByName: async (name: string): Promise<IBoilerParts> => {
-    const { data } = await axiosClassic.post(`/boiler-parts/search}`, { name })
-    return data
-  },
+  }
+  bestsellers(config: Partial<AxiosRequestConfig> = {}) {
+    return this._instance({
+      ...config,
+      method: 'get',
+      url: this._baseUrl('/bestsellers'),
+    })
+  }
+  findById(partId: number, config: Partial<AxiosRequestConfig> = {}) {
+    return this._instance({
+      ...config,
+      method: 'get',
+      url: this._baseUrl(`/find/${partId}`),
+    })
+  }
+  search(search: string, config: Partial<AxiosRequestConfig> = {}) {
+    return this._instance({
+      ...config,
+      method: 'post',
+      url: this._baseUrl('/search'),
+      data: { search },
+    })
+  }
+  getByName(name: string, config: Partial<AxiosRequestConfig> = {}) {
+    return this._instance({
+      ...config,
+      method: 'post',
+      url: this._baseUrl('/search'),
+      data: { name },
+    })
+  }
+  filters(filters: IFilters, config: Partial<AxiosRequestConfig> = {}) {
+    const params = new URLSearchParams(Object.entries(filters)).toString()
+    return this._instance({
+      ...config,
+      method: 'get',
+      url: this._baseUrl(`?${params}`),
+    })
+  }
 }
+export const boilerService = new BoilerService('boiler-parts')

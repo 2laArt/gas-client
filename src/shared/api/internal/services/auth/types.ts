@@ -13,3 +13,6 @@ export interface ICheckAuthMsg {
 export interface ISignUpData extends ISignInData {
   email: string
 }
+export type WarningMessageType = {
+  warningMessage: string
+}

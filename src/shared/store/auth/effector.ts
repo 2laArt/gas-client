@@ -9,8 +9,8 @@ export const signUpFx = createEffect(
   async ({ data, resetField, switchForm, setSpinner }: ISignUpFields) => {
     try {
       setSpinner(true)
-      const response = await authService.signUp(data)
-      if (response.warningMessage) {
+      const { data: response } = await authService.signUp(data)
+      if (response?.warningMessage) {
         toast.warning(response.warningMessage)
         return
       }
@@ -31,7 +31,7 @@ export const signInFx = createEffect(
   async ({ data, resetField, setSpinner, router }: ISignInFields) => {
     try {
       setSpinner(true)
-      const response = await authService.signIn(data)
+      const response = await authService.login(data)
       toast.success('Successful login')
       resetField('name')
       resetField('password')

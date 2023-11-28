@@ -20,3 +20,7 @@ export interface IUpdateCountCartItem {
   partId: number
   count: number
 }
+export interface IUpdateTotalPrice {
+  partId: number
+  totalPrice: number
+}

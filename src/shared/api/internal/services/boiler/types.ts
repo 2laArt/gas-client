@@ -17,3 +17,17 @@ export interface IBoilerParts {
   count: number
   rows: IBoilerPart[]
 }
+export type BoilerEndpoints =
+  | 'new'
+  | 'bestsellers'
+  | 'search'
+  | `find/${string}`
+
+export interface IFilters {
+  boiler?: string[]
+  parts?: string[]
+  priceFrom?: string
+  priceTo?: string
+  offset?: string
+  limit?: string
+}

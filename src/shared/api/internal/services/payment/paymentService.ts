@@ -1,13 +1,23 @@
-import { axiosClassic } from '../../config'
-import { IPaymentData } from './types'
+import { BasicService } from '../../config'
+import { type IPaymentData } from './types'
+import { type AxiosRequestConfig } from 'axios'
 
-export const paymentService = {
-  payment: async (paymentData: IPaymentData) => {
-    const { data } = await axiosClassic.post('/payment', paymentData)
-    return data
-  },
-  checkPayment: async (paymentId: string) => {
-    const { data } = await axiosClassic.post(`/payment/info`, { paymentId })
-    return data
-  },
+class PaymentService extends BasicService<string> {
+  payment(paymentData: IPaymentData, config: Partial<AxiosRequestConfig> = {}) {
+    return this._instance({
+      ...config,
+      method: 'post',
+      url: this._baseUrl(),
+      data: paymentData,
+    })
+  }
+  checkPayment(paymentId: string, config: Partial<AxiosRequestConfig> = {}) {
+    return this._instance({
+      ...config,
+      method: 'post',
+      url: this._baseUrl('/info'),
+      data: { paymentId },
+    })
+  }
 }
+export const paymentService = new PaymentService('payment')

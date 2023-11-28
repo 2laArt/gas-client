@@ -1,21 +1,40 @@
-import { axiosClassic } from '../../config'
-import { ICheckAuth, ICheckAuthMsg, ISignInData, ISignUpData } from './types'
+import { BasicService } from '../../config'
+import type { ISignInData, ISignUpData } from './types'
+import { type AxiosRequestConfig } from 'axios'
 
-export const authService = {
-  signUp: async (userData: ISignUpData): Promise<any> => {
-    const { data } = await axiosClassic.post('/users/signup', userData)
-    return data
-  },
-  signIn: async (userData: ISignInData) => {
-    const { data } = await axiosClassic.post('/users/login', userData)
-    return data
-  },
-  loginCheck: async (): Promise<ICheckAuth | ICheckAuthMsg> => {
-    const { data } = await axiosClassic.get('/users/login-check')
-    return data
-  },
-  logout: async () => {
-    const { data } = await axiosClassic.get('/users/logout')
-    return data
-  },
+class AuthService extends BasicService<string> {
+  constructor(baseUrl: string) {
+    super(baseUrl)
+  }
+  signUp(data: ISignUpData, config: Partial<AxiosRequestConfig> = {}) {
+    return this._instance({
+      ...config,
+      method: 'post',
+      url: this._baseUrl('/signup'),
+      data,
+    })
+  }
+  login(data: ISignInData, config: Partial<AxiosRequestConfig> = {}) {
+    return this._instance({
+      ...config,
+      method: 'post',
+      url: this._baseUrl('/login'),
+      data,
+    })
+  }
+  loginCheck(config: Partial<AxiosRequestConfig> = {}) {
+    return this._instance({
+      ...config,
+      method: 'get',
+      url: this._baseUrl('/login-check'),
+    })
+  }
+  logout(config: Partial<AxiosRequestConfig> = {}) {
+    return this._instance({
+      ...config,
+      method: 'get',
+      url: this._baseUrl('/logout'),
+    })
+  }
 }
+export const authService = new AuthService('users')

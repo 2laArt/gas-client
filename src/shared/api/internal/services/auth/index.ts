@@ -4,4 +4,5 @@ export type {
   ICheckAuthMsg,
   ISignInData,
   ISignUpData,
+  WarningMessageType,
 } from './types'
