@@ -6,12 +6,17 @@ import { authService } from 'shared/api'
 import { HTTPStatus } from 'shared/config'
 
 export const signUpFx = createEffect(
-  async ({ data, resetField, switchForm, setSpinner }: ISignUpFields) => {
+  async ({
+    data: payload,
+    resetField,
+    switchForm,
+    setSpinner,
+  }: ISignUpFields) => {
     try {
       setSpinner(true)
-      const { data: response } = await authService.signUp(data)
-      if (response?.warningMessage) {
-        toast.warning(response.warningMessage)
+      const { data } = await authService.signUp(payload)
+      if ('warningMessage' in data) {
+        toast.warning(data.warningMessage)
         return
       }
       toast.success('Successful registration')
@@ -19,7 +24,7 @@ export const signUpFx = createEffect(
       resetField('name')
       resetField('password')
       resetField('email')
-      return response
+      return data
     } catch (error) {
       toast.error((error as Error).message)
     } finally {

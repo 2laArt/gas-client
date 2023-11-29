@@ -1,5 +1,10 @@
 import { BasicService } from '../../config'
-import type { ISignInData, ISignUpData } from './types'
+import type {
+  ICheckAuth,
+  ISignInData,
+  ISignUpData,
+  WarningMessageType,
+} from './types'
 import { type AxiosRequestConfig } from 'axios'
 
 class AuthService extends BasicService<string> {
@@ -7,7 +12,7 @@ class AuthService extends BasicService<string> {
     super(baseUrl)
   }
   signUp(data: ISignUpData, config: Partial<AxiosRequestConfig> = {}) {
-    return this._instance({
+    return this._instance<ICheckAuth | WarningMessageType>({
       ...config,
       method: 'post',
       url: this._baseUrl('/signup'),
@@ -15,7 +20,7 @@ class AuthService extends BasicService<string> {
     })
   }
   login(data: ISignInData, config: Partial<AxiosRequestConfig> = {}) {
-    return this._instance({
+    return this._instance<ICheckAuth>({
       ...config,
       method: 'post',
       url: this._baseUrl('/login'),
@@ -23,7 +28,7 @@ class AuthService extends BasicService<string> {
     })
   }
   loginCheck(config: Partial<AxiosRequestConfig> = {}) {
-    return this._instance({
+    return this._instance<ICheckAuth>({
       ...config,
       method: 'get',
       url: this._baseUrl('/login-check'),

@@ -1,5 +1,5 @@
 import { BasicService } from '../../config'
-import { IFilters } from './types'
+import { IBoilerPart, IBoilerParts, IFilters } from './types'
 import { AxiosRequestConfig } from 'axios'
 
 class BoilerService extends BasicService<string> {
@@ -7,28 +7,28 @@ class BoilerService extends BasicService<string> {
     super(baseUrl)
   }
   new(config: Partial<AxiosRequestConfig> = {}) {
-    return this._instance({
+    return this._instance<IBoilerParts>({
       ...config,
       method: 'get',
       url: this._baseUrl('/new'),
     })
   }
   bestsellers(config: Partial<AxiosRequestConfig> = {}) {
-    return this._instance({
+    return this._instance<IBoilerParts>({
       ...config,
       method: 'get',
       url: this._baseUrl('/bestsellers'),
     })
   }
   findById(partId: number, config: Partial<AxiosRequestConfig> = {}) {
-    return this._instance({
+    return this._instance<IBoilerPart>({
       ...config,
       method: 'get',
       url: this._baseUrl(`/find/${partId}`),
     })
   }
   search(search: string, config: Partial<AxiosRequestConfig> = {}) {
-    return this._instance({
+    return this._instance<IBoilerParts>({
       ...config,
       method: 'post',
       url: this._baseUrl('/search'),
@@ -36,7 +36,7 @@ class BoilerService extends BasicService<string> {
     })
   }
   getByName(name: string, config: Partial<AxiosRequestConfig> = {}) {
-    return this._instance({
+    return this._instance<IBoilerPart>({
       ...config,
       method: 'post',
       url: this._baseUrl('/search'),
@@ -45,7 +45,7 @@ class BoilerService extends BasicService<string> {
   }
   filters(filters: IFilters, config: Partial<AxiosRequestConfig> = {}) {
     const params = new URLSearchParams(Object.entries(filters)).toString()
-    return this._instance({
+    return this._instance<IBoilerParts>({
       ...config,
       method: 'get',
       url: this._baseUrl(`?${params}`),

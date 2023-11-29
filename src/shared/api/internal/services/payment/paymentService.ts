@@ -1,6 +1,6 @@
+import { type AxiosRequestConfig } from 'axios'
 import { BasicService } from '../../config'
 import { type IPaymentData } from './types'
-import { type AxiosRequestConfig } from 'axios'
 
 class PaymentService extends BasicService<string> {
   payment(paymentData: IPaymentData, config: Partial<AxiosRequestConfig> = {}) {
