@@ -1,11 +1,11 @@
 import { useAccessedPages } from './lib/use-accessed-pages'
 import { withSeo, withWrapper } from './providers'
 import { useStore } from 'effector-react'
+import { $mode } from 'features/switch-mode'
 import { AppProps } from 'next/app'
 import NextNProgress from 'nextjs-progressbar'
 import { useCallback } from 'react'
 import { ToastContainer } from 'react-toastify'
-import { $mode } from 'shared/store'
 
 const App = ({ Component, pageProps, ...appProps }: AppProps) => {
   const mode = useStore($mode)

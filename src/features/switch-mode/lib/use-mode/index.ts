@@ -1,6 +1,6 @@
 import { useStore } from 'effector-react'
+import { $mode, setMode, themes } from 'features/switch-mode'
 import { useEffect } from 'react'
-import { $mode, setMode, themes } from 'shared/store'
 
 export const useMode = () => {
   const mode = useStore($mode)

@@ -28,6 +28,6 @@ export interface IFilters {
   parts?: string[]
   priceFrom?: string
   priceTo?: string
-  offset?: string
-  limit?: string
+  offset: string
+  limit: string
 }

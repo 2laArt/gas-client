@@ -1,6 +1,6 @@
-import { ICatalogService } from 'shared/api'
+import { IFilters } from 'shared/api'
 
-export interface ICatalogParams extends Omit<ICatalogService, 'limit'> {
+export interface ICatalogParams extends Omit<IFilters, 'limit'> {
   first?: string
   page?: string
 }
@@ -18,7 +18,7 @@ export const paths = {
   catalog: (
     params: ICatalogParams = { offset: '1', page: '1', first: 'popular' }
   ): string => {
-    const searchParams = new URLSearchParams({ ...params })
+    const searchParams = new URLSearchParams(Object.entries(params)).toString()
     const url = `/catalog?${searchParams}`
 
     return url

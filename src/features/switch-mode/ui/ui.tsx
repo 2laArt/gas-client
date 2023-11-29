@@ -1,8 +1,8 @@
 import { useMode } from '../lib/use-mode'
+import { $mode } from '../model'
 import style from './style.module.scss'
 import { useStore } from 'effector-react'
 import { memo, type FC } from 'react'
-import { $mode } from 'shared/store'
 
 export const SwitchMode: FC = memo(() => {
   const { changeMode } = useMode()

@@ -1,11 +1,11 @@
-import { Location } from '../location'
+import { Location } from '../../../../../features/location'
 import { items } from './config'
 import style from './style.module.scss'
 import clsx from 'clsx'
+import { SwitchMode } from 'features/switch-mode'
 import { useRouter } from 'next/router'
 import { LegacyRef, forwardRef } from 'react'
 import { useMediaQuery } from 'shared/lib'
-import { SwitchMode } from 'shared/ui'
 import { ActiveLink } from 'shared/ui/active-link'
 
 interface IMenu {

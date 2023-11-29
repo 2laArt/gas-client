@@ -2,11 +2,12 @@ import { HeaderCart } from './cart'
 import { SearchInput } from './search'
 import style from './style.module.scss'
 import clsx from 'clsx'
+import { SwitchMode } from 'features/switch-mode'
 import Link from 'next/link'
 import { type FC } from 'react'
 import { useMediaQuery } from 'shared/lib'
 import { paths } from 'shared/routing'
-import { Icon, SwitchMode } from 'shared/ui'
+import { Icon } from 'shared/ui'
 
 const HeaderBottom: FC = () => {
   const isMedia768 = useMediaQuery(768)
