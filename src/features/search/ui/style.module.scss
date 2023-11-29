@@ -26,7 +26,7 @@
   &__item {
     @apply px-2 py-3 transition-colors hover:bg-[rgba(0,0,0,.2)];
     &_active {
-      /* @apply bg-dark-teal hover:brightness-110; */
+      @apply bg-cyan hover:brightness-110;
     }
   }
 }

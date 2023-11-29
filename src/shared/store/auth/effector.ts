@@ -33,15 +33,15 @@ export const signUpFx = createEffect(
   }
 )
 export const signInFx = createEffect(
-  async ({ data, resetField, setSpinner, router }: ISignInFields) => {
+  async ({ data: payload, resetField, setSpinner, router }: ISignInFields) => {
     try {
       setSpinner(true)
-      const response = await authService.login(data)
+      const { data } = await authService.login(payload)
       toast.success('Successful login')
       resetField('name')
       resetField('password')
       router.push('/dashboard')
-      return response
+      return data
     } catch (error) {
       const response = (error as AxiosError).response
       if (response?.status === HTTPStatus.UNAUTHORIZED) {
@@ -54,7 +54,7 @@ export const signInFx = createEffect(
 )
 export const loginCheckFx = createEffect(async () => {
   try {
-    return await authService.loginCheck()
+    return (await authService.loginCheck()).data
   } catch (error) {
     const axiosError = error as AxiosError
     if (

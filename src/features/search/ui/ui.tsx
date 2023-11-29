@@ -1,5 +1,5 @@
 import { compareLines } from '../lib'
-import { boilerSearchFx } from '../model'
+import { boilerSearch } from '../model'
 import style from './style.module.scss'
 import clsx from 'clsx'
 import { useRouter } from 'next/router'
@@ -18,7 +18,7 @@ export const SearchInput: FC = () => {
   const [searchValue, setSearchValue] = useState<string>('')
 
   const onHelpList = async (searchValue: string) => {
-    const boilerParts = await boilerSearchFx({ setSpinner, searchValue })
+    const boilerParts = await boilerSearch({ setSpinner, searchValue })
     boilerParts && setProducts(boilerParts)
   }
   const delayCallback = useDebounceCallback(onHelpList, 1000)

@@ -1,7 +1,7 @@
 import { HeaderCart } from './cart'
-import { SearchInput } from './search'
 import style from './style.module.scss'
 import clsx from 'clsx'
+import { SearchInput } from 'features/search'
 import { SwitchMode } from 'features/switch-mode'
 import Link from 'next/link'
 import { type FC } from 'react'
