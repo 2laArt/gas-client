@@ -1,4 +1,6 @@
 import { getDashboardData } from '../lib'
+import { BrandsSlider } from './brands-slider'
+import { DashboardAlert } from './dashboard-alert'
 import style from './style.module.scss'
 import clsx from 'clsx'
 import { useStore } from 'effector-react'
@@ -39,11 +41,16 @@ export const Dashboard: NextPage<IDashboard> = () => {
 
   return (
     <div className={style.dashboard}>
-      <Dropdown isOpen={isDisplayAlert}>{/* ALERT */}</Dropdown>
-
-      {/* Brands-slider */}
+      <Dropdown isOpen={isDisplayAlert}>
+        <DashboardAlert
+          closeAlert={() => setDisplayAlert(false)}
+          count={cartLength}
+          totalPrice={totalPrice}
+        />
+      </Dropdown>
 
       <Title size="xl">Details for gas boilers</Title>
+      <BrandsSlider />
       <div>
         <Title className={style.title_slider} as="h2">
           Bestsellers

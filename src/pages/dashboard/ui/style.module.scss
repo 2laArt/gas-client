@@ -1,5 +1,8 @@
 .dashboard {
   @apply py-10;
+  > h1 {
+    @apply mb-7;
+  }
 }
 .title_section {
   @apply my-10;

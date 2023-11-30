@@ -1,0 +1,1 @@
+export { BrandsSlider } from './ui'

@@ -1,5 +1,5 @@
 .button {
-  @apply relative inline-flex cursor-pointer flex-wrap items-center justify-center rounded-[4px] border-solid border-transparent text-dark transition-colors disabled:pointer-events-none dark:text-white;
+  @apply relative inline-flex cursor-pointer flex-wrap items-center justify-center rounded-[4px] border-solid border-transparent text-dark transition-all disabled:pointer-events-none dark:text-white;
 }
 .opacity {
   @apply opacity-0;
@@ -15,7 +15,7 @@
   @apply bg-blue text-white;
 }
 .transparent {
-  @apply border border-solid border-blue bg-transparent text-blue hover:bg-light-gray dark:hover:bg-gray;
+  @apply bg-transparent text-blue opacity-100 hover:opacity-70;
 }
 //color
 
