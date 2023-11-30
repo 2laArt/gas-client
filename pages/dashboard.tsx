@@ -1,7 +1,1 @@
-import { FC } from 'react'
-
-const dashboard: FC = () => {
-  return <div></div>
-}
-
-export default dashboard
+export { Dashboard as default } from 'pages/dashboard'

@@ -1,5 +1,5 @@
 import { toggleCartItem, useIsAddedToCart, type IToggleCart } from '../lib'
-import style from './btn.module.scss'
+import style from './style.module.scss'
 import clsx from 'clsx'
 import { useState, type FC } from 'react'
 import { Button, Icon } from 'shared/ui'
@@ -25,7 +25,7 @@ export const CartToggleBtn: FC<ICartToggleBtn> = ({
   }
   return (
     <Button
-      className={clsx(style.icon, isAdded && style.added)}
+      className={clsx(style.btn)}
       color={isAdded ? 'cyan' : 'yellow'}
       size={size}
       onClick={toggle}

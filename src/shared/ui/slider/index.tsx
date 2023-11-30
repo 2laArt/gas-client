@@ -6,7 +6,7 @@ import { Autoplay, Navigation } from 'swiper/modules'
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react'
 import { type SwiperOptions } from 'swiper/types/swiper-options'
 
-export interface IProductsSlider<T> extends SwiperProps {
+export interface ISlider<T> extends SwiperProps {
   items: T[] | undefined
   prevBtnClass?: string
   nextBtnClass?: string
@@ -16,7 +16,7 @@ export interface IProductsSlider<T> extends SwiperProps {
   containerOffsets?: boolean
   options?: SwiperOptions
 }
-export function ProductsSlider<T>({
+export function Slider<T>({
   items,
   renderItem,
   className,
@@ -27,7 +27,7 @@ export function ProductsSlider<T>({
   prevBtnClass,
   nextBtnClass,
   ...props
-}: IProductsSlider<T>) {
+}: ISlider<T>) {
   const renderItems = useCallback(
     (_items: typeof items) =>
       _items?.map((item, idx) => (

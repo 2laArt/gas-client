@@ -1,0 +1,16 @@
+.dashboard {
+  @apply py-10;
+}
+.title_section {
+  @apply my-10;
+}
+.title_slider {
+  @apply mb-3 mt-10;
+}
+
+.about {
+  @apply mt-10 p-3;
+  > h2 {
+    @apply mt-0;
+  }
+}

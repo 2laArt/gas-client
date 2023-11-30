@@ -1,0 +1,9 @@
+.skeleton_card {
+  @apply m-3  w-64 rounded-md p-3 dark:bg-dark-gray max-lg:w-52;
+}
+.square {
+  @apply mb-3 h-40 rounded-md;
+}
+.line {
+  @apply mb-2 h-3 rounded-sm last:m-0;
+}

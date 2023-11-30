@@ -1,0 +1,6 @@
+.slider {
+  @apply relative;
+  &_wrong_title {
+    @apply absolute  z-10 grid h-full w-full  place-items-center rounded-md bg-skeleton-300;
+  }
+}
