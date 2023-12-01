@@ -5,11 +5,19 @@
   @apply opacity-0;
 }
 //color
+.cyan,
+.yellow,
+.blue {
+  @apply active:scale-[0.97];
+  &:hover {
+    @apply scale-[0.985] opacity-70;
+  }
+}
 .cyan {
-  @apply bg-cyan text-white hover:bg-light-gray;
+  @apply bg-cyan text-white;
 }
 .yellow {
-  @apply bg-yellow text-white hover:bg-light-gray;
+  @apply bg-yellow text-white;
 }
 .blue {
   @apply bg-blue text-white;

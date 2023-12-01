@@ -14,7 +14,7 @@
       />
 </symbol>
 
-<svg id="logo" viewBox="0 0 273.000000 329.000000" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+<symbol id="logo" viewBox="0 0 273.000000 329.000000" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
 
  <g stroke="null">
   <g id="svg_1" fill="currentColor" transform="translate(0,329) scale(0.10000000149011612,-0.10000000149011612) ">
@@ -47,13 +47,13 @@
    </g>
   </g>
  </g>
-</svg>
+</symbol>
 
 
-<svg id="logo-footer" viewBox="0 0 273.000000 329.000000" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+<symbol id="logo-footer" viewBox="0 0 273.000000 329.000000" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
 
  <g stroke="null">
-  <g id="svg_1" fill="#d4d4d4" transform="translate(0,329) scale(0.10000000149011612,-0.10000000149011612) ">
+  <g id="svg_1" fill="currentColor" transform="translate(0,329) scale(0.10000000149011612,-0.10000000149011612) ">
    <g stroke="null" id="icon" >
     <path stroke="null" id="svg_2" d="m1276.359922,3255.010657c-18.603327,-16.278999 -34.106099,-33.914581 -34.106099,-40.697497c0,-8.139499 52.709426,-13.565832 116.270792,-13.565832c111.619961,0 116.270792,1.356583 100.76802,27.131664c-35.656376,58.333079 -127.122733,71.898911 -182.932713,27.131664z"/>
     <path stroke="null" id="svg_3" d="m808.176198,3119.352335c-17.05305,-14.922415 -31.005545,-42.05408 -31.005545,-61.046245c0,-18.992165 13.952495,-46.12383 31.005545,-61.046245c29.455267,-25.775081 51.159149,-27.131664 547.247863,-27.131664c494.538437,0 519.342873,1.356583 545.697586,27.131664c37.206654,36.627747 34.106099,94.960826 -7.751386,124.805656c-31.005545,23.061915 -75.963584,24.418498 -544.147308,24.418498c-489.887605,0 -511.591487,-1.356583 -541.046754,-27.131664z"/>
@@ -83,7 +83,7 @@
    </g>
   </g>
  </g>
-</svg>
+</symbol>
 
 <symbol  viewBox='0 0 50 50' xmlns="http://www.w3.org/2000/svg" id="close">
 <g>

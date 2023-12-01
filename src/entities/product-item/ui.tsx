@@ -37,8 +37,12 @@ export const ProductItem: FC<IProductItem> = ({
         />
       </div>
       <div className={style.product_item_name}>
-        <Link className={style.a} href={paths.catalogProduct(id)}>
-          {name}
+        <Link
+          className={style.a}
+          href={paths.catalogProduct(id)}
+          data-replace={name}
+        >
+          <span>{name}</span>
         </Link>
       </div>
       <div className={style.product_item_vender}>

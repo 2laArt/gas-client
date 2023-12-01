@@ -14,12 +14,16 @@ export const FooterNav: FC = () => {
     <div className={style.nav}>
       <FooterColum
         title={
-          <a href={paths.dashboard} className={style.logo}>
+          <ActiveLink
+            asPath={asPath}
+            href={paths.dashboard}
+            className={style.logo}
+          >
             <span>
               <Icon type="common" name="logo-footer" />
             </span>
             GAS
-          </a>
+          </ActiveLink>
         }
       />
       <FooterColum title={store.title}>

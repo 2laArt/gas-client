@@ -8,10 +8,21 @@
   }
   &_name {
     @apply pb-2;
+
     a {
-      @apply relative;
-      &:after {
-        @apply absolute left-0 z-10 block h-[3px] w-0 border-0 bg-cyan transition-[width] content-[''];
+      @apply relative inline-block overflow-hidden hover:before:w-0;
+      &::after,
+      &::before {
+        @apply absolute left-0 w-full origin-[100%_50%] transition-[transform,width,color] duration-300 content-[''];
+      }
+      &::before {
+        @apply bottom-0 h-[2px] scale-x-0  bg-blue;
+      }
+      &::after {
+        @apply top-0 h-full translate-x-[200%] px-[2px] text-blue content-[attr(data-replace)] dark:brightness-150;
+      }
+      > span {
+        @apply inline-block  transition-transform;
       }
     }
   }
@@ -21,7 +32,12 @@
   &_price {
     @apply flex items-center justify-between text-base font-semibold;
   }
-  &:hover &_name a {
-    @apply after:w-full;
+  &:hover &_name {
+    a {
+      @apply origin-[0%_50%] before:scale-100 after:translate-x-0;
+      > span {
+        @apply translate-x-[-200%];
+      }
+    }
   }
 }
