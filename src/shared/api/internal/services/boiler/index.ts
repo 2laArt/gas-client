@@ -1,2 +1,2 @@
 export { boilerService } from './boilerService'
-export type { IBoilerPart, IBoilerParts, IFilters } from './types'
+export type { IBoilerPart, IBoilerParts, IFiltersParams } from './types'

@@ -1,5 +1,5 @@
 import { BasicService } from '../../config'
-import { IBoilerPart, IBoilerParts, IFilters } from './types'
+import { IBoilerPart, IBoilerParts, IFiltersParams } from './types'
 import { AxiosRequestConfig } from 'axios'
 
 class BoilerService extends BasicService<string> {
@@ -43,7 +43,7 @@ class BoilerService extends BasicService<string> {
       data: { name },
     })
   }
-  filters(filters: IFilters, config: Partial<AxiosRequestConfig> = {}) {
+  filters(filters: IFiltersParams, config: Partial<AxiosRequestConfig> = {}) {
     const params = new URLSearchParams(Object.entries(filters)).toString()
     return this._instance<IBoilerParts>({
       ...config,

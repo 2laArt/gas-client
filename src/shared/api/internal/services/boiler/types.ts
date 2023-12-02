@@ -23,7 +23,7 @@ export type BoilerEndpoints =
   | 'search'
   | `find/${string}`
 
-export interface IFilters {
+export interface IFiltersParams {
   boiler?: string[]
   parts?: string[]
   priceFrom?: string
