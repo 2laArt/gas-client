@@ -1,4 +1,4 @@
-import { TypeCheckboxState } from 'pages/catalog/model/filters/type'
+import { TypeCheckboxState } from 'pages/catalog/model'
 
 interface ICheckboxInitial {
   initState: boolean

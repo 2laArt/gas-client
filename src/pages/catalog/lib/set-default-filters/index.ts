@@ -1,5 +1,5 @@
-import { setAllCheckboxes } from '../set-all-checkboxs'
-import { IFiltersStore } from 'pages/catalog/model/filters/type'
+import { setAllCheckboxes } from '../set-all-checkboxes'
+import { IFiltersStore } from 'pages/catalog/model'
 import { brands } from 'shared/config'
 
 interface IFiltersDefault {

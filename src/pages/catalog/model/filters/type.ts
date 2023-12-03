@@ -29,8 +29,8 @@ export type TypeToggleCheckbox = {
 }
 export type TypeResetCheckbox = Omit<TypeToggleCheckbox, 'checkboxes'>
 export type TypeCatalogStorePrices = {
-  newMin?: string
-  newMax?: string
+  newMin?: number
+  newMax?: number
 }
 
 // export interface ICatalogSidebar {

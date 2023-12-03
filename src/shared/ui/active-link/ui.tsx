@@ -14,7 +14,7 @@ export const ActiveLink: FC<IActiveLink> = ({
   children,
   className,
 }) => {
-  const isActive = asPath.includes(href)
+  const isActive = href.includes(asPath)
   return (
     <Link
       href={href}

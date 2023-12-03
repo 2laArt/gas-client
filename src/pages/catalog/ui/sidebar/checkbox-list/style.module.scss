@@ -1,0 +1,9 @@
+.select_all {
+  @apply mb-1 font-semibold text-blue;
+}
+
+.li {
+  input[type='checkbox'] {
+    @apply mr-3;
+  }
+}
