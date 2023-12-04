@@ -1,0 +1,24 @@
+.categories {
+  @apply mt-2 border-b border-gray pb-1 text-xs text-gray;
+  &_title {
+    @apply mb-1 font-semibold capitalize;
+  }
+  &_items {
+    @apply -ml-2;
+  }
+  &_item {
+    @apply relative m-2 inline-block rounded-full border border-gray py-2 pl-4 pr-10 transition-bg hover:bg-ice-blue dark:hover:bg-dark-gray;
+    .close {
+      @apply absolute right-1 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full text-blue  transition-colors;
+      > svg {
+        @apply absolute inset-0 m-auto h-[10px] w-[10px] transition-colors;
+      }
+      &:hover {
+        @apply bg-white dark:bg-black;
+        > svg {
+          @apply text-tomato;
+        }
+      }
+    }
+  }
+}

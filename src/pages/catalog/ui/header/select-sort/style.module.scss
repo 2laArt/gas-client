@@ -1,0 +1,12 @@
+.select {
+  @apply h-11 border border-gray bg-white pl-3 pr-8 dark:bg-dark;
+}
+.list {
+  @apply max-h-[350px] min-h-0 overflow-y-scroll;
+  &__item {
+    @apply px-2 py-3 transition-colors hover:bg-[rgba(0,0,0,.2)];
+    &_active {
+      @apply bg-cyan hover:brightness-110;
+    }
+  }
+}
