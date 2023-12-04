@@ -1,1 +1,0 @@
-export { PriceRange } from './ui'

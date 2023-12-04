@@ -1,0 +1,18 @@
+.accordion {
+  @apply mb-2 border-b border-light-gray dark:border-dark-gray;
+}
+.head {
+  @apply relative my-3 w-full pr-3 text-left font-bold;
+  &.open {
+    @apply after:-rotate-45;
+  }
+  &::after {
+    @apply absolute right-0 top-1 block  h-2 w-2 rotate-[135deg] border-r-2 border-t-2 border-blue transition-transform content-[''];
+  }
+}
+.drop {
+  @apply box-border;
+  > & {
+    @apply pb-3;
+  }
+}

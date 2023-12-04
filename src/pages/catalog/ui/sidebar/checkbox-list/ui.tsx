@@ -31,7 +31,7 @@ export const CheckboxList: FC<ICheckboxList> = ({
       >
         select all
       </button>
-      <ul className={clsx('small_scroll', className)}>
+      <ul className={clsx('small_scroll', style.ul, className)}>
         {Object.keys(selectedCheckbox).map((checkbox) => (
           <li className={style.li} key={checkbox}>
             {/* 

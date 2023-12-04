@@ -1,7 +1,9 @@
 .select_all {
   @apply mb-1 font-semibold text-blue;
 }
-
+.ul {
+  @apply mb-2 max-h-32 overflow-y-auto;
+}
 .li {
   input[type='checkbox'] {
     @apply mr-3;

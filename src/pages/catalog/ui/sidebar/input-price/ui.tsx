@@ -19,7 +19,7 @@ interface IInputPrice {
 }
 
 interface IIconCurrency {
-  value: number | string
+  value: string
   icon: ReactNode
 }
 
@@ -27,7 +27,7 @@ const IconCurrency: FC<IIconCurrency> = ({ value, icon = '₽' }) =>
   value !== '' && (
     <span
       style={{
-        left: formationPriceRange(value).length * 8 + 12 + 'px',
+        left: value.length * 7 + 12 + 'px',
       }}
     >
       {icon}
@@ -43,16 +43,17 @@ export const InputPrice: FC<IInputPrice> = ({
 }) => {
   const [value, setValue] = useState<string>(formationPriceRange(price))
   useEffect(() => {
-    setValue(price.toString())
-    console.log('price: ' + price)
+    setValue(formationPriceRange(price.toString()))
   }, [price])
   const onChange = (e: FormEvent<HTMLInputElement>) => {
     setValue(formationPriceRange(e.currentTarget.value))
   }
+  const setPriceStore = () => {
+    if (Number(value) !== price) setPrice(formatStrToNumber(value))
+  }
   const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter') {
-      console.log(value)
-      setPrice(formatStrToNumber(value))
+      setPriceStore()
     }
   }
 
@@ -61,7 +62,7 @@ export const InputPrice: FC<IInputPrice> = ({
       <IconCurrency value={value} icon={icon} />
       <input
         type="text"
-        onBlur={(e) => setPrice(formatStrToNumber(e.currentTarget.value))}
+        onBlur={setPriceStore}
         onChange={onChange}
         onKeyDown={onKeyDown}
         placeholder={placeholder}

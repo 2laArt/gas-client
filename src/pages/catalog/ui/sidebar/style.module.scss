@@ -1,0 +1,10 @@
+.sidebar {
+  @apply mr-6 w-full max-w-[285px] px-4 py-3 text-left text-xs;
+  h4 {
+    @apply mb-3;
+  }
+}
+
+.inputs_number {
+  @apply flex items-center justify-between;
+}

@@ -1,14 +1,24 @@
-import { $filters, setCatalogPrice } from '../model'
-import { PriceRange } from './sidebar/price-range'
+import { $filters, setCatalogPrice, toggleCheckboxes } from '../model'
+import { CatalogSidebar } from './sidebar'
 import { useStore } from 'effector-react'
 import { type NextPage } from 'next'
 
 export const Catalog: NextPage = () => {
-  const { price } = useStore($filters)
+  const { price, details, retailer } = useStore($filters)
   return (
     <div>
       Catalog
-      <PriceRange title="Price" setPrice={setCatalogPrice} {...price} />
+      <CatalogSidebar
+        details={details}
+        price={price}
+        retailer={retailer}
+        disabledReset={false}
+        disabledSubmit={false}
+        getProducts={() => {}}
+        toggleCheckboxes={toggleCheckboxes}
+        resetFilters={() => {}}
+        setPrice={setCatalogPrice}
+      />
     </div>
   )
 }
