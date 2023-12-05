@@ -1,0 +1,13 @@
+.pagination {
+  @apply my-3 flex justify-center;
+}
+.item {
+  @apply mx-2 px-4 py-2 text-lg max-md:mx-0  max-md:text-sm;
+}
+.btn {
+  @apply transition-colors hover:bg-[rgba(0,0,0,.2)];
+}
+
+.active {
+  @apply bg-blue text-white hover:bg-blue;
+}

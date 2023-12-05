@@ -1,8 +1,9 @@
 import style from './style.module.scss'
 import clsx from 'clsx'
+import { CartToggleBtn } from 'features/cart-toggle'
 import Image from 'next/image'
 import Link from 'next/link'
-import { type FC, type ReactNode } from 'react'
+import { type FC } from 'react'
 import { formatToCurrency } from 'shared/lib'
 import { paths } from 'shared/routing'
 
@@ -13,7 +14,7 @@ interface IProductItem {
   name: string
   price: number
   vendor_code: string
-  toggleBtn: ReactNode
+  username: string
 }
 
 export const ProductItem: FC<IProductItem> = ({
@@ -23,7 +24,7 @@ export const ProductItem: FC<IProductItem> = ({
   vendor_code,
   price,
   className,
-  toggleBtn,
+  username,
 }) => {
   return (
     <div className={clsx('card', style.product_item, className)}>
@@ -50,9 +51,8 @@ export const ProductItem: FC<IProductItem> = ({
       </div>
       <div className={style.product_item_price}>
         {formatToCurrency(price)}
-        {/*  */}
-        {toggleBtn}
-        {/*  */}
+
+        <CartToggleBtn name={name} partId={id} username={username} />
       </div>
     </div>
   )

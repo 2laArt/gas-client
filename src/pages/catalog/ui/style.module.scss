@@ -1,0 +1,12 @@
+.catalog {
+  @apply py-7;
+  > h1 {
+    @apply mb-5;
+  }
+}
+.main {
+  @apply flex items-start justify-between;
+}
+.middle {
+  @apply w-full;
+}

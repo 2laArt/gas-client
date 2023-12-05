@@ -1,15 +1,16 @@
-import { SelectSort } from './select-sort'
-import { SelectedCategories } from './selected-categories'
-import style from './style.module.scss'
 import clsx from 'clsx'
+import { type Event } from 'effector'
 import { getCheckedCheckboxes } from 'pages/catalog/lib'
 import {
-  toggleCheckboxes,
   type IFilterChecklist,
   type TypeCheckboxState,
+  type TypeToggleCheckbox,
 } from 'pages/catalog/model'
 import { type FC } from 'react'
 import { Dropdown } from 'shared/ui'
+import { SelectSort } from './select-sort'
+import { SelectedCategories } from './selected-categories'
+import style from './style.module.scss'
 
 interface ICatalogHeader {
   details: IFilterChecklist
@@ -17,6 +18,7 @@ interface ICatalogHeader {
   resetFilters: VoidFunction
   disabledReset: boolean
   disabledSubmit: boolean
+  toggleCheckboxes: Event<TypeToggleCheckbox>
   applyFilters: VoidFunction
 }
 export const CatalogHeader: FC<ICatalogHeader> = ({
@@ -26,6 +28,7 @@ export const CatalogHeader: FC<ICatalogHeader> = ({
   disabledReset,
   disabledSubmit,
   applyFilters,
+  toggleCheckboxes
 }) => {
   const checkedBrands = (boxes: TypeCheckboxState) =>
     !!getCheckedCheckboxes(boxes).length

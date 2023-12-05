@@ -1,10 +1,10 @@
-import { SkeletonProduct } from './skeleton-product'
 import style from './style.module.scss'
-import { ProductItem } from 'entities/product-item'
-import { CartToggleBtn } from 'features/cart-toggle'
+import { useStore } from 'effector-react'
 import { type FC } from 'react'
 import { type IBoilerPart } from 'shared/api'
-import { Slider, Title } from 'shared/ui'
+import { $auth } from 'shared/store'
+import { SkeletonProduct, Slider, Title } from 'shared/ui'
+import { ProductItem } from 'widgets/product-item'
 
 interface IDashboardSlider {
   products: IBoilerPart[] | string
@@ -12,17 +12,12 @@ interface IDashboardSlider {
 }
 
 export const ProductSlider: FC<IDashboardSlider> = ({ products, spinner }) => {
+  const { username } = useStore($auth)
   const isProducts = Array.isArray(products) && !!products.length
   const isWaring = !isProducts && !spinner && typeof products === 'string'
   const renderItem = (item: any, idx: number) =>
     isProducts && !spinner ? (
-      <ProductItem
-        {...item}
-        key={idx}
-        toggleBtn={
-          <CartToggleBtn username="test" name={item.name} partId={item.id} />
-        }
-      />
+      <ProductItem {...item} key={idx} username={username} />
     ) : (
       <SkeletonProduct key={idx} />
     )

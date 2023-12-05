@@ -1,0 +1,12 @@
+.products {
+  @apply flex w-full flex-wrap justify-center;
+  > h6 {
+    @apply mt-[20vmin];
+  }
+}
+.product {
+  @apply scale-100 transition-transform hover:scale-105;
+  &_w {
+    @apply w-full max-w-[13rem] max-lg:max-w-[44%] max-md:max-w-[256px] max-[450px]:max-w-[256px];
+  }
+}
