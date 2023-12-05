@@ -1,26 +1,22 @@
-import { Accordion } from './accordion'
+import { Accordion } from '../accordion'
+import { ChangeButtons } from '../change-buttons'
+import { ICatalogProps } from '../type'
 import { CheckboxList } from './checkbox-list'
 import { DoubleRange } from './double-range'
-import { SidebarButtons } from './footer-btns'
 import { InputPrice } from './input-price'
 import style from './style.module.scss'
 import clsx from 'clsx'
 import { type Event } from 'effector'
 import {
-  type IFiltersStore,
+  type ICatalogFilterPrice,
   type TypeCatalogStorePrices,
-  type TypeToggleCheckbox,
 } from 'pages/catalog/model'
 import { type FC } from 'react'
 import { Title } from 'shared/ui'
 
-export interface ICatalogSidebar extends Omit<IFiltersStore, 'changed'> {
-  getProducts: (params?: IFiltersStore) => void
-  resetFilters: VoidFunction
+export interface ICatalogSidebar extends ICatalogProps {
+  price: ICatalogFilterPrice
   setPrice: Event<TypeCatalogStorePrices>
-  toggleCheckboxes: Event<TypeToggleCheckbox>
-  disabledReset: boolean
-  disabledSubmit: boolean
 }
 export const titles = {
   boiler: 'Boiler Manufacturer',
@@ -29,7 +25,7 @@ export const titles = {
 }
 
 export const CatalogSidebar: FC<ICatalogSidebar> = ({
-  getProducts,
+  applyFilters,
   resetFilters,
   disabledReset,
   disabledSubmit,
@@ -94,18 +90,20 @@ export const CatalogSidebar: FC<ICatalogSidebar> = ({
             }
           />
         </Accordion>
-        <SidebarButtons
-          btnTop={{
-            title: 'Show',
-            disabled: disabledSubmit,
-            onClick: () => getProducts(),
-          }}
-          btnBottom={{
-            disabled: disabledReset,
-            title: 'Reset',
-            onClick: resetFilters,
-          }}
-        />
+        <div className={style.footer}>
+          <ChangeButtons
+            btnTop={{
+              title: 'Show',
+              disabled: disabledSubmit,
+              onClick: applyFilters,
+            }}
+            btnBottom={{
+              disabled: disabledReset,
+              title: 'Reset',
+              onClick: resetFilters,
+            }}
+          />
+        </div>
       </div>
     </div>
   )

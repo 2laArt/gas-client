@@ -20,10 +20,10 @@ export const usePagination = ({
 }: IUsePagination) => {
   const paginationRange = useMemo(() => {
     const totalPageCount = Math.ceil(totalCount / pageSize)
-    const totalPageNumbers = siblingCount
     const itemCount = 2 + 2 * siblingCount
     const firstPageIndex = 1
-    if (totalPageNumbers >= totalPageCount) {
+
+    if (totalPageCount <= itemCount + 1) {
       return range(firstPageIndex, totalPageCount)
     }
 

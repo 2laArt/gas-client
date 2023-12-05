@@ -1,0 +1,18 @@
+.btn {
+  @apply my-2 inline-block w-full rounded-sm border border-blue bg-blue py-1 text-xs text-white  transition-[color,background] hover:text-blue;
+
+  &:last-child {
+    @apply bg-ice-blue text-blue dark:bg-dark-gray dark:text-aqua;
+    &:hover {
+      @apply bg-transparent text-blue;
+    }
+  }
+  &:hover {
+    @apply bg-transparent;
+  }
+
+  &:disabled {
+    @apply bg-dark-gray text-white opacity-30;
+    pointer-events: none;
+  }
+}

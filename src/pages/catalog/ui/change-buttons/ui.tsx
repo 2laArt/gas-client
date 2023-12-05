@@ -8,19 +8,23 @@ interface IBtnOptions {
   disabled: boolean
 }
 
-interface ISidebarButtons {
+interface IChangeButtons {
   btnTop: IBtnOptions
   btnBottom: IBtnOptions
   hiddenBtn?: boolean
 }
-export const SidebarButtons: FC<ISidebarButtons> = ({
+export const ChangeButtons: FC<IChangeButtons> = ({
   btnBottom,
   btnTop,
   hiddenBtn,
 }) => {
   return (
-    <div className={style.btns}>
-      <Button disabled={btnTop.disabled} onClick={btnTop.onClick}>
+    <>
+      <Button
+        disabled={btnTop.disabled}
+        className={style.btn}
+        onClick={btnTop.onClick}
+      >
         {btnTop.title}
       </Button>
 
@@ -29,10 +33,11 @@ export const SidebarButtons: FC<ISidebarButtons> = ({
         style={{
           display: hiddenBtn ? 'none' : '',
         }}
+        className={style.btn}
         onClick={btnBottom.onClick}
       >
         {btnBottom.title}
       </Button>
-    </div>
+    </>
   )
 }

@@ -4,7 +4,9 @@
     @apply mb-3;
   }
 }
-
 .inputs_number {
   @apply flex items-center justify-between;
+}
+.footer {
+  @apply flex flex-col;
 }
