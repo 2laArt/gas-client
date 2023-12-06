@@ -5,16 +5,16 @@ import { FC, PropsWithChildren } from 'react'
 
 interface IActiveLink extends PropsWithChildren {
   href: string
-  asPath: string
+  pathname: string
   className?: string
 }
 export const ActiveLink: FC<IActiveLink> = ({
   href,
-  asPath,
+  pathname,
   children,
   className,
 }) => {
-  const isActive = href.includes(asPath)
+  const isActive = href.includes(pathname)
   return (
     <Link
       href={href}

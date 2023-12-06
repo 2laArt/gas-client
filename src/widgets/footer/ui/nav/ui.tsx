@@ -9,13 +9,13 @@ import { ActiveLink, Icon } from 'shared/ui'
 
 export const FooterNav: FC = () => {
   const { store, company } = navItems
-  const { asPath } = useRouter()
+  const { pathname } = useRouter()
   return (
     <div className={style.nav}>
       <FooterColum
         title={
           <ActiveLink
-            asPath={asPath}
+            pathname={pathname}
             href={paths.dashboard}
             className={style.logo}
           >
@@ -29,7 +29,7 @@ export const FooterNav: FC = () => {
       <FooterColum title={store.title}>
         {store.items.map((item) => (
           <div key={item.href}>
-            <ActiveLink asPath={asPath} href={item.href}>
+            <ActiveLink pathname={pathname} href={item.href}>
               {item.text}
             </ActiveLink>
           </div>
@@ -38,7 +38,7 @@ export const FooterNav: FC = () => {
       <FooterColum title={company.title}>
         {company.items.map((item) => (
           <div key={item.href}>
-            <ActiveLink asPath={asPath} href={item.href}>
+            <ActiveLink pathname={pathname} href={item.href}>
               {item.text}
             </ActiveLink>
           </div>

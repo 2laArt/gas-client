@@ -16,7 +16,7 @@ interface IMenu {
 export const Menu = forwardRef<HTMLElement, IMenu>(
   ({ className, isOpen }, ref) => {
     const is768 = useMediaQuery(768)
-    const { asPath } = useRouter()
+    const { pathname } = useRouter()
     return (
       <>
         <nav
@@ -30,7 +30,7 @@ export const Menu = forwardRef<HTMLElement, IMenu>(
               </div>
             )}
             {items.map(({ href, text }, idx) => (
-              <ActiveLink key={idx} href={href} asPath={asPath}>
+              <ActiveLink key={idx} href={href} pathname={pathname}>
                 {text}
               </ActiveLink>
             ))}
