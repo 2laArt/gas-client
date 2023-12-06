@@ -32,7 +32,9 @@ export const Pagination: FC<IPagination> = ({
     <div className={style.pagination}>
       {pages?.map((item, idx) =>
         item === DOTS ? (
-          <span className={clsx(style.item)}>{item}</span>
+          <span key={idx} className={clsx(style.item)}>
+            {item}
+          </span>
         ) : (
           <button
             key={idx}

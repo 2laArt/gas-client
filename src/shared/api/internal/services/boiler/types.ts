@@ -17,11 +17,6 @@ export interface IBoilerParts {
   count: number
   rows: IBoilerPart[]
 }
-export type BoilerEndpoints =
-  | 'new'
-  | 'bestsellers'
-  | 'search'
-  | `find/${string}`
 
 export interface IFiltersParams {
   boiler?: string[]

@@ -1,8 +1,7 @@
-import { IFilters } from 'shared/api'
+import { IFiltersParams } from 'shared/api'
 
-export interface ICatalogParams extends Omit<IFilters, 'limit'> {
+export interface ICatalogParams extends Omit<IFiltersParams, 'limit'> {
   first?: string
-  page?: string
 }
 
 type Id = number | null | undefined
@@ -16,7 +15,10 @@ export const paths = {
   shoppingPayment: '/shopping-payment',
   wholesaleBuyers: '/wholesale-buyers',
   catalog: (
-    params: ICatalogParams = { offset: '1', page: '1', first: 'popular' }
+    params: ICatalogParams = {
+      offset: '1',
+      first: 'popular',
+    }
   ): string => {
     const searchParams = new URLSearchParams(Object.entries(params)).toString()
     const url = `/catalog?${searchParams}`

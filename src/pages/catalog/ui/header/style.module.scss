@@ -5,16 +5,16 @@
     > div {
       @apply max-md:flex-col;
       > * {
-        @apply first:mb-2 max-md:h-8;
+        @apply first:mb-2 max-md:h-8 max-xs:w-32 xs:w-[170px];
       }
     }
   }
 }
 
 .btns {
-  @apply flex justify-between;
+  @apply flex justify-between max-md:mr-2;
   > button {
-    @apply m-0 w-[170px] md:mr-2 md:h-11;
+    @apply m-0 md:mr-2 md:h-11;
   }
 }
 .footer {
