@@ -1,7 +1,7 @@
 import { DOTS, usePagination } from '../lib'
 import style from './style.module.scss'
 import clsx from 'clsx'
-import { useEffect, useState, type FC } from 'react'
+import { type FC } from 'react'
 
 interface IPagination {
   totalCount: number
@@ -15,19 +15,16 @@ export const Pagination: FC<IPagination> = ({
   offset,
   setOffset,
 }) => {
-  const [page, setPage] = useState<number>(1)
   const pages = usePagination({
-    currentPage: page,
+    currentPage: offset,
     pageSize: limit,
     totalCount: totalCount,
   })
   const clickPage = (item: string | number) => {
-    if (typeof item === 'string' || isNaN(item) || item === page) return
-    setOffset(`${item - 1}`)
+    if (typeof item === 'string' || isNaN(item) || item === offset) return
+    setOffset(`${item}`)
   }
-  useEffect(() => {
-    setPage(offset + 1 || 1)
-  }, [offset])
+
   return (
     <div className={style.pagination}>
       {pages?.map((item, idx) =>
@@ -42,7 +39,7 @@ export const Pagination: FC<IPagination> = ({
             className={clsx(
               style.item,
               style.btn,
-              page === item && style.active
+              offset === item && style.active
             )}
           >
             {item}

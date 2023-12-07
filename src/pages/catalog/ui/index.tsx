@@ -1,7 +1,9 @@
 import {
-  updatedQueryParams,
+  filtersToQuery,
+  useUpdatedQuery,
+  type TypeCatalogQueryParams,
   type TypeCatalogRouterQuery,
-} from '../lib/query-and-filters'
+} from '../lib'
 import { $filters, setCatalogPrice, toggleCheckboxes } from '../model'
 import { CatalogHeader } from './header/ui'
 import { CatalogProducts } from './products'
@@ -10,31 +12,59 @@ import style from './style.module.scss'
 import { useStore } from 'effector-react'
 import { Pagination } from 'features/pagination'
 import { type NextPage } from 'next'
-import { NextRouter, useRouter } from 'next/router'
-import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import { useMediaQuery } from 'shared/lib'
 import { Title } from 'shared/ui'
 
 export const Catalog: NextPage = () => {
+  const router = useRouter() as TypeCatalogRouterQuery
   const { price, details, retailer } = useStore($filters)
   const filters = useStore($filters)
   const is768 = useMediaQuery(768)
-  const router: NextRouter = useRouter() as TypeCatalogRouterQuery
+  const updateRouter = useUpdatedQuery(router)
   const [offset, setOffset] = useState<number>(0)
+  const applyFilters = () => {
+    // updatedQueryParams(router, filtersToQuery(filters))
+    updateRouter(filtersToQuery(filters))
+  }
   const catalogProps = {
     details,
     toggleCheckboxes,
     retailer,
     disabledReset: false,
     disabledSubmit: false,
-    resetFilters: () => {},
-    applyFilters: () => {
-      const query = updatedQueryParams(router.query as any, filters)
-
-      router.push({ query })
-    },
     isMobile: is768,
+    resetFilters: () => {},
+    applyFilters,
   }
+
+  const startFilters = (query: TypeCatalogQueryParams) => {
+    toggleCheckboxes({
+      section: 'details',
+      checkboxes: (query.parts ?? '').split(','),
+      isState: true,
+    })
+    toggleCheckboxes({
+      section: 'retailer',
+      checkboxes: (query.boiler ?? '').split(','),
+      isState: true,
+    })
+    setCatalogPrice({
+      newMax: Number(query.priceTo) || undefined,
+      newMin: Number(query.priceFrom) || undefined,
+    })
+    setOffset((prev) => Number(query.offset) || prev)
+  }
+  useEffect(() => {
+    if (!router.isReady) return
+    if (!router.query.first || !router.query.first) {
+      updateRouter({})
+      return
+    }
+    startFilters(router.query)
+  }, [router.query, router.isReady])
+
   return (
     <div className={style.catalog}>
       <Title size="xl">Catalog</Title>
@@ -50,8 +80,8 @@ export const Catalog: NextPage = () => {
           <Pagination
             totalCount={70}
             limit={10}
-            offset={offset}
-            setOffset={(e) => setOffset(+e)}
+            offset={offset + 1}
+            setOffset={(e) => updateRouter({ offset: (+e - 1).toString() })}
           />
         </div>
       </div>

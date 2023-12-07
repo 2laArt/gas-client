@@ -16,7 +16,7 @@ export const paths = {
   wholesaleBuyers: '/wholesale-buyers',
   catalog: (
     params: ICatalogQueryParams = {
-      offset: '1',
+      offset: '0',
       first: 'popular',
     }
   ): string => {

@@ -1,4 +1,10 @@
 export { formationPriceRange } from './formation-price-range'
-export { getCheckedCheckboxes } from './get-checked-checkboxes'
+export { filtersToQuery, getCheckedCheckboxes } from './query-and-filters'
 export { setAllCheckboxes } from './set-all-checkboxes'
 export { filterDefault } from './set-default-filters'
+export {
+  useUpdatedQuery,
+  type TypeCatalogQueryParams,
+  type TypeCatalogRouterQuery,
+  type TypeNewQueryParams,
+} from './use-update-query'

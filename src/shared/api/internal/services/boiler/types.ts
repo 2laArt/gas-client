@@ -19,8 +19,8 @@ export interface IBoilerParts {
 }
 
 export interface IFiltersParams {
-  boiler?: string[]
-  parts?: string[]
+  boiler?: string
+  parts?: string
   priceFrom?: string
   priceTo?: string
   offset: string
