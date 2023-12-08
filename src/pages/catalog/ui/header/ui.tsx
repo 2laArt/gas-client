@@ -5,11 +5,16 @@ import { SelectedCategories } from './selected-categories'
 import style from './style.module.scss'
 import clsx from 'clsx'
 import { getCheckedCheckboxes } from 'pages/catalog/lib'
-import { type TypeCheckboxState } from 'pages/catalog/model'
+import { TypeCatalogSorting, type TypeCheckboxState } from 'pages/catalog/model'
 import { type FC } from 'react'
 import { Dropdown } from 'shared/ui'
 
-export const CatalogHeader: FC<ICatalogProps> = ({
+export interface ISortingProps {
+  sort: string
+  setCatalogSort: (sortOption: TypeCatalogSorting) => void
+}
+type ICatalogHeader = ICatalogProps & ISortingProps
+export const CatalogHeader: FC<ICatalogHeader> = ({
   resetFilters,
   details,
   retailer,
@@ -18,6 +23,8 @@ export const CatalogHeader: FC<ICatalogProps> = ({
   applyFilters,
   isMobile,
   toggleCheckboxes,
+  setCatalogSort,
+  sort,
 }) => {
   const checkedBrands = (boxes: TypeCheckboxState) =>
     !!getCheckedCheckboxes(boxes).length
@@ -67,7 +74,7 @@ export const CatalogHeader: FC<ICatalogProps> = ({
               <span>Δ</span> Filters
             </button>
           )}
-          <SelectSort />
+          <SelectSort setCatalogSort={setCatalogSort} sort={sort} />
         </div>
       </div>
     </div>

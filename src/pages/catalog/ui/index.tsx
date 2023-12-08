@@ -4,7 +4,13 @@ import {
   type TypeCatalogQueryParams,
   type TypeCatalogRouterQuery,
 } from '../lib'
-import { $filters, setCatalogPrice, toggleCheckboxes } from '../model'
+import {
+  $filters,
+  TypeCatalogSorting,
+  setCatalogPrice,
+  setCatalogSorting,
+  toggleCheckboxes,
+} from '../model'
 import { CatalogHeader } from './header/ui'
 import { CatalogProducts } from './products'
 import { CatalogSidebar } from './sidebar'
@@ -13,7 +19,7 @@ import { useStore } from 'effector-react'
 import { Pagination } from 'features/pagination'
 import { type NextPage } from 'next'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useMediaQuery } from 'shared/lib'
 import { Title } from 'shared/ui'
 
@@ -23,10 +29,14 @@ export const Catalog: NextPage = () => {
   const filters = useStore($filters)
   const is768 = useMediaQuery(768)
   const updateRouter = useUpdatedQuery(router)
-  const [offset, setOffset] = useState<number>(0)
   const applyFilters = () => {
-    // updatedQueryParams(router, filtersToQuery(filters))
     updateRouter(filtersToQuery(filters))
+  }
+  const selectSort = (first: TypeCatalogSorting) => updateRouter({ first })
+  const offsetProps = {
+    offset: Number(router.query.offset) + 1,
+    setOffset: (page: string) =>
+      updateRouter({ offset: (Number(page) - 1).toString() }),
   }
   const catalogProps = {
     details,
@@ -54,7 +64,7 @@ export const Catalog: NextPage = () => {
       newMax: Number(query.priceTo) || undefined,
       newMin: Number(query.priceFrom) || undefined,
     })
-    setOffset((prev) => Number(query.offset) || prev)
+    setCatalogSorting(router.query.first)
   }
   useEffect(() => {
     if (!router.isReady) return
@@ -68,7 +78,11 @@ export const Catalog: NextPage = () => {
   return (
     <div className={style.catalog}>
       <Title size="xl">Catalog</Title>
-      <CatalogHeader {...catalogProps} />
+      <CatalogHeader
+        {...catalogProps}
+        setCatalogSort={selectSort}
+        sort={router.query.first}
+      />
       <div className={style.main}>
         <CatalogSidebar
           {...catalogProps}
@@ -77,12 +91,7 @@ export const Catalog: NextPage = () => {
         />
         <div className={style.middle}>
           <CatalogProducts isSpinner={false} products={[]} />
-          <Pagination
-            totalCount={70}
-            limit={10}
-            offset={offset + 1}
-            setOffset={(e) => updateRouter({ offset: (+e - 1).toString() })}
-          />
+          <Pagination totalCount={70} limit={10} {...offsetProps} />
         </div>
       </div>
     </div>

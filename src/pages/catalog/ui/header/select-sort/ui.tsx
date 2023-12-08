@@ -1,29 +1,13 @@
+import { type ISortingProps } from '../ui'
+import { sortOptions } from './data'
 import style from './style.module.scss'
-import { useRouter } from 'next/router'
-import { useState, type ChangeEvent, type FC } from 'react'
+import { TypeCatalogSorting } from 'pages/catalog/model'
+import { type ChangeEvent, type FC } from 'react'
 
-const options: { value: any; text: string }[] = [
-  {
-    value: 'cheap',
-    text: 'First Cheap',
-  },
-  {
-    value: 'expensive',
-    text: 'First Expensive',
-  },
-  {
-    value: 'popular',
-    text: 'By Popularity',
-  },
-]
-
-export const SelectSort: FC = () => {
-  const [sort, setSort] = useState<any>()
-  const router = useRouter()
-
+export const SelectSort: FC<ISortingProps> = ({ setCatalogSort, sort }) => {
   const handlerSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const { value } = e.currentTarget
-    setSort(value)
+    const value = e.currentTarget.value as TypeCatalogSorting
+    setCatalogSort(value)
   }
 
   return (
@@ -32,7 +16,7 @@ export const SelectSort: FC = () => {
       className={style.select}
       onChange={handlerSelectChange}
     >
-      {options.map((item) => (
+      {sortOptions.map((item) => (
         <option value={item.value} key={item.value}>
           {item.text}
         </option>

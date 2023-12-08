@@ -1,8 +1,9 @@
 import { type NextRouter } from 'next/router'
+import { TypeCatalogSorting } from 'pages/catalog/model'
 import { type IFiltersParams } from 'shared/api'
 
 export type TypeCatalogQueryParams = Omit<IFiltersParams, 'limit'> & {
-  first: string
+  first: TypeCatalogSorting
 }
 export type TypeNewQueryParams = Partial<TypeCatalogQueryParams>
 export type TypeCatalogRouterQuery = NextRouter & {
