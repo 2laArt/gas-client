@@ -1,18 +1,14 @@
 import { ChangeButtons } from '../change-buttons'
-import { ICatalogProps } from '../type'
+import type { ICatalogProps, ISortingProps } from '../type'
 import { SelectSort } from './select-sort'
 import { SelectedCategories } from './selected-categories'
 import style from './style.module.scss'
 import clsx from 'clsx'
 import { getCheckedCheckboxes } from 'pages/catalog/lib'
-import { TypeCatalogSorting, type TypeCheckboxState } from 'pages/catalog/model'
+import { type TypeCheckboxState } from 'pages/catalog/model'
 import { type FC } from 'react'
 import { Dropdown } from 'shared/ui'
 
-export interface ISortingProps {
-  sort: string
-  setCatalogSort: (sortOption: TypeCatalogSorting) => void
-}
 type ICatalogHeader = ICatalogProps & ISortingProps
 export const CatalogHeader: FC<ICatalogHeader> = ({
   resetFilters,

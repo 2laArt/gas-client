@@ -28,7 +28,6 @@ export const filtersToQuery = (
     priceTo: priceToQuery(max),
     parts: brandsToQuery(details),
     boiler: brandsToQuery(retailer),
-    offset: '0',
   }
 }
 export const getCheckedCheckboxes = (checkboxes: TypeCheckboxState): string[] =>

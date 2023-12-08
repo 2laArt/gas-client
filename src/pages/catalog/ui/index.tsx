@@ -1,70 +1,65 @@
 import {
   filtersToQuery,
+  switchFilterByParams,
+  useIsChangedFilters,
   useUpdatedQuery,
-  type TypeCatalogQueryParams,
   type TypeCatalogRouterQuery,
 } from '../lib'
 import {
   $filters,
-  TypeCatalogSorting,
   setCatalogPrice,
-  setCatalogSorting,
   toggleCheckboxes,
+  type TypeCatalogSorting,
 } from '../model'
 import { CatalogHeader } from './header/ui'
 import { CatalogProducts } from './products'
 import { CatalogSidebar } from './sidebar'
 import style from './style.module.scss'
+import { type ICatalogProps } from './type'
 import { useStore } from 'effector-react'
 import { Pagination } from 'features/pagination'
 import { type NextPage } from 'next'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useMediaQuery } from 'shared/lib'
 import { Title } from 'shared/ui'
 
 export const Catalog: NextPage = () => {
   const router = useRouter() as TypeCatalogRouterQuery
-  const { price, details, retailer } = useStore($filters)
   const filters = useStore($filters)
   const is768 = useMediaQuery(768)
+  const isChanged = useIsChangedFilters(router.query, filtersToQuery(filters))
   const updateRouter = useUpdatedQuery(router)
   const applyFilters = () => {
-    updateRouter(filtersToQuery(filters))
+    updateRouter({ ...filtersToQuery(filters), ...{ offset: '0' } })
   }
+  const resetFilters = () => {
+    updateRouter({
+      boiler: undefined,
+      parts: undefined,
+      priceFrom: undefined,
+      priceTo: undefined,
+    })
+  }
+  const disabledReset = useMemo(
+    () => !Object.values(filtersToQuery(filters)).filter((item) => item).length,
+    [filters, filtersToQuery]
+  )
   const selectSort = (first: TypeCatalogSorting) => updateRouter({ first })
   const offsetProps = {
     offset: Number(router.query.offset) + 1,
     setOffset: (page: string) =>
       updateRouter({ offset: (Number(page) - 1).toString() }),
   }
-  const catalogProps = {
-    details,
+  const catalogProps: ICatalogProps = {
+    details: filters.details,
     toggleCheckboxes,
-    retailer,
-    disabledReset: false,
-    disabledSubmit: false,
+    retailer: filters.retailer,
+    disabledReset,
+    disabledSubmit: isChanged,
     isMobile: is768,
-    resetFilters: () => {},
+    resetFilters,
     applyFilters,
-  }
-
-  const startFilters = (query: TypeCatalogQueryParams) => {
-    toggleCheckboxes({
-      section: 'details',
-      checkboxes: (query.parts ?? '').split(','),
-      isState: true,
-    })
-    toggleCheckboxes({
-      section: 'retailer',
-      checkboxes: (query.boiler ?? '').split(','),
-      isState: true,
-    })
-    setCatalogPrice({
-      newMax: Number(query.priceTo) || undefined,
-      newMin: Number(query.priceFrom) || undefined,
-    })
-    setCatalogSorting(router.query.first)
   }
   useEffect(() => {
     if (!router.isReady) return
@@ -72,7 +67,7 @@ export const Catalog: NextPage = () => {
       updateRouter({})
       return
     }
-    startFilters(router.query)
+    switchFilterByParams(router.query)
   }, [router.query, router.isReady])
 
   return (
@@ -86,7 +81,7 @@ export const Catalog: NextPage = () => {
       <div className={style.main}>
         <CatalogSidebar
           {...catalogProps}
-          price={price}
+          price={filters.price}
           setPrice={setCatalogPrice}
         />
         <div className={style.middle}>
