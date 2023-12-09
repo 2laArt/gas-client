@@ -9,12 +9,10 @@ export const switchFilterByParams = (query: TypeCatalogQueryParams) => {
   toggleCheckboxes({
     section: 'details',
     checkboxes: (query.parts ?? '').split(','),
-    isState: true,
   })
   toggleCheckboxes({
     section: 'retailer',
     checkboxes: (query.boiler ?? '').split(','),
-    isState: true,
   })
   setCatalogPrice({
     newMax: Number(query.priceTo) || undefined,

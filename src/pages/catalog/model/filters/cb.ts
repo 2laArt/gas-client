@@ -1,10 +1,8 @@
 import type {
   IFiltersStore,
   TypeCatalogStorePrices,
-  TypeToggleCheckbox,
+  TypeToggleCheckboxes,
 } from './type'
-import { setAllCheckboxes } from 'pages/catalog/lib'
-import { brands } from 'shared/config'
 
 export const setCatalogPriceCb = (
   state: IFiltersStore,
@@ -37,28 +35,28 @@ export const setCatalogPriceCb = (
     changed: true,
   }
 }
+
 export const toggleCheckboxesCb = (
   state: IFiltersStore,
-  { section, checkboxes, isState = false }: TypeToggleCheckbox
+  { section, checkboxes }: TypeToggleCheckboxes
 ) => {
-  let changedBoxes: { [k: string]: boolean }
-  if (checkboxes.length < 1) {
-    changedBoxes = setAllCheckboxes({
-      brands: brands[section],
-      initState: false,
-    })
+  const isSingle = checkboxes.length === 1
+  const newState = { ...state[section].checkboxes }
+
+  if (isSingle && checkboxes[0] in newState) {
+    newState[checkboxes[0]] = !newState[checkboxes[0]]
   } else {
-    changedBoxes = Object.fromEntries(
-      Object.entries(state[section].checkboxes).map((item) =>
-        checkboxes.includes(item[0]) ? [item[0], isState] : item
-      )
-    )
+    for (let key in newState) {
+      if (checkboxes.includes(key)) newState[key] = true
+      else newState[key] = false
+    }
   }
+
   return {
     ...state,
     [section]: {
       ...state[section],
-      checkboxes: changedBoxes,
+      checkboxes: newState,
     },
     changed: true,
   }

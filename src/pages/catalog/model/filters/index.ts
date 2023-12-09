@@ -1,9 +1,7 @@
 export {
   $filters,
   resetCheckboxes,
-  selectAllSectionFilters,
   setCatalogPrice,
-  setDefaultFilters,
   toggleCheckboxes,
 } from './store'
 export type {
@@ -11,11 +9,10 @@ export type {
   ICatalogPrice,
   IFilterChecklist,
   IFiltersStore,
-  TypeCatalogHeaderFilters,
   TypeCatalogStorePrices,
   TypeCheckboxState,
   TypeFiltersFields,
   TypeFiltersFieldsCheckbox,
   TypeResetCheckbox,
-  TypeToggleCheckbox,
+  TypeToggleCheckboxes,
 } from './type'

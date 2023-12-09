@@ -1,38 +1,43 @@
 import style from './style.module.scss'
 import clsx from 'clsx'
+import { Event } from 'effector'
 import {
-  selectAllSectionFilters,
+  TypeToggleCheckboxes,
   type TypeCheckboxState,
   type TypeFiltersFieldsCheckbox,
-  type TypeToggleCheckbox,
 } from 'pages/catalog/model'
 import { type FC } from 'react'
+import { brands } from 'shared/config'
 
 interface ICheckboxList {
   section: TypeFiltersFieldsCheckbox
-  selectedCheckbox: TypeCheckboxState
-  setSelectedCheckboxes: (
-    checkboxes: string[],
-    isState: boolean
-  ) => TypeToggleCheckbox
+  checkboxes: TypeCheckboxState
+  toggleCheckboxes: Event<TypeToggleCheckboxes>
   className?: string
 }
 export const CheckboxList: FC<ICheckboxList> = ({
   section,
-  selectedCheckbox,
-  setSelectedCheckboxes,
+  checkboxes,
+  toggleCheckboxes,
   className,
 }) => {
+  const toggle = (checkbox: string) => {
+    toggleCheckboxes({ section: section, checkboxes: [checkbox] })
+  }
+  const resetAll = () => {
+    toggleCheckboxes({ section: section, checkboxes: [] })
+  }
+  const selectAll = () => {
+    toggleCheckboxes({ section: section, checkboxes: brands[section] })
+  }
   return (
     <div>
-      <button
-        className={style.select_all}
-        onClick={() => selectAllSectionFilters({ section })}
-      >
-        select all
-      </button>
+      <div className={style.btns}>
+        <button onClick={selectAll}>select all</button>
+        <button onClick={resetAll}>reset all</button>
+      </div>
       <ul className={clsx('small_scroll', style.ul, className)}>
-        {Object.keys(selectedCheckbox).map((checkbox) => (
+        {Object.keys(checkboxes).map((checkbox) => (
           <li className={style.li} key={checkbox}>
             {/* 
 						TODO: CREATE CUSTOM CHECKBOX
@@ -40,10 +45,8 @@ export const CheckboxList: FC<ICheckboxList> = ({
             <label>
               <input
                 type="checkbox"
-                onChange={() =>
-                  setSelectedCheckboxes([checkbox], !selectedCheckbox[checkbox])
-                }
-                checked={selectedCheckbox[checkbox]}
+                onChange={() => toggle(checkbox)}
+                checked={checkboxes[checkbox]}
               />
               {checkbox}
             </label>

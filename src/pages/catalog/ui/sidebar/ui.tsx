@@ -50,10 +50,8 @@ export const CatalogSidebar: FC<ICatalogSidebar> = ({
         <Accordion title={titles.boiler}>
           <CheckboxList
             section={retailer.title}
-            selectedCheckbox={retailer.checkboxes}
-            setSelectedCheckboxes={(checkboxes, isState) =>
-              toggleCheckboxes({ section: retailer.title, checkboxes, isState })
-            }
+            checkboxes={retailer.checkboxes}
+            toggleCheckboxes={toggleCheckboxes}
           />
         </Accordion>
         <Accordion title={titles.price}>
@@ -84,10 +82,8 @@ export const CatalogSidebar: FC<ICatalogSidebar> = ({
         <Accordion title={titles.parts}>
           <CheckboxList
             section={details.title}
-            selectedCheckbox={details.checkboxes}
-            setSelectedCheckboxes={(checkboxes, isState) =>
-              toggleCheckboxes({ section: details.title, checkboxes, isState })
-            }
+            checkboxes={details.checkboxes}
+            toggleCheckboxes={toggleCheckboxes}
           />
         </Accordion>
         <div className={style.footer}>

@@ -33,6 +33,7 @@ export const Catalog: NextPage = () => {
   const applyFilters = () => {
     updateRouter({ ...filtersToQuery(filters), ...{ offset: '0' } })
   }
+
   const resetFilters = () => {
     updateRouter({
       boiler: undefined,
