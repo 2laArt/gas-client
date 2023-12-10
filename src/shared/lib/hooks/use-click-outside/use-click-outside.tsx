@@ -19,13 +19,14 @@ export const useClickOutside = (initialState: boolean): IUseOutSide => {
   const handlerClick = (event: AnyEvent) => {
     if (
       ref.current &&
-      !ref.current.contains(event.target as Node) &&
+      !ref.current.contains(event?.target as Node) &&
       !(
         (event.target as HTMLElement).getAttribute('data-include') ===
         'included'
       )
     ) {
       setIsOpen(false)
+      return
     }
   }
   const keyHandler = (event: KeyboardEvent) => {

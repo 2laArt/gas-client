@@ -1,0 +1,1 @@
+export { CatalogSidebarMobile } from './ui'

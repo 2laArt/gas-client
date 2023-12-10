@@ -1,46 +1,31 @@
 import { Accordion } from '../accordion'
 import { ChangeButtons } from '../change-buttons'
-import { ICatalogProps } from '../type'
+import type { ICatalogSidebarProps } from '../type'
 import { CheckboxList } from './checkbox-list'
 import { DoubleRange } from './double-range'
 import { InputPrice } from './input-price'
 import style from './style.module.scss'
 import clsx from 'clsx'
-import { type Event } from 'effector'
-import {
-  type ICatalogFilterPrice,
-  type TypeCatalogStorePrices,
-} from 'pages/catalog/model'
 import { type FC } from 'react'
 import { Title } from 'shared/ui'
 
-export interface ICatalogSidebar extends ICatalogProps {
-  price: ICatalogFilterPrice
-  setPrice: Event<TypeCatalogStorePrices>
-}
-export const titles = {
+const titles = {
   boiler: 'Boiler Manufacturer',
   price: 'Price',
   parts: 'Manufacturer of Spare Parts',
 }
-
-export const CatalogSidebar: FC<ICatalogSidebar> = ({
+export const CatalogSidebar: FC<ICatalogSidebarProps> = ({
   applyFilters,
-  resetFilters,
+  details,
   disabledReset,
   disabledSubmit,
-  toggleCheckboxes,
-  setPrice,
-  details,
-  retailer,
   price: { max, min },
+  resetFilters,
+  retailer,
+  toggleCheckboxes,
+  setMaxPrice,
+  setMinPrice,
 }) => {
-  const setMinPrice = (price: number) => {
-    setPrice({ newMin: price, newMax: max.value })
-  }
-  const setMaxPrice = (price: number) => {
-    setPrice({ newMax: price, newMin: min.value })
-  }
   return (
     <div className={clsx('card', style.sidebar)}>
       <Title as="h4" size="small">

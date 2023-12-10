@@ -10,10 +10,10 @@ export const setCatalogPriceCb = (
 ) => {
   let {
     max: { value: max, limit },
-    min: { value: min },
+    min: { value: min, limit: minLimit },
   } = state.price
   if (newMin) min = Number(newMin) < max ? Number(newMin) : max - 1
-  else min = 0
+  else min = minLimit
   if (newMax)
     max =
       Number(newMax) > Number(min) && Number(newMax) <= limit

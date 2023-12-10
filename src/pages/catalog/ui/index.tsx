@@ -12,22 +12,24 @@ import {
   type TypeCatalogSorting,
 } from '../model'
 import { CatalogHeader } from './header/ui'
+import { CatalogSidebarMobile } from './mobile-sidebar'
 import { CatalogProducts } from './products'
 import { CatalogSidebar } from './sidebar'
 import style from './style.module.scss'
-import { type ICatalogProps } from './type'
+import type { ICatalogProps, ICatalogSidebarProps } from './type'
 import { useStore } from 'effector-react'
 import { Pagination } from 'features/pagination'
 import { type NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo } from 'react'
-import { useMediaQuery } from 'shared/lib'
+import { useClickOutside, useMediaQuery } from 'shared/lib'
 import { Title } from 'shared/ui'
 
 export const Catalog: NextPage = () => {
   const router = useRouter() as TypeCatalogRouterQuery
   const filters = useStore($filters)
   const is768 = useMediaQuery(768)
+  const { isOpen, ref: sidebarRef, setIsOpen } = useClickOutside(false)
   const isChanged = useIsChangedFilters(router.query, filtersToQuery(filters))
   const updateRouter = useUpdatedQuery(router)
   const applyFilters = () => {
@@ -42,9 +44,15 @@ export const Catalog: NextPage = () => {
       priceTo: undefined,
     })
   }
+  const setMinPrice = (price: number) => {
+    setCatalogPrice({ newMin: price, newMax: filters.price.max.value })
+  }
+  const setMaxPrice = (price: number) => {
+    setCatalogPrice({ newMax: price, newMin: filters.price.min.value })
+  }
   const disabledReset = useMemo(
     () => !Object.values(filtersToQuery(filters)).filter((item) => item).length,
-    [filters, filtersToQuery]
+    [filters]
   )
   const selectSort = (first: TypeCatalogSorting) => updateRouter({ first })
   const offsetProps = {
@@ -58,10 +66,18 @@ export const Catalog: NextPage = () => {
     retailer: filters.retailer,
     disabledReset,
     disabledSubmit: isChanged,
-    isMobile: is768,
     resetFilters,
     applyFilters,
   }
+  const sidebarProps: ICatalogSidebarProps = {
+    ...catalogProps,
+    price: filters.price,
+    setMaxPrice,
+    setMinPrice,
+  }
+  useEffect(() => {
+    console.log(isOpen)
+  }, [isOpen])
   useEffect(() => {
     if (!router.isReady) return
     if (!router.query.first || !router.query.first) {
@@ -78,13 +94,22 @@ export const Catalog: NextPage = () => {
         {...catalogProps}
         setCatalogSort={selectSort}
         sort={router.query.first}
+        isMobile={is768}
+        setOpen={() => setIsOpen(true)}
       />
+
       <div className={style.main}>
-        <CatalogSidebar
-          {...catalogProps}
-          price={filters.price}
-          setPrice={setCatalogPrice}
-        />
+        {is768 ? (
+          <CatalogSidebarMobile
+            {...sidebarProps}
+            isOpen={isOpen}
+            setClose={() => setIsOpen(false)}
+            ref={sidebarRef}
+          />
+        ) : (
+          <CatalogSidebar {...sidebarProps} />
+        )}
+
         <div className={style.middle}>
           <CatalogProducts isSpinner={false} products={[]} />
           <Pagination totalCount={70} limit={10} {...offsetProps} />

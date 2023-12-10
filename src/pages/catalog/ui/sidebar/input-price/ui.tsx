@@ -49,6 +49,7 @@ export const InputPrice: FC<IInputPrice> = ({
     setValue(formationPriceRange(e.currentTarget.value))
   }
   const setPriceStore = () => {
+    setValue(formationPriceRange(price.toString()))
     if (Number(value) !== price) setPrice(formatStrToNumber(value))
   }
   const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {

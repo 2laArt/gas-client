@@ -9,7 +9,11 @@ import { type TypeCheckboxState } from 'pages/catalog/model'
 import { type FC } from 'react'
 import { Dropdown } from 'shared/ui'
 
-type ICatalogHeader = ICatalogProps & ISortingProps
+interface ICatalogHeader extends ICatalogProps, ISortingProps {
+  setOpen: VoidFunction
+  isMobile: boolean
+}
+
 export const CatalogHeader: FC<ICatalogHeader> = ({
   resetFilters,
   details,
@@ -21,6 +25,7 @@ export const CatalogHeader: FC<ICatalogHeader> = ({
   toggleCheckboxes,
   setCatalogSort,
   sort,
+  setOpen,
 }) => {
   const checkedBrands = (boxes: TypeCheckboxState) =>
     !!getCheckedCheckboxes(boxes).length
@@ -66,7 +71,11 @@ export const CatalogHeader: FC<ICatalogHeader> = ({
         {/*  */}
         <div className={style.footer}>
           {isMobile && (
-            <button className={style.filter} onClick={() => {}}>
+            <button
+              data-include="included"
+              className={style.filter}
+              onClick={setOpen}
+            >
               <span>Δ</span> Filters
             </button>
           )}
