@@ -9,11 +9,6 @@ import clsx from 'clsx'
 import { type FC } from 'react'
 import { Title } from 'shared/ui'
 
-const titles = {
-  boiler: 'Boiler Manufacturer',
-  price: 'Price',
-  parts: 'Manufacturer of Spare Parts',
-}
 export const CatalogSidebar: FC<ICatalogSidebarProps> = ({
   applyFilters,
   details,
@@ -25,6 +20,7 @@ export const CatalogSidebar: FC<ICatalogSidebarProps> = ({
   toggleCheckboxes,
   setMaxPrice,
   setMinPrice,
+  sidebarTitles,
 }) => {
   return (
     <div className={clsx('card', style.sidebar)}>
@@ -32,14 +28,14 @@ export const CatalogSidebar: FC<ICatalogSidebarProps> = ({
         Filters
       </Title>
       <div className="boilers">
-        <Accordion title={titles.boiler}>
+        <Accordion title={sidebarTitles.retailer}>
           <CheckboxList
             section={retailer.title}
             checkboxes={retailer.checkboxes}
             toggleCheckboxes={toggleCheckboxes}
           />
         </Accordion>
-        <Accordion title={titles.price}>
+        <Accordion title={sidebarTitles.price}>
           <div className={style.range}>
             <div className={style.inputs_number}>
               <InputPrice
@@ -48,7 +44,7 @@ export const CatalogSidebar: FC<ICatalogSidebarProps> = ({
                 limit={{ max: max.limit, min: min.limit }}
                 setPrice={setMinPrice}
               />
-
+              &#8212;
               <InputPrice
                 placeholder={`to ${max.limit}`}
                 price={max.value}
@@ -64,7 +60,7 @@ export const CatalogSidebar: FC<ICatalogSidebarProps> = ({
             />
           </div>
         </Accordion>
-        <Accordion title={titles.parts}>
+        <Accordion title={sidebarTitles.details}>
           <CheckboxList
             section={details.title}
             checkboxes={details.checkboxes}

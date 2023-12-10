@@ -1,4 +1,5 @@
 import style from './style.module.scss'
+import clsx from 'clsx'
 import { formationPriceRange } from 'pages/catalog/lib'
 import {
   KeyboardEvent,
@@ -16,6 +17,7 @@ interface IInputPrice {
   setPrice: (price: number) => void
   placeholder: string
   icon?: ReactNode
+  className?: string
 }
 
 interface IIconCurrency {
@@ -40,6 +42,7 @@ export const InputPrice: FC<IInputPrice> = ({
   limit,
   placeholder,
   icon,
+  className,
 }) => {
   const [value, setValue] = useState<string>(formationPriceRange(price))
   useEffect(() => {
@@ -59,7 +62,7 @@ export const InputPrice: FC<IInputPrice> = ({
   }
 
   return (
-    <label className={style.label}>
+    <label className={clsx(style.label, className)}>
       <IconCurrency value={value} icon={icon} />
       <input
         type="text"

@@ -11,6 +11,7 @@ import {
   toggleCheckboxes,
   type TypeCatalogSorting,
 } from '../model'
+import { sidebarTitles } from './data'
 import { CatalogHeader } from './header/ui'
 import { CatalogSidebarMobile } from './mobile-sidebar'
 import { CatalogProducts } from './products'
@@ -74,6 +75,7 @@ export const Catalog: NextPage = () => {
     price: filters.price,
     setMaxPrice,
     setMinPrice,
+    sidebarTitles,
   }
   useEffect(() => {
     console.log(isOpen)

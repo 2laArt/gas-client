@@ -29,20 +29,19 @@ export const CatalogSidebarMobile = forwardRef<HTMLElement, IMobileSidebar>(
       setMinPrice,
       toggleCheckboxes,
       isOpen,
+      sidebarTitles,
     },
     ref
   ) => {
-    const titles = {
-      retailer: 'Boiler Manufacturer',
-      price: 'Price',
-      details: 'Manufacturer of Spare Parts',
-    }
-    const [section, setSection] = useState<keyof typeof sections>('filters')
+    type sectionsKeys = keyof typeof sections
+    const defaultSection = 'filters'
+
+    const [section, setSection] = useState<sectionsKeys>(defaultSection)
     const Overlay = useLockedBody({ isOpen, bpHidden: 'md' })
-    const isHome = section === 'filters'
+    const isHome = section === defaultSection
     const comeback = () => {
       if (isHome) setClose()
-      setSection('filters')
+      setSection(defaultSection)
     }
     const apply = () => {
       setClose()
@@ -74,7 +73,7 @@ export const CatalogSidebarMobile = forwardRef<HTMLElement, IMobileSidebar>(
               limit={{ max: max.limit, min: min.limit }}
               setPrice={setMinPrice}
             />
-
+            &#8212;
             <InputPrice
               placeholder={`to ${max.limit}`}
               price={max.value}
@@ -92,16 +91,16 @@ export const CatalogSidebarMobile = forwardRef<HTMLElement, IMobileSidebar>(
       ),
       filters: (
         <div>
-          {Object.keys(titles).map(
+          {Object.keys(sidebarTitles).map(
             (item) =>
               !!isHome && (
                 <button
                   key={item}
-                  className={style.content_h}
-                  onClick={() => setSection(item as keyof typeof sections)}
+                  className={style.btns}
+                  onClick={() => setSection(item as sectionsKeys)}
                   data-include="included"
                 >
-                  {titles[item as keyof typeof titles]}
+                  {sidebarTitles[item as keyof typeof sidebarTitles]}
                 </button>
               )
           )}
@@ -142,9 +141,9 @@ export const CatalogSidebarMobile = forwardRef<HTMLElement, IMobileSidebar>(
               onClick: apply,
             }}
             btnBottom={{
-              disabled: disabledReset,
-              title: isHome ? 'Reset' : 'Leave',
-              onClick: isHome ? resetFilters : () => setSection('filters'),
+              disabled: false,
+              title: 'Leave',
+              onClick: comeback,
             }}
           />
         </div>

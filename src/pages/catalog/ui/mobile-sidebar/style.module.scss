@@ -1,5 +1,5 @@
 .sidebar {
-  @apply z-40 flex h-screen w-60 flex-col justify-between border-r border-dark-gray bg-white px-3 py-4 text-xs transition-[width0.5slinear] dark:bg-dark max-md:fixed max-md:left-0 max-md:top-0;
+  @apply z-40 flex h-screen w-80 flex-col justify-between border-r border-dark-gray bg-white px-3 py-4 text-xs transition-[width0.5slinear] dark:bg-dark max-md:fixed max-md:left-0 max-md:top-0;
   &.close {
     @apply max-md:-left-full max-md:-z-50;
   }
@@ -15,13 +15,19 @@
 }
 .content {
   @apply h-full overflow-y-auto overflow-x-hidden pr-2;
-  &_h {
-    @apply relative my-2 block w-full border-b border-light-gray py-2 text-left text-base;
+  .btns {
+    @apply relative my-4 block w-full border-b border-light-gray py-2 text-left text-base transition-[transform,padding]  dark:border-dark-gray;
+    &:hover {
+      @apply scale-105 px-2;
+    }
     &::after {
       @apply absolute right-0 top-1/2 block h-2   w-2 -translate-y-1/2 rotate-[45deg] border-r-2 border-t-2 border-blue transition-transform content-[''];
     }
   }
 }
 .inputs_number {
-  @apply flex items-center justify-between;
+  @apply my-8 flex items-center justify-between;
+  > label input[type='text'] {
+    @apply py-2 text-sm;
+  }
 }

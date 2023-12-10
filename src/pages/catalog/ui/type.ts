@@ -4,6 +4,7 @@ import type {
   TypeCatalogSorting,
   TypeToggleCheckboxes,
 } from '../model'
+import type { sidebarTitles } from './data'
 import type { Event } from 'effector'
 
 type TypeSetPrice = (price: number) => void
@@ -19,7 +20,9 @@ export interface ISortingProps {
   setCatalogSort: (sortOption: TypeCatalogSorting) => void
 }
 
-export interface ICatalogSidebarProps extends ICatalogProps, IPricingProps {}
+export interface ICatalogSidebarProps extends ICatalogProps, IPricingProps {
+  sidebarTitles: typeof sidebarTitles
+}
 
 export interface ICatalogProps {
   details: IFilterChecklist
