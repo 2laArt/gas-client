@@ -24,3 +24,5 @@ export const $catalogProducts = createStore<IBoilerParts>({
 } as IBoilerParts)
   .on(fetchCatalogProductsFx.doneData, (_, products) => products)
   .on(setCatalogSorting, sortingProductCatalog)
+
+export const $catalogLimit = createStore<number>(10)

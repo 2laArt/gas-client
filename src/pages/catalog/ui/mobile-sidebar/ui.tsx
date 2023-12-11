@@ -142,7 +142,7 @@ export const CatalogSidebarMobile = forwardRef<HTMLElement, IMobileSidebar>(
             }}
             btnBottom={{
               disabled: false,
-              title: 'Leave',
+              title: isHome ? 'Leave' : 'Back',
               onClick: comeback,
             }}
           />

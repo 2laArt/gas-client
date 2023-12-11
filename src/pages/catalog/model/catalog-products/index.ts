@@ -1,4 +1,5 @@
 export {
+  $catalogLimit,
   $catalogProducts,
   fetchCatalogProductsFx,
   setCatalogSorting,

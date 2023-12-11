@@ -38,12 +38,13 @@ export const setCatalogPriceCb = (
 
 export const toggleCheckboxesCb = (
   state: IFiltersStore,
-  { section, checkboxes }: TypeToggleCheckboxes
+  { section, checkboxes, isMulti }: TypeToggleCheckboxes
 ) => {
+  console.log(checkboxes)
   const isSingle = checkboxes.length === 1
   const newState = { ...state[section].checkboxes }
 
-  if (isSingle && checkboxes[0] in newState) {
+  if (isSingle && checkboxes[0] in newState && !isMulti) {
     newState[checkboxes[0]] = !newState[checkboxes[0]]
   } else {
     for (let key in newState) {

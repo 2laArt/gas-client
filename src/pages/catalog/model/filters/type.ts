@@ -24,6 +24,7 @@ export interface IFiltersStore {
 export type TypeToggleCheckboxes = {
   section: TypeFiltersFieldsCheckbox
   checkboxes: string[]
+  isMulti?: boolean
 }
 
 export type TypeResetCheckbox = Omit<TypeToggleCheckboxes, 'checkboxes'>

@@ -11,7 +11,7 @@ const priceToQuery = (price: ICatalogPrice) =>
 
 const brandsToQuery = (filter: IFilterChecklist) => {
   const brands = getCheckedCheckboxes(filter.checkboxes)
-  return brands.join(',')
+  return !!brands.length ? JSON.stringify(brands) : undefined
 }
 
 export const filtersToQuery = (

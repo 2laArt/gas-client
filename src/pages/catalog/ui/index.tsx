@@ -1,12 +1,5 @@
+import { filtersToQuery, useCatalogLifeCycle } from '../lib'
 import {
-  filtersToQuery,
-  switchFilterByParams,
-  useIsChangedFilters,
-  useUpdatedQuery,
-  type TypeCatalogRouterQuery,
-} from '../lib'
-import {
-  $filters,
   setCatalogPrice,
   toggleCheckboxes,
   type TypeCatalogSorting,
@@ -18,32 +11,22 @@ import { CatalogProducts } from './products'
 import { CatalogSidebar } from './sidebar'
 import style from './style.module.scss'
 import type { ICatalogProps, ICatalogSidebarProps } from './type'
-import { useStore } from 'effector-react'
 import { Pagination } from 'features/pagination'
 import { type NextPage } from 'next'
-import { useRouter } from 'next/router'
-import { useEffect, useMemo } from 'react'
+import { useMemo } from 'react'
 import { useClickOutside, useMediaQuery } from 'shared/lib'
 import { Title } from 'shared/ui'
 
 export const Catalog: NextPage = () => {
-  const router = useRouter() as TypeCatalogRouterQuery
-  const filters = useStore($filters)
+  const { query, updateRouter, limit, filters, products, isLoadProducts } =
+    useCatalogLifeCycle()
+
   const is768 = useMediaQuery(768)
   const { isOpen, ref: sidebarRef, setIsOpen } = useClickOutside(false)
-  const isChanged = useIsChangedFilters(router.query, filtersToQuery(filters))
-  const updateRouter = useUpdatedQuery(router)
+  // const isChanged = useIsChangedFilters(query, filtersToQuery(filters))
+  const isChanged = false
   const applyFilters = () => {
     updateRouter({ ...filtersToQuery(filters), ...{ offset: '0' } })
-  }
-
-  const resetFilters = () => {
-    updateRouter({
-      boiler: undefined,
-      parts: undefined,
-      priceFrom: undefined,
-      priceTo: undefined,
-    })
   }
   const setMinPrice = (price: number) => {
     setCatalogPrice({ newMin: price, newMax: filters.price.max.value })
@@ -57,9 +40,17 @@ export const Catalog: NextPage = () => {
   )
   const selectSort = (first: TypeCatalogSorting) => updateRouter({ first })
   const offsetProps = {
-    offset: Number(router.query.offset) + 1,
+    offset: Number(query.offset) + 1,
     setOffset: (page: string) =>
       updateRouter({ offset: (Number(page) - 1).toString() }),
+  }
+  const resetFilters = () => {
+    updateRouter({
+      boiler: undefined,
+      parts: undefined,
+      priceFrom: undefined,
+      priceTo: undefined,
+    })
   }
   const catalogProps: ICatalogProps = {
     details: filters.details,
@@ -77,17 +68,6 @@ export const Catalog: NextPage = () => {
     setMinPrice,
     sidebarTitles,
   }
-  useEffect(() => {
-    console.log(isOpen)
-  }, [isOpen])
-  useEffect(() => {
-    if (!router.isReady) return
-    if (!router.query.first || !router.query.first) {
-      updateRouter({})
-      return
-    }
-    switchFilterByParams(router.query)
-  }, [router.query, router.isReady])
 
   return (
     <div className={style.catalog}>
@@ -95,7 +75,7 @@ export const Catalog: NextPage = () => {
       <CatalogHeader
         {...catalogProps}
         setCatalogSort={selectSort}
-        sort={router.query.first}
+        sort={query.first}
         isMobile={is768}
         setOpen={() => setIsOpen(true)}
       />
@@ -113,8 +93,8 @@ export const Catalog: NextPage = () => {
         )}
 
         <div className={style.middle}>
-          <CatalogProducts isSpinner={false} products={[]} />
-          <Pagination totalCount={70} limit={10} {...offsetProps} />
+          <CatalogProducts isSpinner={isLoadProducts} products={products} />
+          <Pagination totalCount={70} limit={limit} {...offsetProps} />
         </div>
       </div>
     </div>

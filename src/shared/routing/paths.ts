@@ -17,7 +17,6 @@ export const paths = {
   catalog: (
     params: ICatalogQueryParams = {
       offset: '0',
-      first: 'popular',
     }
   ): string => {
     const searchParams = new URLSearchParams(Object.entries(params)).toString()
