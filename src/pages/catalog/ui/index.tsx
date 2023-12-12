@@ -38,7 +38,6 @@ export const Catalog: NextPage = () => {
     () => useIsChangedFilters(query, filtersToQuery(filters)),
     [query, filters]
   )
-  // const isChanged = false
   const applyFilters = useCallback(() => {
     updateRouter({ ...filtersToQuery(filters), ...{ offset: '0' } })
   }, [filters])
@@ -62,7 +61,10 @@ export const Catalog: NextPage = () => {
     () => totalCount / limit > 1,
     [totalCount, limit]
   )
-  const selectSort = (first: TypeCatalogSorting) => updateRouter({ first })
+  const selectSort = useCallback(
+    (first: TypeCatalogSorting) => updateRouter({ first }),
+    []
+  )
   const offsetProps = useMemo(
     () => ({
       offset: Number(query.offset) + 1,
@@ -71,14 +73,14 @@ export const Catalog: NextPage = () => {
     }),
     [query.offset]
   )
-  const resetFilters = () => {
+  const resetFilters = useCallback(() => {
     updateRouter({
       boiler: undefined,
       parts: undefined,
       priceFrom: undefined,
       priceTo: undefined,
     })
-  }
+  }, [])
   const catalogProps: ICatalogProps = {
     details: filters.details,
     toggleCheckboxes,
