@@ -7,6 +7,6 @@
 .product {
   @apply scale-100 transition-transform hover:scale-105;
   &_w {
-    @apply w-full max-w-[13rem] max-lg:max-w-[44%] max-md:max-w-[256px] max-[450px]:max-w-[256px];
+    @apply max-w-[13rem] max-lg:max-w-[44%] max-md:max-w-[256px] max-[450px]:max-w-[256px];
   }
 }

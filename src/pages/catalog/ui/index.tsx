@@ -1,4 +1,8 @@
-import { filtersToQuery, useCatalogLifeCycle } from '../lib'
+import {
+  filtersToQuery,
+  useCatalogLifeCycle,
+  useIsChangedFilters,
+} from '../lib'
 import {
   setCatalogPrice,
   toggleCheckboxes,
@@ -13,37 +17,60 @@ import style from './style.module.scss'
 import type { ICatalogProps, ICatalogSidebarProps } from './type'
 import { Pagination } from 'features/pagination'
 import { type NextPage } from 'next'
-import { useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 import { useClickOutside, useMediaQuery } from 'shared/lib'
 import { Title } from 'shared/ui'
 
 export const Catalog: NextPage = () => {
-  const { query, updateRouter, limit, filters, products, isLoadProducts } =
-    useCatalogLifeCycle()
+  const {
+    query,
+    updateRouter,
+    limit,
+    filters,
+    products,
+    isLoadProducts,
+    totalCount,
+  } = useCatalogLifeCycle()
 
   const is768 = useMediaQuery(768)
   const { isOpen, ref: sidebarRef, setIsOpen } = useClickOutside(false)
-  // const isChanged = useIsChangedFilters(query, filtersToQuery(filters))
-  const isChanged = false
-  const applyFilters = () => {
+  const isChanged = useMemo(
+    () => useIsChangedFilters(query, filtersToQuery(filters)),
+    [query, filters]
+  )
+  // const isChanged = false
+  const applyFilters = useCallback(() => {
     updateRouter({ ...filtersToQuery(filters), ...{ offset: '0' } })
-  }
-  const setMinPrice = (price: number) => {
-    setCatalogPrice({ newMin: price, newMax: filters.price.max.value })
-  }
-  const setMaxPrice = (price: number) => {
-    setCatalogPrice({ newMax: price, newMin: filters.price.min.value })
-  }
+  }, [filters])
+  const setMinPrice = useCallback(
+    (price: number) => {
+      setCatalogPrice({ newMin: price, newMax: filters.price.max.value })
+    },
+    [filters.price.max.value]
+  )
+  const setMaxPrice = useCallback(
+    (price: number) => {
+      setCatalogPrice({ newMax: price, newMin: filters.price.min.value })
+    },
+    [filters.price.min.value]
+  )
   const disabledReset = useMemo(
     () => !Object.values(filtersToQuery(filters)).filter((item) => item).length,
     [filters]
   )
+  const isShowPagination = useMemo(
+    () => totalCount / limit > 1,
+    [totalCount, limit]
+  )
   const selectSort = (first: TypeCatalogSorting) => updateRouter({ first })
-  const offsetProps = {
-    offset: Number(query.offset) + 1,
-    setOffset: (page: string) =>
-      updateRouter({ offset: (Number(page) - 1).toString() }),
-  }
+  const offsetProps = useMemo(
+    () => ({
+      offset: Number(query.offset) + 1,
+      setOffset: (page: string) =>
+        updateRouter({ offset: (Number(page) - 1).toString() }),
+    }),
+    [query.offset]
+  )
   const resetFilters = () => {
     updateRouter({
       boiler: undefined,
@@ -93,8 +120,18 @@ export const Catalog: NextPage = () => {
         )}
 
         <div className={style.middle}>
-          <CatalogProducts isSpinner={isLoadProducts} products={products} />
-          <Pagination totalCount={70} limit={limit} {...offsetProps} />
+          <CatalogProducts
+            limit={limit}
+            isSpinner={isLoadProducts}
+            products={products}
+          />
+          {isShowPagination && (
+            <Pagination
+              totalCount={totalCount}
+              limit={limit}
+              {...offsetProps}
+            />
+          )}
         </div>
       </div>
     </div>

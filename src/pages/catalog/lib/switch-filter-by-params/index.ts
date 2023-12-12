@@ -5,18 +5,18 @@ import {
   toggleCheckboxes,
 } from 'pages/catalog/model'
 
-const f = (str?: string): string[] =>
+const paramToFilter = (str?: string): string[] =>
   (str ? decodeURIComponent(str) : []) as string[]
 
 export const switchFilterByParams = (query: TypeCatalogQueryParams) => {
   toggleCheckboxes({
     section: 'details',
-    checkboxes: f(query.parts),
+    checkboxes: paramToFilter(query.parts),
     isMulti: true,
   })
   toggleCheckboxes({
     section: 'retailer',
-    checkboxes: f(query.boiler),
+    checkboxes: paramToFilter(query.boiler),
     isMulti: true,
   })
   setCatalogPrice({

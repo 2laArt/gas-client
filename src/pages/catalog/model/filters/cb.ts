@@ -40,7 +40,6 @@ export const toggleCheckboxesCb = (
   state: IFiltersStore,
   { section, checkboxes, isMulti }: TypeToggleCheckboxes
 ) => {
-  console.log(checkboxes)
   const isSingle = checkboxes.length === 1
   const newState = { ...state[section].checkboxes }
 

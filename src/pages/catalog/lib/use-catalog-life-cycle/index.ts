@@ -12,44 +12,68 @@ import {
   $catalogLimit,
   $catalogProducts,
   $filters,
-  ICatalogFilterPrice,
   fetchCatalogProductsFx,
+  setCatalogSorting,
+  type ICatalogFilterPrice,
 } from 'pages/catalog/model'
-import { useEffect, useState, type Dispatch, type SetStateAction } from 'react'
+import { useEffect, useState } from 'react'
+import { type IFiltersParams } from 'shared/api'
 import { compareObjects } from 'shared/lib'
+
+interface IGetProducts {
+  price: ICatalogFilterPrice
+  query: TypeCatalogQueryParams
+  limit: number
+  ignoreKey: keyof TypeNewQueryParams
+}
+interface IFetchProductsReturn {
+  isLoadProducts: boolean
+  fetchProducts: VoidFunction
+}
+type TypeUseGetProducts = (params: IGetProducts) => IFetchProductsReturn
 
 interface IUpdatingRouter {
   isReady: boolean
+  isProducts: boolean
   query: TypeCatalogQueryParams
-  limit: number
+  ignoreKey: keyof TypeNewQueryParams
   updateRouter: TypeUpdateQueryParams
-  setLoading: Dispatch<SetStateAction<boolean>>
+  fetchProducts: VoidFunction
 }
 export const useCatalogLifeCycle = () => {
   const limit = useStore($catalogLimit)
   const filters = useStore($filters)
-  const { rows: products } = useStore($catalogProducts)
+  const { rows: products, count: totalCount } = useStore($catalogProducts)
   const router = useRouter() as TypeCatalogRouterQuery
   const { query, isReady } = router
   const updateRouter = useUpdatedQuery(router)
-  const [isLoadProducts, setIsLoadProducts] = useState<boolean>(true)
+  const ignoreKey = 'first' as keyof TypeNewQueryParams
+  const isProducts = !!products.length
+  const { fetchProducts, isLoadProducts } = useGetProducts({
+    ignoreKey,
+    limit,
+    price: filters.price,
+    query,
+  })
 
   useEffect(() => {
     updatingRouter({
       isReady,
       query,
-      limit,
       updateRouter,
-      setLoading: setIsLoadProducts,
+      ignoreKey,
+      isProducts,
+      fetchProducts,
     })
   }, [router.query, router.isReady])
   return {
     query,
     updateRouter,
     limit,
+    totalCount,
     filters,
     products,
-    isLoadProducts,
+    isLoadProducts: isLoadProducts || !isProducts,
   }
 }
 
@@ -57,35 +81,45 @@ export const updatingRouter = ({
   isReady,
   query,
   updateRouter,
-  setLoading,
-  limit,
+  ignoreKey,
+  fetchProducts,
+  isProducts,
 }: IUpdatingRouter) => {
   const prevQuery = localStorage.getItem('catalog')
-  const ignoreKey = 'first' as keyof TypeNewQueryParams
   if (!isReady) return
   if (prevQuery && query.offset && !query.first)
     return updateRouter(JSON.parse(prevQuery))
   if (!query.offset || !query.first) return updateRouter({})
-  if (prevQuery && !compareObjects(JSON.parse(prevQuery), query, ignoreKey)) {
-    // getProducts(fil )
-    console.log('get products')
+  if (
+    !isProducts ||
+    (prevQuery && !compareObjects(JSON.parse(prevQuery), query, ignoreKey))
+  ) {
+    fetchProducts()
   }
   switchFilterByParams(query)
   localStorage.setItem('catalog', JSON.stringify(query))
 }
-const getProducts = (
-  price: ICatalogFilterPrice,
-  query: TypeCatalogQueryParams,
-  limit: number,
-  ignoreKey: keyof TypeNewQueryParams
-) => {
+const useGetProducts: TypeUseGetProducts = ({
+  ignoreKey,
+  limit,
+  price,
+  query,
+}) => {
+  const [isLoad, setIsLoad] = useState<boolean>(false)
   const copy = { ...query }
   delete copy[ignoreKey]
-  const params = Object.assign({
+  const params: IFiltersParams = Object.assign({
     priseTo: price.max.limit,
     priseFrom: price.min.limit,
     limit,
-    copy,
+    ...copy,
   })
-  fetchCatalogProductsFx(params)
+  const fetchProducts = () => {
+    setIsLoad(true)
+    fetchCatalogProductsFx(params).finally(() => {
+      setCatalogSorting(query.first)
+      setTimeout(() => setIsLoad(false), 1000)
+    })
+  }
+  return { fetchProducts, isLoadProducts: isLoad }
 }
