@@ -1,0 +1,30 @@
+.right {
+  > div {
+    @apply mb-6;
+  }
+}
+.price {
+  @apply text-2xl font-bold max-md:mt-5;
+  /* line-height: 22px; */
+}
+.in_stoke {
+  @apply text-dark-teal text-xs;
+}
+
+.active {
+  @apply text-tomato;
+}
+.switchers_btn {
+  @apply -ml-4 mb-3;
+  > button {
+    @apply border-r border-gray px-4 text-xs capitalize transition-colors  last:border-none hover:text-yellow;
+  }
+}
+.text {
+  > h3 {
+    @apply mb-3 text-base font-normal max-lg:text-sm;
+  }
+  > p {
+    @apply my-2 max-lg:text-xs;
+  }
+}

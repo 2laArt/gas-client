@@ -17,7 +17,7 @@
   @apply bg-cyan text-white;
 }
 .yellow {
-  @apply bg-yellow text-white;
+  @apply bg-yellow text-gray dark:text-gray;
 }
 .blue {
   @apply bg-blue text-white;
@@ -29,7 +29,7 @@
 
 //size
 .sm {
-  @apply min-h-[33px] min-w-[33px] border-none text-xs;
+  @apply h-[33px] w-[33px] border-none  text-xs;
 }
 .regular {
   @apply min-h-[30px] text-xs leading-5;
