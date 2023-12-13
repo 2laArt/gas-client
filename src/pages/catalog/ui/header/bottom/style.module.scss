@@ -1,0 +1,27 @@
+.bottom {
+  @apply mt-3 flex items-center justify-between;
+  > div {
+    @apply max-md:flex-col;
+    > * {
+      @apply first:mb-2 max-md:h-8 max-xs:w-32 xs:w-[170px];
+    }
+  }
+  &_left {
+    @apply flex justify-between max-md:mr-2;
+    > button {
+      @apply m-0 md:mr-2 md:h-11;
+    }
+  }
+  &_right {
+    @apply flex justify-between;
+  }
+}
+.filter {
+  @apply inline-block h-11 bg-blue px-4 text-xs text-white transition-colors;
+  &:hover {
+    @apply border border-blue bg-transparent text-blue;
+  }
+  > span {
+    @apply mr-2 inline-block rotate-180 pt-[2px];
+  }
+}

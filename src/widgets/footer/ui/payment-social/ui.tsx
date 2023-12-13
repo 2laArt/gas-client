@@ -1,26 +1,36 @@
-import { items } from './config'
+import { items } from './data'
 import style from './style.module.scss'
 import Link from 'next/link'
-import { type FC } from 'react'
+import { useMemo, type FC } from 'react'
 import { Icon } from 'shared/ui'
 
 export const PaymentSocial: FC = () => {
+  const Payment = useMemo(
+    () =>
+      items.payment.map((item) => (
+        <Icon type="payment" name={item} key={item} />
+      )),
+    [items.payment]
+  )
+  const Social = useMemo(
+    () =>
+      items.social.map((item) => (
+        <Link href={item.href} key={item.href} target="_blank">
+          <Icon type="social" name={item.icon} />
+        </Link>
+      )),
+    [items.social]
+  )
   return (
     <div className={style.section}>
       <div className={style.payment}>
         <h6>Payment Methods:</h6>
-        {items.payment.map((item) => (
-          <Icon type="payment" name={item} key={item} />
-        ))}
+        {Payment}
       </div>
 
       <div className={style.social}>
         <h6>Our socials:</h6>
-        {items.social.map((item) => (
-          <Link href={item.href} key={item.href} target="_blank">
-            <Icon type="social" name={item.icon} />
-          </Link>
-        ))}
+        {Social}
       </div>
     </div>
   )

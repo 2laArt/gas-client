@@ -1,34 +1,39 @@
-import { ChangeButtons } from '../change-buttons'
 import type { ICatalogProps, ISortingProps } from '../type'
-import { SelectSort } from './select-sort'
+import { CatalogHeaderBottom } from './bottom/ui'
 import { SelectedCategories } from './selected-categories'
 import style from './style.module.scss'
 import clsx from 'clsx'
 import { getCheckedCheckboxes } from 'pages/catalog/lib'
 import { type TypeCheckboxState } from 'pages/catalog/model'
-import { type FC } from 'react'
+import { useCallback, type FC } from 'react'
 import { Dropdown } from 'shared/ui'
 
-interface ICatalogHeader extends ICatalogProps, ISortingProps {
+export interface ICatalogHeader extends ICatalogProps, ISortingProps {
   setOpen: VoidFunction
   isMobile: boolean
 }
 
 export const CatalogHeader: FC<ICatalogHeader> = ({
-  resetFilters,
   details,
   retailer,
-  disabledReset,
-  disabledSubmit,
-  applyFilters,
-  isMobile,
   toggleCheckboxes,
-  setCatalogSort,
-  sort,
-  setOpen,
+  isMobile,
+  ...props
 }) => {
-  const checkedBrands = (boxes: TypeCheckboxState) =>
-    !!getCheckedCheckboxes(boxes).length
+  const checkedBrands = useCallback(
+    (boxes: TypeCheckboxState) => !!getCheckedCheckboxes(boxes).length,
+    []
+  )
+  const toggleDetails = useCallback(
+    (checkboxes: string[]) =>
+      toggleCheckboxes({ section: details.title, checkboxes }),
+    []
+  )
+  const toggleRetailer = useCallback(
+    (checkboxes: string[]) =>
+      toggleCheckboxes({ section: retailer.title, checkboxes }),
+    []
+  )
   return (
     <div className={clsx('card', style.header)}>
       <Dropdown isOpen={checkedBrands(retailer.checkboxes)}>
@@ -36,9 +41,7 @@ export const CatalogHeader: FC<ICatalogHeader> = ({
           title={retailer.title}
           isMobile={isMobile}
           checkboxes={retailer.checkboxes}
-          resetFilter={(checkboxes) =>
-            toggleCheckboxes({ section: retailer.title, checkboxes })
-          }
+          resetFilter={toggleRetailer}
         />
       </Dropdown>
 
@@ -47,14 +50,17 @@ export const CatalogHeader: FC<ICatalogHeader> = ({
           isMobile={isMobile}
           title={details.title}
           checkboxes={details.checkboxes}
-          resetFilter={(checkboxes) =>
-            toggleCheckboxes({ section: details.title, checkboxes })
-          }
+          resetFilter={toggleDetails}
         />
       </Dropdown>
 
-      <div className={style.header_bottom}>
-        <div className={style.btns}>
+      <CatalogHeaderBottom {...props} isMobile={isMobile} />
+    </div>
+  )
+}
+{
+  /* <div className={style.header_bottom}>
+        <div className={style.bottom_left}>
           <ChangeButtons
             btnTop={{
               title: 'Apply Filters',
@@ -68,8 +74,7 @@ export const CatalogHeader: FC<ICatalogHeader> = ({
             }}
           />
         </div>
-        {/*  */}
-        <div className={style.footer}>
+        <div className={style.bottom_right}>
           {isMobile && (
             <button
               data-include="included"
@@ -82,6 +87,5 @@ export const CatalogHeader: FC<ICatalogHeader> = ({
           <SelectSort setCatalogSort={setCatalogSort} sort={sort} />
         </div>
       </div>
-    </div>
-  )
+       */
 }

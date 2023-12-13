@@ -38,21 +38,17 @@ export const Catalog: NextPage = () => {
     () => useIsChangedFilters(query, filtersToQuery(filters)),
     [query, filters]
   )
-  const applyFilters = useCallback(() => {
+  const applyFilters = () => {
     updateRouter({ ...filtersToQuery(filters), ...{ offset: '0' } })
-  }, [filters])
-  const setMinPrice = useCallback(
-    (price: number) => {
-      setCatalogPrice({ newMin: price, newMax: filters.price.max.value })
-    },
-    [filters.price.max.value]
-  )
-  const setMaxPrice = useCallback(
-    (price: number) => {
-      setCatalogPrice({ newMax: price, newMin: filters.price.min.value })
-    },
-    [filters.price.min.value]
-  )
+  }
+  const setMinPrice = (price: number) => {
+    setCatalogPrice({ newMin: price, newMax: filters.price.max.value })
+  }
+
+  const setMaxPrice = (price: number) => {
+    setCatalogPrice({ newMax: price, newMin: filters.price.min.value })
+  }
+
   const disabledReset = useMemo(
     () => !Object.values(filtersToQuery(filters)).filter((item) => item).length,
     [filters]
@@ -61,18 +57,13 @@ export const Catalog: NextPage = () => {
     () => totalCount / limit > 1,
     [totalCount, limit]
   )
-  const selectSort = useCallback(
-    (first: TypeCatalogSorting) => updateRouter({ first }),
-    []
-  )
-  const offsetProps = useMemo(
-    () => ({
-      offset: Number(query.offset) + 1,
-      setOffset: (page: string) =>
-        updateRouter({ offset: (Number(page) - 1).toString() }),
-    }),
-    [query.offset]
-  )
+  const selectSort = (first: TypeCatalogSorting) => updateRouter({ first })
+
+  const offsetProps = {
+    offset: Number(query.offset) + 1,
+    setOffset: (page: string) =>
+      updateRouter({ offset: (Number(page) - 1).toString() }),
+  }
   const resetFilters = useCallback(() => {
     updateRouter({
       boiler: undefined,

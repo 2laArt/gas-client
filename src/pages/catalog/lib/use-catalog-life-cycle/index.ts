@@ -73,7 +73,7 @@ export const useCatalogLifeCycle = () => {
     totalCount,
     filters,
     products,
-    isLoadProducts: isLoadProducts || !isProducts,
+    isLoadProducts: isLoadProducts,
   }
 }
 

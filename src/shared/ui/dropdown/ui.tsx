@@ -1,14 +1,14 @@
 import style from './style.module.scss'
 import clsx from 'clsx'
 import { AnimatePresence, motion } from 'framer-motion'
-import { type PropsWithChildren } from 'react'
+import { memo, type PropsWithChildren } from 'react'
 
 interface IDropdown extends PropsWithChildren {
   isOpen: boolean
   className?: string
 }
 
-export const Dropdown = ({ children, isOpen, className }: IDropdown) => {
+export const Dropdown = memo(({ children, isOpen, className }: IDropdown) => {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -23,4 +23,4 @@ export const Dropdown = ({ children, isOpen, className }: IDropdown) => {
       )}
     </AnimatePresence>
   )
-}
+})

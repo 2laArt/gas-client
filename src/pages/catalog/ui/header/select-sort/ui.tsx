@@ -1,4 +1,4 @@
-import { type ISortingProps } from '../ui'
+import type { ISortingProps } from '../../type'
 import { sortOptions } from './data'
 import style from './style.module.scss'
 import { TypeCatalogSorting } from 'pages/catalog/model'
