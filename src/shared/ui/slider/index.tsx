@@ -2,8 +2,8 @@ import style from './style.module.scss'
 import clsx from 'clsx'
 import { useCallback, type ReactNode } from 'react'
 import 'swiper/css'
-import { Autoplay, Navigation } from 'swiper/modules'
-import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react'
+import { Autoplay, Navigation, Scrollbar } from 'swiper/modules'
+import { Swiper, SwiperSlide, type SwiperProps } from 'swiper/react'
 import { type SwiperOptions } from 'swiper/types/swiper-options'
 
 export interface ISlider<T> extends SwiperProps {
@@ -44,17 +44,19 @@ export function Slider<T>({
 
   const swiperOptions: SwiperOptions = {
     slidesPerView: 'auto',
+
     loop: true,
     autoplay: {
       delay: 2000,
       pauseOnMouseEnter: true,
     },
+    scrollbar: false,
     ...options,
   }
-  const DEFAULT_MODULES = [Navigation, Autoplay]
+  const DEFAULT_MODULES = [Navigation, Autoplay, Scrollbar]
   return (
     <Swiper
-      className={clsx(style.slide, className)}
+      className={clsx(style.slider, className)}
       modules={[...(modules ?? DEFAULT_MODULES)]}
       {...swiperOptions}
       {...props}

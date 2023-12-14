@@ -52,7 +52,7 @@ export const ProductItem: FC<IProductItem> = ({
       <div className={style.product_item_price}>
         {formatToCurrency(price)}
 
-        <CartToggleBtn name={name} partId={id} username={username} />
+        <CartToggleBtn partId={id} username={username} />
       </div>
     </div>
   )

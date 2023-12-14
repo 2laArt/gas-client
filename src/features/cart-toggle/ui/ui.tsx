@@ -6,14 +6,13 @@ import { Button, Icon } from 'shared/ui'
 
 interface ICartToggleBtn extends Omit<IToggleCart, 'isAdded'> {
   size?: 'sm' | 'big'
-  text?: string
-  name: string
+  className?: string
 }
 export const CartToggleBtn: FC<ICartToggleBtn> = ({
   size = 'sm',
-  text,
   partId,
   username,
+  className,
 }) => {
   const [spinner, setSpinner] = useState<boolean>(false)
   const isAdded = useIsAddedToCart(partId)
@@ -23,19 +22,20 @@ export const CartToggleBtn: FC<ICartToggleBtn> = ({
       setSpinner(false)
     })
   }
+  const isBig = size === 'big'
   return (
     <Button
-      className={clsx(style.btn)}
+      className={clsx(style.btn, className)}
       color={isAdded ? 'cyan' : 'yellow'}
       size={size}
       onClick={toggle}
-      spinner={{ size: 20, color: 'white' }}
+      spinner={{ size: isBig ? 30 : 20, color: 'white' }}
       loading={spinner}
     >
-      <span className={style.icon}>
+      <span className={clsx(style.icon, isBig && style.icon_m)}>
         <Icon type="common" name={isAdded ? 'added-cart' : 'cart'} />
       </span>
-      {text}
+      {isBig && (isAdded ? 'remove' : 'add')}
     </Button>
   )
 }

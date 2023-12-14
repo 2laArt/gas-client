@@ -1,16 +1,20 @@
-.right {
+.info {
+  &_top {
+    @apply items-center max-md:flex max-md:justify-between max-xs:block;
+  }
   > div {
     @apply mb-6;
   }
 }
 .price {
   @apply text-2xl font-bold max-md:mt-5;
-  /* line-height: 22px; */
 }
 .in_stoke {
-  @apply text-dark-teal text-xs;
+  @apply my-2 text-xs text-cyan;
 }
-
+.toggle {
+  @apply my-4;
+}
 .active {
   @apply text-tomato;
 }

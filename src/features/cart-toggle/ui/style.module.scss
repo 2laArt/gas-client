@@ -1,3 +1,6 @@
 .icon {
   @apply inline-block h-[33px] w-[33px] p-1;
+  &_m {
+    @apply mr-3;
+  }
 }
