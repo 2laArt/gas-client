@@ -35,6 +35,7 @@ export const ProductPageImages: FC<{ images: string[] }> = ({ images }) => {
       )}
       <div className={style.images}>
         <Slider
+          navigation={false}
           slideClassName={style.slide}
           slideActiveClass={style.active}
           items={images}

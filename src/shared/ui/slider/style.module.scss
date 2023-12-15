@@ -1,3 +1,13 @@
 .slider {
-  @apply static h-full w-full;
+  @apply relative h-full w-full;
+}
+.prev,
+.next {
+  @apply absolute left-6 top-1/2 z-[2] -translate-y-1/2;
+}
+.next {
+  @apply rotate-180;
+}
+.prev {
+  @apply left-auto right-6;
 }

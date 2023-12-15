@@ -18,7 +18,7 @@ export const BrandsSlider: FC = () => {
   )
   return (
     <div className={style.slider}>
-      <Slider items={brandItems} renderItem={itemCallback} />
+      <Slider navigation={false} items={brandItems} renderItem={itemCallback} />
     </div>
   )
 }

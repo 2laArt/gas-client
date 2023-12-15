@@ -1,0 +1,25 @@
+.btn {
+  @apply flex h-14 w-10 items-center justify-center rounded-lg text-white transition-opacity max-md:hidden;
+
+  &:hover {
+    &:before {
+      @apply scale-110;
+      background: radial-gradient(
+        100% 100% at 100% 0,
+        rgba(188, 186, 193, 0.32) 0,
+        rgba(139, 136, 146, 0.32) 100%
+      );
+    }
+  }
+
+  span {
+    @apply inline-block h-7 w-7;
+  }
+
+  &:before {
+    @apply absolute bottom-0 left-0 right-0 top-0 -z-[1] rounded-lg border-none  transition-transform content-[''];
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    background: rgba(139, 136, 146, 0.32);
+  }
+}
