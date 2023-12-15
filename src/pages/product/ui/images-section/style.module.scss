@@ -1,20 +1,16 @@
 .images {
-  @apply my-3;
+  @apply my-3 select-none;
 }
 .slide {
   @apply h-auto w-auto;
 }
 
 .image {
-  @apply relative  md:w-[118px]  md:cursor-pointer;
+  @apply relative   md:w-[118px] md:cursor-pointer;
 }
 .image_active {
   @apply relative w-auto;
 }
 .scrollbar {
-  @apply overflow-x-scroll;
-  -webkit-overflow-scrolling: touch;
-  &::-webkit-scrollbar {
-    height: 6px;
-  }
+  @apply mt-1 h-1 rounded-md bg-gray max-md:hidden;
 }

@@ -1,4 +1,3 @@
-import { getDashboardData } from '../lib'
 import { BrandsSlider } from './brands-slider'
 import { DashboardAlert } from './dashboard-alert'
 import style from './style.module.scss'
@@ -12,27 +11,15 @@ import { Dropdown, Title } from 'shared/ui'
 import { ProductSlider } from 'widgets/product-slider'
 
 interface IDashboard {
-  newParts: IBoilerPart[]
-  bestsellers: IBoilerPart[]
+  newParts: IBoilerPart[] | string
+  bestsellers: IBoilerPart[] | string
 }
-export const Dashboard: NextPage<IDashboard> = () => {
+export const Dashboard: NextPage<IDashboard> = ({ bestsellers, newParts }) => {
   const cartQueryStatus = useStore($cartQueryStatus)
   const { length: cartLength } = useStore($cart)
   const totalPrice = useStore($cartTotalPrice)
-  const [bestsellers, setBestsellers] = useState<IBoilerPart[] | string>('')
-  const [newParts, setNewParts] = useState<IBoilerPart[] | string>('')
-  const [spinner, setSpinner] = useState<boolean>(false)
   const [isDisplayAlert, setDisplayAlert] = useState<boolean>(false)
 
-  useEffect(() => {
-    ;(async function () {
-      setSpinner(true)
-      const { bestsellers, newParts } = await getDashboardData()
-      setBestsellers(bestsellers)
-      setNewParts(newParts)
-      setTimeout(() => setSpinner(false), 1000)
-    })()
-  }, [])
   useEffect(() => {
     if (cartQueryStatus === 'finished') {
       setTimeout(() => setDisplayAlert(!!cartLength), 3000)
@@ -55,13 +42,13 @@ export const Dashboard: NextPage<IDashboard> = () => {
         <Title className={style.title_slider} as="h2">
           Bestsellers
         </Title>
-        <ProductSlider products={bestsellers} spinner={spinner} />
+        <ProductSlider products={bestsellers} />
       </div>
       <div>
         <Title className={style.title_slider} as="h2">
           New Parts
         </Title>
-        <ProductSlider products={newParts} spinner={spinner} />
+        <ProductSlider products={newParts} />
       </div>
       <div className={clsx('card', style.about)}>
         <Title className={style.title_slider} as="h2">

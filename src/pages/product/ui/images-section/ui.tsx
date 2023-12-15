@@ -35,7 +35,6 @@ export const ProductPageImages: FC<{ images: string[] }> = ({ images }) => {
       )}
       <div className={style.images}>
         <Slider
-          className={'small_scroll'}
           slideClassName={style.slide}
           slideActiveClass={style.active}
           items={images}
@@ -55,6 +54,9 @@ export const ProductPageImages: FC<{ images: string[] }> = ({ images }) => {
             },
             slidesPerView: 1.2,
             centeredSlides: true,
+            scrollbar: {
+              dragClass: style.scrollbar,
+            },
             autoplay: false,
             loop: true,
             spaceBetween: 20,

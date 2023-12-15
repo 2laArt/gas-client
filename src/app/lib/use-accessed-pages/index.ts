@@ -14,6 +14,7 @@ export const useAccessedPages = (pathname: string) => {
     paths.about,
     paths.shoppingPayment,
     paths.wholesaleBuyers,
+    paths.dashboard,
   ]
 
   useEffect(() => {
@@ -26,13 +27,15 @@ export const useAccessedPages = (pathname: string) => {
 
   const checkAuth = async () => {
     const user = await loginCheckFx()
+
     if (accessedPages.includes(pathname)) {
       setShouldLoadContent(true)
       if (pathname === paths.auth && user) {
         router.push('/dashboard')
       }
-      return
     }
+    if (!user) return
+
     if (user) {
       setAuth(user as ICheckAuth)
       setShouldLoadContent(true)

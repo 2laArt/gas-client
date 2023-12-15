@@ -8,7 +8,7 @@ import { ProductItem } from 'widgets/product-item'
 
 interface IDashboardSlider {
   products: IBoilerPart[] | string
-  spinner: boolean
+  spinner?: boolean
 }
 
 export const ProductSlider: FC<IDashboardSlider> = ({ products, spinner }) => {
@@ -21,6 +21,7 @@ export const ProductSlider: FC<IDashboardSlider> = ({ products, spinner }) => {
     ) : (
       <SkeletonProduct key={idx} />
     )
+
   return (
     <div className={style.slider}>
       {isWaring && (

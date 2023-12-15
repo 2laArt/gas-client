@@ -38,13 +38,17 @@ export const ProductItem: FC<IProductItem> = ({
         />
       </div>
       <div className={style.product_item_name}>
-        <Link
-          className={style.a}
-          href={paths.catalogProduct(id)}
-          data-replace={name}
-        >
+        {!!username ? (
+          <Link
+            className={style.a}
+            href={paths.catalogProduct(id)}
+            data-replace={name}
+          >
+            <span>{name}</span>
+          </Link>
+        ) : (
           <span>{name}</span>
-        </Link>
+        )}
       </div>
       <div className={style.product_item_vender}>
         Vender Code: {vendor_code}
@@ -52,7 +56,7 @@ export const ProductItem: FC<IProductItem> = ({
       <div className={style.product_item_price}>
         {formatToCurrency(price)}
 
-        <CartToggleBtn partId={id} username={username} />
+        {!!username && <CartToggleBtn partId={id} username={username} />}
       </div>
     </div>
   )
