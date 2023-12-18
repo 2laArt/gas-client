@@ -1,0 +1,43 @@
+.place_order {
+  @apply min-w-[300px] p-3 transition-[min-width] duration-500 max-lg:mt-6 max-lg:w-full lg:ml-6;
+  > h3 {
+    @apply mb-4 block border-b border-gray pb-4 tracking-widest text-blue;
+  }
+}
+.edited {
+  @apply lg:min-w-[65%];
+}
+.content {
+  container-type: inline-size;
+
+  > div {
+    @apply mb-4 flex justify-between text-gray;
+    .lg {
+      @apply text-lg text-black;
+    }
+  }
+  .btn_box {
+    @apply block text-right;
+    .btn_order {
+      @apply my-6 rounded-md bg-yellow px-4 py-2 normal-case  text-dark-gray transition-colors;
+      &:disabled {
+        @apply bg-light-gray text-gray dark:bg-gray dark:text-light-gray;
+      }
+      @container (max-width: 518px) {
+        @apply w-full;
+      }
+    }
+  }
+}
+.label {
+  @apply cursor-pointer decoration-wavy;
+  > input {
+    @apply mr-4;
+  }
+  > span {
+    @apply text-[14px];
+    > mark {
+      @apply bg-transparent text-yellow;
+    }
+  }
+}

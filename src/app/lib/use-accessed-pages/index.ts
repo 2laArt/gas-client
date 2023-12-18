@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
 import { toast } from 'react-toastify'
-import { ICheckAuth } from 'shared/api'
+import { type ICheckAuth } from 'shared/api'
 import { paths } from 'shared/routing'
 import { loginCheckFx, setAuth } from 'shared/store'
 

@@ -17,7 +17,7 @@
 }
 
 .middle {
-  @apply flex min-h-[150px] w-full items-center justify-center px-1 text-center text-gray;
+  @apply flex min-h-[150px] w-full items-center justify-center  text-center text-gray;
   > div {
     @apply w-full;
   }

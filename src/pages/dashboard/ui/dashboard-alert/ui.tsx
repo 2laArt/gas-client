@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import Link from 'next/link'
 import { type FC } from 'react'
 import { formatToCurrency } from 'shared/lib'
+import { paths } from 'shared/routing'
 import { Button, Icon } from 'shared/ui'
 
 interface IDashboardAlert {
@@ -25,8 +26,8 @@ export const DashboardAlert: FC<IDashboardAlert> = ({
         <div>Total Price: {formatToCurrency(totalPrice)}</div>
       </div>
       <div className={style.alert_btns}>
-        <Link href="/cart">go to cart</Link>
-        <Link href="/cart">place an order</Link>
+        <Link href={paths.order}>go to cart</Link>
+        <Link href={paths.order}>place an order</Link>
       </div>
       <Button onClick={closeAlert} className={style.close} color="transparent">
         <span>

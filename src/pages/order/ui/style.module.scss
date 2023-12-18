@@ -1,0 +1,41 @@
+.order {
+  @apply flex items-start justify-around py-10 max-lg:flex-col;
+}
+
+.order_box {
+  @apply w-full;
+}
+
+.header {
+  @apply mb-4 flex min-w-full items-center justify-between px-2  py-4 font-bold first:text-blue;
+  .title {
+    @apply flex items-center justify-center;
+  }
+  .icon_cart {
+    @apply mr-3 flex h-8 w-8;
+  }
+  > button {
+    @apply flex items-center font-light text-tomato transition-[filter] hover:brightness-75 disabled:text-gray;
+
+    .edit_icon {
+      @apply mb-1 inline-block h-6 w-6;
+    }
+    .edit_text {
+      @apply ml-3;
+    }
+  }
+}
+.drop {
+  @apply grid w-full grid-rows-[0fr] overflow-hidden transition-all duration-700;
+
+  &_box {
+    @apply min-h-0 px-1;
+  }
+  &_open {
+    @apply grid-rows-[1fr];
+  }
+}
+/* container-type: inline-size;
+@container (max-width: 518px) {
+	@apply w-full;
+} */

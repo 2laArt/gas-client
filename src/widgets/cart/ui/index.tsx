@@ -6,8 +6,10 @@ import { CartItemCounter, DeleteCartItem } from 'features/cart-item'
 import { FC } from 'react'
 import { ICartItem } from 'shared/api'
 
-interface IOrderCartFC extends ICartFooter {
+interface IOrderCartFC extends Omit<ICartFooter, 'className'> {
   cart: ICartItem[]
+  classNameList?: string
+  classNameFooter?: string
 }
 
 export const OrdersCart: FC<IOrderCartFC> = ({
@@ -17,13 +19,15 @@ export const OrdersCart: FC<IOrderCartFC> = ({
   onFooterClick,
   totalPrice,
   cart,
+  classNameList,
+  classNameFooter,
 }) => {
   return (
     <div className={style.cart}>
       <div className={style.cart_box}>
-        <div className={clsx('card', style.middle)}>
+        <div className={style.middle}>
           {!!cart.length ? (
-            <div className={style.cart_list}>
+            <div className={clsx(style.cart_list, classNameList)}>
               {cart.map((item) => (
                 <CartItem
                   CounterItem={CartItemCounter}
@@ -39,6 +43,7 @@ export const OrdersCart: FC<IOrderCartFC> = ({
         </div>
       </div>
       <CartFooter
+        className={classNameFooter}
         btnText={btnText}
         cartLength={cartLength}
         footerAbsolute={footerAbsolute}

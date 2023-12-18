@@ -1,5 +1,5 @@
 .footer {
-  @apply mb-2 mt-4 w-full p-4 text-right;
+  @apply mb-2 mt-4 w-full bg-white p-4 text-right dark:bg-black;
   &_sticky {
     @apply sticky -bottom-3 mb-0;
   }

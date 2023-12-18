@@ -2,8 +2,9 @@ import style from './style.module.scss'
 import clsx from 'clsx'
 import { useStore } from 'effector-react'
 import { useRouter } from 'next/router'
-import { FC, useEffect, useState } from 'react'
+import { useEffect, useState, type FC } from 'react'
 import { useClickOutside } from 'shared/lib'
+import { paths } from 'shared/routing'
 import { $auth, $cart, $cartTotalPrice } from 'shared/store'
 import { Dropdown, Icon } from 'shared/ui'
 import { OrdersCart } from 'widgets/cart'
@@ -14,10 +15,10 @@ export const HeaderCart: FC = () => {
   const user = useStore($auth)
   const totalPrice = useStore($cartTotalPrice)
   const router = useRouter()
-  const goToCart = () => router.push('/cart')
+  const goToCart = () => router.push(paths.order)
   const [isCartPage, setIsCartPage] = useState<boolean>()
   useEffect(() => {
-    setIsCartPage(router.pathname === '/cart')
+    setIsCartPage(router.pathname === paths.order)
   }, [router.pathname])
   return (
     <div ref={ref} className={style.cart}>
@@ -33,7 +34,7 @@ export const HeaderCart: FC = () => {
         isOpen={isOpen && !!user.username && !isCartPage}
         className={clsx('small_scroll', 'card', style.cart_drop)}
       >
-        <div className={clsx('card', style.cart_header)}>
+        <div className={clsx(style.cart_header)}>
           <span className={style.cart_header_icon}>
             <Icon type="common" name={!!cart.length ? 'added-cart' : 'cart'} />
           </span>

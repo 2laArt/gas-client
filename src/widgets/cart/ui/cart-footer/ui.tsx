@@ -9,6 +9,7 @@ export interface ICartFooter {
   cartLength: number
   onFooterClick: VoidFunction
   btnText: string
+  className?: string
 }
 
 export const CartFooter: FC<ICartFooter> = ({
@@ -17,10 +18,11 @@ export const CartFooter: FC<ICartFooter> = ({
   totalPrice,
   cartLength,
   onFooterClick,
+  className,
 }) => {
   return (
     <div
-      className={clsx('card', style.footer, {
+      className={clsx(style.footer, className, {
         [style.footer_sticky]: footerAbsolute,
       })}
     >

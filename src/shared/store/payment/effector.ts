@@ -8,13 +8,13 @@ import { paymentService } from 'shared/api'
 export const paymentFx = createEffect(
   async ({ description, router, amount }: IPaymentFx) => {
     try {
-      const response = await paymentService.payment({
+      const { data } = await paymentService.payment({
         description,
         amount,
       })
-      sessionStorage.setItem('paymentId', response.id)
+      sessionStorage.setItem('paymentId', data.id)
       setCheckedStatus(false)
-      router.push(response.confirmation.confirmation_url)
+      router.push(data.confirmation.confirmation_url)
     } catch (error) {
       toast.error((error as Error).message)
     }
@@ -23,10 +23,10 @@ export const paymentFx = createEffect(
 export const checkPayment = createEffect(
   async ({ paymentId, userId }: ICheckPayment) => {
     try {
-      const response = await paymentService.checkPayment(paymentId)
-      console.log(response)
+      const { data } = await paymentService.checkPayment(paymentId)
+      console.log(data)
       setCheckedStatus(true)
-      if (response.status === 'succeeded') {
+      if (data.status === 'succeeded') {
         deleteAllCartFx(userId)
         sessionStorage.removeItem('paymentId')
       }
