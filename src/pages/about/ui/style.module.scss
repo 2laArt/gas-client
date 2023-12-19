@@ -1,0 +1,55 @@
+.parent {
+  @apply my-6;
+}
+
+.child {
+  @apply relative my-20 flex w-full items-center justify-center;
+  .text {
+    @apply absolute top-1/2 z-10 w-3/5 min-w-[300px] -translate-y-[60%] bg-[rgba(255,255,255,.8)] p-6 opacity-0 shadow-section dark:bg-[rgba(0,0,0,.6)];
+  }
+  > img {
+    @apply translate-y-[10%] rounded-lg opacity-0 shadow-section;
+  }
+  > img,
+  .text {
+    transition-property: opacity, transform;
+    transition-duration: 2s;
+  }
+
+  &:nth-child(odd) {
+    > img {
+      @apply ml-auto;
+    }
+    .text {
+      @apply right-1/4;
+    }
+  }
+  &:nth-child(even) {
+    > img {
+      @apply mr-auto;
+    }
+    .text {
+      @apply left-1/4;
+    }
+  }
+  &.show {
+    > img {
+      @apply translate-y-0 opacity-100;
+    }
+    .text {
+      @apply -translate-y-1/2 opacity-100;
+    }
+  }
+
+  @media not all and (min-width: 768px) {
+    & {
+      @apply my-0 -mb-9 flex-col;
+    }
+    .text {
+      @apply static min-w-full;
+    }
+    > img {
+      @apply mx-auto;
+    }
+  }
+}
