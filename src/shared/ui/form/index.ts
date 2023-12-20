@@ -1,1 +1,6 @@
-export { Form, type IFormProps, type IOnSubmit } from './ui'
+export {
+  Form,
+  type IFormProps,
+  type IOnSubmitValues,
+  type TypeOnSubmitForm,
+} from './ui'

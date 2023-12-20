@@ -1,0 +1,25 @@
+.form {
+  @apply block min-h-0 w-full text-left;
+  > h5 {
+    @apply mb-1 mt-4 text-xs;
+  }
+  textarea {
+    @apply mt-6 min-h-[100px] pt-2;
+  }
+  label {
+    > span {
+      @apply -bottom-2;
+    }
+  }
+  input,
+  textarea {
+    @apply w-full rounded-sm border border-light-gray bg-transparent shadow-none focus:shadow-none dark:border-gray dark:shadow-none;
+  }
+}
+
+.btn {
+  @apply text-right;
+  > button {
+    @apply relative min-h-[42px] min-w-[94px] rounded-sm border border-light-gray bg-transparent px-6 py-2 text-black transition-colors hover:bg-[rgba(0,0,0,.2)] dark:border-gray dark:text-white;
+  }
+}

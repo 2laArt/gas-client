@@ -1,8 +1,8 @@
 import style from './style.module.scss'
 import { useState } from 'react'
-import { ISignUpData } from 'shared/api'
+import { type ISignUpData } from 'shared/api'
 import { signUpFx } from 'shared/store'
-import { Form, IOnSubmit, InputForm } from 'shared/ui'
+import { Form, InputForm, type TypeOnSubmitForm } from 'shared/ui'
 import { Button } from 'shared/ui/button'
 
 interface IForm {
@@ -10,7 +10,7 @@ interface IForm {
 }
 export const SignUp = ({ switchForm }: IForm) => {
   const [spinner, setSpinner] = useState<boolean>(false)
-  const onSubmit = ({ data, resetField }: IOnSubmit<ISignUpData>) => {
+  const onSubmit: TypeOnSubmitForm<ISignUpData> = ({ data, resetField }) => {
     !spinner && signUpFx({ data, resetField, setSpinner, switchForm })
   }
   return (

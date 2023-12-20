@@ -1,21 +1,33 @@
 import style from './style.module.scss'
+import clsx from 'clsx'
 import { ReactNode, createElement } from 'react'
-import { DefaultValues, UseFormResetField, useForm } from 'react-hook-form'
+import {
+  useForm,
+  type DefaultValues,
+  type UseFormResetField,
+} from 'react-hook-form'
 
-export interface IOnSubmit<T> {
+export interface IOnSubmitValues<T> {
   data: T
   resetField: UseFormResetField<any>
 }
+export type TypeOnSubmitForm<T> = ({
+  data,
+  resetField,
+}: IOnSubmitValues<T>) => void
+
 export interface IFormProps<T> {
   defaultValues: DefaultValues<T> | undefined
-  onSubmit: ({ data, resetField }: IOnSubmit<T>) => void
+  onSubmit: TypeOnSubmitForm<T>
   children: ReactNode
+  className?: string
 }
 
 export const Form = <T extends object>({
   defaultValues,
   onSubmit,
   children,
+  className,
 }: IFormProps<T>) => {
   const {
     register,
@@ -25,7 +37,7 @@ export const Form = <T extends object>({
   } = useForm({ defaultValues, mode: 'onChange' })
   return (
     <form
-      className={style.form}
+      className={clsx(style.form, className)}
       onSubmit={handleSubmit((data) => {
         onSubmit({ data, resetField })
       })}

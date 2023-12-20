@@ -1,0 +1,12 @@
+.contacts {
+  @apply mx-auto max-w-[1050px] p-2;
+}
+.boxes {
+  @apply flex items-start justify-between max-md:flex-col;
+}
+.box {
+  @apply min-w-[350px] p-4 max-md:w-full max-md:first:mb-6 md:max-w-[500px] md:first:mr-6;
+  > h3 {
+    @apply mb-2;
+  }
+}

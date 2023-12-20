@@ -1,15 +1,15 @@
 import style from './style.module.scss'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { ISignInData } from 'shared/api'
+import { type ISignInData } from 'shared/api'
 import { signInFx } from 'shared/store'
-import { Form, IOnSubmit, InputForm } from 'shared/ui'
+import { Form, InputForm, type TypeOnSubmitForm } from 'shared/ui'
 import { Button } from 'shared/ui/button'
 
 export const SignIn = () => {
   const [spinner, setSpinner] = useState<boolean>(false)
   const router = useRouter()
-  const onSubmit = ({ data, resetField }: IOnSubmit<ISignInData>) => {
+  const onSubmit: TypeOnSubmitForm<ISignInData> = ({ data, resetField }) => {
     !spinner && signInFx({ data, resetField, router, setSpinner })
   }
   return (

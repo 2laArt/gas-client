@@ -1,0 +1,11 @@
+.contact {
+  @apply my-4 text-xs;
+  > a {
+    > span {
+      @apply text-yellow transition-colors hover:text-gray;
+    }
+  }
+  > span {
+    @apply font-bold;
+  }
+}
