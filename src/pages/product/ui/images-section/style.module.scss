@@ -4,9 +4,12 @@
 .slide {
   @apply h-auto w-auto;
 }
+.slide_mobile {
+  @apply h-auto max-w-[90%];
+}
 
 .image {
-  @apply relative   md:w-[118px] md:cursor-pointer;
+  @apply relative md:w-[118px] md:cursor-pointer;
 }
 .image_active {
   @apply relative w-auto;
