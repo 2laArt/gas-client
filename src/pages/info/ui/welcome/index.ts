@@ -1,0 +1,1 @@
+export { InfoWelcome } from './ui'

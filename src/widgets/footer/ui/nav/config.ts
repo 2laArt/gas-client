@@ -27,8 +27,8 @@ export const navItems = {
         href: paths.contacts,
       },
       {
-        text: 'Wholesale buyers',
-        href: paths.wholesaleBuyers,
+        text: 'Info for Buyers',
+        href: paths.infoBuyers,
       },
     ],
   },
@@ -43,18 +43,18 @@ export const contacts: IContacts = {
     {
       title: 'Our Address:',
       text: 'c. Moscow, ...',
-      icon: 'location',
+      icon: 'chevron',
       href: 'https://maps.app.goo.gl/NLbkyZ6yRMG4tU1VA',
     },
     {
       title: 'Phone Number:',
-      icon: 'phone',
+      icon: 'chevron',
       text: '89000000000',
       href: 'tel:+79000000000',
     },
     {
       title: 'E-mail',
-      icon: 'email',
+      icon: 'chevron',
       text: 'bluth@example.com',
       href: 'mailto:m.bluth@example.com',
     },

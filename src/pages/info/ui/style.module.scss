@@ -1,0 +1,41 @@
+.info_buyers {
+  @apply my-5 flex items-center p-3 max-md:flex-col md:justify-between;
+}
+.interactive {
+  @apply relative inline-block min-w-[350px] md:w-1/2;
+}
+
+.sign {
+  @apply absolute h-[6%] min-h-[20px] w-[6%] min-w-[20px] cursor-pointer text-tomato transition-transform hover:scale-125;
+
+  &_1 {
+    @apply left-[40%] top-[27%];
+  }
+  &_2 {
+    @apply left-[23%] top-[25%];
+  }
+  &_3 {
+    @apply left-[40%] top-[78%];
+  }
+  &_4 {
+    @apply left-[43%] top-[50%];
+  }
+  &_5 {
+    @apply left-[73%] top-[50%];
+  }
+  &_6 {
+    @apply left-[23%] top-[60%];
+  }
+  &_7 {
+    @apply left-[77%] top-[25%];
+  }
+  &_8 {
+    @apply left-[72%] top-[75%];
+  }
+}
+.mobile_box {
+  @apply fixed left-0 top-0 z-40 flex h-full w-full items-center justify-center bg-black bg-opacity-95 pb-16   text-white;
+}
+.mobile_close {
+  @apply absolute bottom-3 left-1/2 z-50 h-14 w-14  -translate-x-1/2 rounded-full bg-blue bg-opacity-60 p-4 transition-opacity hover:opacity-50;
+}

@@ -1,0 +1,1 @@
+export { InfoBuyers } from './ui'

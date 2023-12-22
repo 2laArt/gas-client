@@ -1,0 +1,1 @@
+export { InfoDescription } from './ui'

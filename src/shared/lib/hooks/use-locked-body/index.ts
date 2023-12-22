@@ -22,10 +22,12 @@ export const useLockedBody = ({ isOpen, bpHidden, className }: ILockedBody) => {
       navigator.userAgent.includes('Android') ||
       navigator.userAgent.includes('iPad') ||
       navigator.userAgent.includes('iPhone')
-    document.body.style.overflow = isOpen ? 'hidden' : 'auto'
+
+    document.body.style.overflow = isOpen && bp ? 'hidden' : 'auto'
 
     const scrollBarWidth = window.innerWidth - document.body.offsetWidth
     !isMobile &&
+      bp &&
       (document.body.style.borderRight = isOpen
         ? `${scrollBarWidth}px solid ${COLORS.gray}`
         : '0')
@@ -33,7 +35,7 @@ export const useLockedBody = ({ isOpen, bpHidden, className }: ILockedBody) => {
       document.body.style.overflow = 'auto'
       document.body.style.borderRight = '0'
     }
-  }, [isOpen])
+  }, [isOpen, bp])
   return (
     isOpen &&
     bp &&

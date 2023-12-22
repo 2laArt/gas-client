@@ -13,7 +13,7 @@ export const paths = {
   order: '/order',
   contacts: '/contacts',
   shoppingPayment: '/shopping-payment',
-  wholesaleBuyers: '/wholesale-buyers',
+  infoBuyers: '/info-buyers',
   catalog: (
     params: ICatalogQueryParams = {
       offset: '0',
