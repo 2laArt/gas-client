@@ -10,7 +10,7 @@
     }
   }
   &_btn {
-    @apply mt-4 w-[220px] rounded-sm bg-blue px-4 py-1 text-sm text-white transition-colors hover:text-gray;
+    @apply mt-4 w-[220px] rounded-sm bg-blue px-4 py-1 text-sm text-white transition-colors;
     @container (max-width: 400px) {
       @apply w-full;
     }

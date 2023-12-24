@@ -1,9 +1,42 @@
 .description {
-  @apply max-h-full overflow-x-hidden p-2 md:max-h-[300px] md:w-1/2 lg:max-h-full;
+  @apply max-h-full  overflow-x-hidden p-2  md:max-h-[300px] md:w-1/2 lg:max-h-[650px];
+
   > img {
     @apply float-right mb-3 ml-3;
   }
   > h2 {
     @apply mb-4 capitalize;
+  }
+}
+
+.first {
+  animation-name: show;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  @keyframes show {
+    from {
+      @apply opacity-0;
+      transform: scale(0.9);
+    }
+    to {
+      @apply opacity-100;
+      transform: scale(1);
+    }
+  }
+}
+
+.second {
+  animation-name: show-2;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  @keyframes show-2 {
+    from {
+      @apply opacity-0;
+      transform: scale(0.9);
+    }
+    to {
+      @apply opacity-100;
+      transform: scale(1);
+    }
   }
 }

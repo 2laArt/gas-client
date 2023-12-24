@@ -1,5 +1,5 @@
 .info_buyers {
-  @apply my-5 flex items-center p-3 max-md:flex-col md:justify-between;
+  @apply my-5 flex items-center p-3 max-md:flex-col md:justify-between lg:min-h-[700px];
 }
 .interactive {
   @apply relative inline-block min-w-[350px] md:w-1/2;

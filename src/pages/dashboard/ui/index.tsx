@@ -25,7 +25,6 @@ export const Dashboard: NextPage<IDashboard> = ({ bestsellers, newParts }) => {
       setTimeout(() => setDisplayAlert(!!cartLength), 3000)
     }
   }, [cartQueryStatus, cartLength])
-
   return (
     <div className={style.dashboard}>
       <Dropdown isOpen={isDisplayAlert}>

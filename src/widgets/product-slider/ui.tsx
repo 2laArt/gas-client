@@ -21,6 +21,7 @@ export const ProductSlider: FC<IDashboardSlider> = ({
   const { username } = useStore($auth)
   const isProducts = Array.isArray(products) && !!products.length
   const isWaring = !isProducts && !spinner && typeof products === 'string'
+
   const renderItem = (item: any, idx: number) =>
     isProducts && !spinner ? (
       <ProductItem {...item} key={idx} username={username} />

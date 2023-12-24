@@ -14,7 +14,7 @@ export const SignIn = () => {
   }
   return (
     <Form defaultValues={{} as ISignInData} onSubmit={onSubmit}>
-      <h2 className={style.title}>Sign in to Website</h2>
+      <h2 className={style.title}>Sign in to the GAS website</h2>
 
       <span className={style.form__span}>or use your email account</span>
 

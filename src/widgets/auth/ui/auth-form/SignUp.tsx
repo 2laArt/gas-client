@@ -15,7 +15,7 @@ export const SignUp = ({ switchForm }: IForm) => {
   }
   return (
     <Form defaultValues={{} as ISignUpData} onSubmit={onSubmit}>
-      <h2 className={style.title}>Sign in to Website</h2>
+      <h2 className={style.title}>Sign up to the GAS website</h2>
 
       <span className={style.form__span}>or use your email account</span>
 

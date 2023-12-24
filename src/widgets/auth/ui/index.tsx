@@ -26,15 +26,16 @@ export const AuthPage: FC = () => {
 
     switchCtn.current.classList.toggle(style.is_txr)
     switchCircle1.current.classList.toggle(style.is_txr)
-    switchCircle2.current.classList.toggle(style.is_txr)
+    switchCircle2.current.classList.toggle(style.is_txl)
 
     switchC1.current.classList.toggle(style.is_hidden)
     switchC2.current.classList.toggle(style.is_hidden)
     setTimeout(() => {
       aContainer.current.classList.toggle(style.is_txl)
+      aContainer.current.classList.toggle(style.is_z200)
       bContainer.current.classList.toggle(style.is_txl)
       bContainer.current.classList.toggle(style.is_z200)
-    }, 300)
+    }, 0)
   }
   return (
     <div className={clsx(style.main)}>
@@ -42,7 +43,7 @@ export const AuthPage: FC = () => {
         <SwitchMode />
       </div>
       <div
-        className={clsx(style.container, style.a_container)}
+        className={clsx(style.container, style.a_container, style.is_z200)}
         ref={aContainer}
       >
         {/* form sign up */}

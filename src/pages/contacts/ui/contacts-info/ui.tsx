@@ -28,7 +28,7 @@ export const ContactsInfo: FC = () => {
         Remark
       </Title>
       <p>
-        <mark className="p-1">
+        <mark className={style.mark}>
           If you liked my works, you can write to me about it or about something
           else.
         </mark>

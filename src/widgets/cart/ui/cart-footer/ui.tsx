@@ -2,6 +2,7 @@ import style from './style.module.scss'
 import clsx from 'clsx'
 import { type FC } from 'react'
 import { formatToCurrency } from 'shared/lib'
+import { Button } from 'shared/ui'
 
 export interface ICartFooter {
   totalPrice: number
@@ -30,14 +31,15 @@ export const CartFooter: FC<ICartFooter> = ({
         <span>Total Mount</span>
         <span>{formatToCurrency(totalPrice)}</span>
       </div>
-
-      <button
+      <Button
+        color="transparent"
         className={clsx(style.footer_btn)}
+        size="medium"
         onClick={onFooterClick}
         disabled={!cartLength}
       >
         {btnText}
-      </button>
+      </Button>
     </div>
   )
 }

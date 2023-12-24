@@ -2,7 +2,7 @@ import { type IInteractiveSigns } from '../config'
 import style from './style.module.scss'
 import clsx from 'clsx'
 import Image from 'next/image'
-import { type FC } from 'react'
+import { useEffect, useState, type FC } from 'react'
 import { Title } from 'shared/ui'
 
 interface IInfoDescription extends IInteractiveSigns {
@@ -12,9 +12,20 @@ export const InfoDescription: FC<IInfoDescription> = ({
   imgSize,
   name,
   text,
+  id,
 }) => {
+  const [anim, setAnim] = useState<boolean>(false)
+  useEffect(() => {
+    setAnim((prev) => !prev)
+  }, [id])
   return (
-    <div className={clsx('small_scroll', style.description)}>
+    <div
+      className={clsx(
+        'small_scroll',
+        style.description,
+        anim ? style.first : style.second
+      )}
+    >
       <Image
         src={`/images/boiler/parts/${name}.png`}
         alt={'part'}

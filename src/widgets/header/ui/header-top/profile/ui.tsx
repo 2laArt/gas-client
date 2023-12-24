@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { FC } from 'react'
 import { useClickOutside } from 'shared/lib'
 import { $auth, logoutFx } from 'shared/store'
+import { Button } from 'shared/ui'
 import { Dropdown } from 'shared/ui/dropdown'
 import { Icon } from 'shared/ui/icon'
 
@@ -11,33 +12,39 @@ export const Profile: FC = () => {
   const { ref, isOpen, setIsOpen } = useClickOutside(false)
   const user = useStore($auth)
   const router = useRouter()
-  const logout = () => {
-    logoutFx().then(() => router.push('/'))
+  const redirect = () => {
+    user.userId ? logoutFx().then(() => router.push('/')) : router.push('/')
   }
-
+  const onClick = () => {
+    setIsOpen((prev) => !prev)
+  }
   return (
     <div className={style.profile} ref={ref}>
-      <button onClick={() => setIsOpen((prev) => !prev)}>
+      <button onClick={onClick}>
         <Icon type="common" name="profile" />
       </button>
-      <Dropdown
-        isOpen={isOpen && !!user.username}
-        className={style.profile__dropdown}
-      >
+      <Dropdown isOpen={isOpen} className={style.profile__dropdown}>
         <div>
-          <div className={style.profile__dropdown__info}>
-            <div className={style.row_info}>
-              <h6>Username:</h6>
-              <span>{user.username}</span>
+          {user.userId ? (
+            <div>
+              <div className={style.row_info}>
+                <h6>Username:</h6>
+                <span>{user.username}</span>
+              </div>
+              <div className={style.row_info}>
+                <h6>Email:</h6>
+                <span>{user.email}</span>
+              </div>
             </div>
-            <div className={style.row_info}>
-              <h6>Email:</h6>
-              <span>{user.email}</span>
+          ) : (
+            <div className="w-[150px] first:py-2">
+              Please Sing in or Sing up
             </div>
-          </div>
-          <button onClick={logout}>
-            EXIT <span>&#10140;</span>
-          </button>
+          )}
+
+          <Button onClick={redirect} color="transparent" size="medium">
+            {user.userId ? 'EXIT' : 'ENTER'}
+          </Button>
         </div>
       </Dropdown>
     </div>

@@ -7,15 +7,18 @@ $transition: left $duration ease;
   @apply relative h-screen min-h-[500px] w-full overflow-hidden bg-ice-blue p-6 dark:bg-black dark:text-white;
 }
 .container {
-  @apply absolute top-0 flex h-full w-[60%] items-center justify-center bg-ice-blue p-6 transition-all dark:bg-black max-md:w-[calc(100%-80px)];
-  transition: $transition, z-index $duration ease;
+  @apply absolute top-0 z-0 flex h-full w-[60%] items-center justify-center bg-ice-blue p-6 opacity-0 dark:bg-black max-md:w-[calc(100%-80px)];
+  // transition: opacity 0.5s ease, $transition, z-index $duration ease;
+  transition-property: left, z-index, opacity;
+  transition-timing-function: ease;
+  transition-duration: $duration;
 }
 
 .a_container {
-  @apply left-[40%] z-30 max-md:left-20;
+  @apply left-[40%]  max-md:left-20;
 }
 .b_container {
-  @apply left-[40%] z-0 max-md:left-20;
+  @apply left-[40%] max-md:left-20;
 }
 
 .switch {
@@ -25,10 +28,10 @@ $transition: left $duration ease;
   transition-duration: 1.25s;
   transform-origin: 0 -100%;
   &__circle {
-    @apply absolute -bottom-[60%] -left-[60%] h-[500px] w-[500px] rounded-full bg-ice-blue shadow-circle transition-bg dark:bg-black dark:shadow-circle-dark;
+    @apply absolute -bottom-[50%] -left-[60%] h-[500px] w-[500px] rounded-full bg-ice-blue shadow-circle transition-bg dark:bg-black dark:shadow-circle-dark;
     transition: $transition;
     &_t {
-      @apply -top-[30%] left-[60%] h-72 w-72;
+      @apply -top-[30%] left-[50%] h-72 w-72 max-md:-top-[20%];
     }
   }
 
@@ -47,8 +50,7 @@ $transition: left $duration ease;
   transform-origin: 0 100%;
 }
 .is_z200 {
-  @apply z-40;
-  transition: $transition;
+  @apply z-40 opacity-100;
 }
 .is_hidden {
   @apply invisible absolute opacity-0;
