@@ -16,7 +16,9 @@ export const SignIn = () => {
     <Form defaultValues={{} as ISignInData} onSubmit={onSubmit}>
       <h2 className={style.title}>Sign in to the GAS website</h2>
 
-      <span className={style.form__span}>or use your email account</span>
+      <span className={style.form__span}>
+        Please fill in the required fields
+      </span>
 
       <InputForm
         name="username"

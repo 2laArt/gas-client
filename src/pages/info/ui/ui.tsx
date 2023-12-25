@@ -1,10 +1,10 @@
-import { interactiveSigns, type IInteractiveSigns } from './config'
+import { type IInteractiveSigns } from './config'
 import { InfoDescription } from './description'
+import { Exhibit } from './exhibit'
 import style from './style.module.scss'
 import { InfoWelcome } from './welcome'
 import clsx from 'clsx'
 import { type NextPage } from 'next'
-import Image from 'next/image'
 import { useMemo, useState } from 'react'
 import { useLockedBody, useMediaQuery } from 'shared/lib'
 import { Icon } from 'shared/ui'
@@ -30,27 +30,7 @@ export const InfoBuyers: NextPage = () => {
           </button>
         </div>
       )}
-      <div className={style.interactive}>
-        <Image
-          className="relative"
-          src={'/images/boiler/boiler-new.png'}
-          alt="boiler"
-          width={600}
-          height={600}
-          priority
-        />
-        <div>
-          {interactiveSigns.map((item) => (
-            <button
-              className={clsx(style.sign, style[`sign_${item.id}`])}
-              key={item.id}
-              onClick={() => setActiveSection(item)}
-            >
-              <Icon type="common" name="exclamation" />
-            </button>
-          ))}
-        </div>
-      </div>
+      <Exhibit setActiveSection={setActiveSection} />
 
       {!is768 &&
         (activeSection?.id ? (

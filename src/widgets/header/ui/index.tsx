@@ -10,7 +10,6 @@ export const Header: FC = () => {
   const cartQueryStatus = useStore($cartQueryStatus)
   const checkedPaymentStatus = useStore($checkedPaymentStatus)
   const { userId } = useStore($auth)
-
   useEffect(() => {
     const paymentId = sessionStorage.getItem('paymentId')
     if (paymentId && !checkedPaymentStatus)

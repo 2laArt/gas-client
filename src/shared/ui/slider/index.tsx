@@ -1,7 +1,8 @@
 import style from './style.module.scss'
 import { SliderButton } from './ui'
 import clsx from 'clsx'
-import { useCallback, useRef, type ReactNode } from 'react'
+import { useCallback, type ReactNode } from 'react'
+import { useDomRefWithSetter } from 'shared/lib'
 import 'swiper/css'
 import { Autoplay, Navigation, Scrollbar } from 'swiper/modules'
 import { Swiper, SwiperSlide, type SwiperProps } from 'swiper/react'
@@ -29,9 +30,8 @@ export function Slider<T>({
   nextBtnClass,
   ...props
 }: ISlider<T>) {
-  const prevRef = useRef(null)
-  const nextRef = useRef(null)
-
+  const [prevEl, prevElRef] = useDomRefWithSetter<HTMLButtonElement>()
+  const [nextEl, nextElRef] = useDomRefWithSetter<HTMLButtonElement>()
   const renderItems = useCallback(
     (_items: typeof items) =>
       _items?.map((item, idx) => (
@@ -55,6 +55,10 @@ export function Slider<T>({
       pauseOnMouseEnter: true,
     },
     scrollbar: false,
+    navigation: {
+      prevEl: nextEl,
+      nextEl: prevEl,
+    },
     ...options,
   }
   const DEFAULT_MODULES = [Navigation, Autoplay, Scrollbar]
@@ -62,21 +66,17 @@ export function Slider<T>({
     <Swiper
       className={clsx(style.slider, className)}
       modules={[...(modules ?? DEFAULT_MODULES)]}
-      navigation={{
-        prevEl: nextRef.current,
-        nextEl: prevRef.current,
-      }}
       {...swiperOptions}
       {...props}
     >
       {navigation && (
         <>
           <SliderButton
-            ref={nextRef}
+            ref={nextElRef}
             className={clsx(style.next, nextBtnClass)}
           />
           <SliderButton
-            ref={prevRef}
+            ref={prevElRef}
             className={clsx(style.prev, prevBtnClass)}
           />
         </>

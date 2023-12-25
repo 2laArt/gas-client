@@ -1,6 +1,6 @@
 import { inputOptions } from '../lib/input-options'
 import style from './style.module.scss'
-import { FC } from 'react'
+import { type FC } from 'react'
 import type {
   FieldErrors,
   RegisterOptions,
@@ -37,6 +37,10 @@ export const InputForm: FC<IInputProps> = ({
   ...props
 }) => {
   const options = inputOptions[type](optionSettings)
+  const inputError = ({ errors, name }: IErrorInput): string | undefined => {
+    const errorName = errors[name as keyof typeof errors]
+    return errorName && errorName.message
+  }
   return register ? (
     <label className={style.label}>
       <input
@@ -56,9 +60,4 @@ export const InputForm: FC<IInputProps> = ({
   ) : (
     <span>something wrong</span>
   )
-}
-
-const inputError = ({ errors, name }: IErrorInput): string | undefined => {
-  const errorName = errors[name as keyof typeof errors]
-  return errorName && errorName.message
 }

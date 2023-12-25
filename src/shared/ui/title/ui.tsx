@@ -1,6 +1,11 @@
 import styles from './style.module.scss'
 import clsx from 'clsx'
-import type { ComponentProps, ElementType, ReactNode } from 'react'
+import {
+  memo,
+  type ComponentProps,
+  type ElementType,
+  type ReactNode,
+} from 'react'
 
 interface TitleOwnProps<E extends ElementType = ElementType> {
   className?: string
@@ -14,18 +19,23 @@ const DEFAULT_ELEMENT: ElementType = 'h1'
 export type TitleProps<E extends ElementType> = TitleOwnProps<E> &
   Omit<ComponentProps<E>, keyof TitleOwnProps>
 
-export const Title = <E extends ElementType = typeof DEFAULT_ELEMENT>({
-  className,
-  children,
-  size = 'large',
-  as,
-  ...props
-}: TitleProps<E>) => {
-  const Element = as || DEFAULT_ELEMENT
+export const Title = memo(
+  <E extends ElementType = typeof DEFAULT_ELEMENT>({
+    className,
+    children,
+    size = 'large',
+    as,
+    ...props
+  }: TitleProps<E>) => {
+    const Element = as || DEFAULT_ELEMENT
 
-  return (
-    <Element className={clsx(styles.title, styles[size], className)} {...props}>
-      {children}
-    </Element>
-  )
-}
+    return (
+      <Element
+        className={clsx(styles.title, styles[size], className)}
+        {...props}
+      >
+        {children}
+      </Element>
+    )
+  }
+)

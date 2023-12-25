@@ -15,6 +15,7 @@ export const AuthPage: FC = () => {
   const switchCircle2 = useRef() as MutableRefObject<HTMLDivElement>
   const bContainer = useRef() as MutableRefObject<HTMLDivElement>
   const aContainer = useRef() as MutableRefObject<HTMLDivElement>
+
   const switchForm = () => {
     if (!isAnimated) return
     setIsAnimated(false)

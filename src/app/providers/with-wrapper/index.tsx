@@ -1,5 +1,5 @@
+import { useAccessedPages } from 'app/lib/use-accessed-pages'
 import { type AppProps } from 'next/app'
-import { memo } from 'react'
 import { Layout } from 'widgets/layout'
 
 export const withWrapper = ({
@@ -8,13 +8,14 @@ export const withWrapper = ({
   ...appProps
 }: AppProps) => {
   const withWrapperArr = ['/']
-  return memo(() =>
-    withWrapperArr.includes(appProps.router.pathname) ? (
-      <Component {...pageProps} />
-    ) : (
+  const { shouldLoadContent } = useAccessedPages(appProps.router.pathname)
+  return !withWrapperArr.includes(appProps.router.pathname) ? (
+    !!shouldLoadContent && (
       <Layout>
         <Component {...pageProps} />
       </Layout>
     )
+  ) : (
+    <Component {...pageProps} />
   )
 }

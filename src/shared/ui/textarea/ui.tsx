@@ -1,6 +1,6 @@
 import style from './style.module.scss'
 import clsx from 'clsx'
-import { type FC } from 'react'
+import { memo, type FC } from 'react'
 import { type RegisterOptions, type UseFormReturn } from 'react-hook-form'
 
 interface ITextareaProps {
@@ -10,20 +10,17 @@ interface ITextareaProps {
   options?: RegisterOptions
 }
 
-export const Textarea: FC<ITextareaProps> = ({
-  register,
-  className,
-  name,
-  ...rest
-}) => {
-  if (register)
-    return (
-      <textarea
-        className={clsx(style.textarea, className)}
-        placeholder={`Enter  something`}
-        {...register(name)}
-        {...rest}
-      />
-    )
-  return <mark> Sorry Something`s Wrong</mark>
-}
+export const Textarea: FC<ITextareaProps> = memo(
+  ({ register, className, name, ...rest }) => {
+    if (register)
+      return (
+        <textarea
+          className={clsx(style.textarea, className)}
+          placeholder={`Enter  something`}
+          {...register(name)}
+          {...rest}
+        />
+      )
+    return <mark> Sorry Something`s Wrong</mark>
+  }
+)
