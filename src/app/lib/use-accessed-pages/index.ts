@@ -14,6 +14,7 @@ export const useAccessedPages = (pathname: string) => {
   const accessedPages = useMemo(
     () => [
       paths.about,
+      paths.auth,
       paths.contacts,
       // paths.shoppingPayment,
       paths.infoBuyers,
@@ -45,14 +46,14 @@ export const useAccessedPages = (pathname: string) => {
 
     if (!user && pathname !== paths.auth) {
       toast.info('Please Sign In or Sign Up', { autoClose: 15000 })
-      router.push('/')
+      router.push(paths.auth)
     }
 
     if (user) {
       setAuth(user as ICheckAuth)
       setShouldLoadContent(true)
       if (pathname === paths.auth) {
-        router.push('/dashboard')
+        router.push(paths.dashboard)
       }
       return
     }

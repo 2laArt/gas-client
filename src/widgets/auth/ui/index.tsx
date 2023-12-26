@@ -3,10 +3,10 @@ import { texts } from './config'
 import { IntroSwitch } from './intro-switch/ui'
 import style from './style.module.scss'
 import clsx from 'clsx'
-import { SwitchMode } from 'features/switch-mode'
-import { useRef, useState, type FC, type MutableRefObject } from 'react'
+import { type NextPage } from 'next'
+import { useRef, useState, type MutableRefObject } from 'react'
 
-export const AuthPage: FC = () => {
+export const AuthPage: NextPage = () => {
   const [isAnimated, setIsAnimated] = useState<boolean>(true)
   const switchC1 = useRef() as MutableRefObject<HTMLDivElement>
   const switchC2 = useRef() as MutableRefObject<HTMLDivElement>
@@ -40,9 +40,6 @@ export const AuthPage: FC = () => {
   }
   return (
     <div className={clsx(style.main)}>
-      <div className={style.mood}>
-        <SwitchMode />
-      </div>
       <div
         className={clsx(style.container, style.a_container, style.is_z200)}
         ref={aContainer}

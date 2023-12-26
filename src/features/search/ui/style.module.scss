@@ -12,6 +12,11 @@
     }
   }
 }
+.blocked {
+  &::after {
+    @apply absolute left-0 top-0 block h-full w-full bg-bg-white bg-opacity-70 content-[''] dark:bg-dark dark:bg-opacity-80;
+  }
+}
 .list {
   @apply absolute left-0 top-full z-[1] grid w-full grid-rows-[0fr] overflow-hidden rounded-b-sm bg-white transition-[grid-template-rows] dark:bg-black;
   &_open {
@@ -24,9 +29,15 @@
     @apply max-h-[350px] min-h-0 overflow-y-scroll;
   }
   &__item {
-    @apply px-2 py-3 transition-colors hover:bg-[rgba(0,0,0,.2)];
+    @apply block px-2 py-3 transition-colors hover:bg-[rgba(0,0,0,.2)];
     &_active {
       @apply bg-cyan hover:brightness-110;
+    }
+  }
+  .not_found {
+    @apply overflow-hidden text-center;
+    > li {
+      @apply pointer-events-none cursor-text;
     }
   }
 }

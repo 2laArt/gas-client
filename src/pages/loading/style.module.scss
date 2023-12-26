@@ -1,0 +1,43 @@
+$pulse-dark: rgba(0, 0, 0, 1);
+$pulse-light: rgba(255, 255, 255, 0.9);
+$pulse-light-end: rgba(255, 255, 255, 0.1);
+.loading {
+  @apply grid h-screen w-full  place-items-center;
+}
+
+.icon {
+  @apply mb-6 inline-block h-56 w-36 text-dark dark:text-white;
+}
+.text {
+  @apply mb-2 text-center text-base italic;
+}
+
+:is([class~='dark'] .icon > svg) {
+  animation: pulse-dark 1s linear infinite;
+  @keyframes pulse-dark {
+    from {
+      -webkit-filter: drop-shadow(0 0 0 $pulse-light);
+      filter: drop-shadow(0 0 0 $pulse-light);
+    }
+
+    to {
+      -webkit-filter: drop-shadow(0 0 60px $pulse-light-end);
+      filter: drop-shadow(0 0 60px $pulse-light-end);
+    }
+  }
+}
+
+.icon > svg {
+  animation: pulse 1s linear infinite;
+  @keyframes pulse {
+    from {
+      -webkit-filter: drop-shadow(0 0 0 $pulse-dark);
+      filter: drop-shadow(0 0 0 $pulse-dark);
+    }
+
+    to {
+      -webkit-filter: drop-shadow(0 0 100px $pulse-dark);
+      filter: drop-shadow(0 0 100px $pulse-dark);
+    }
+  }
+}

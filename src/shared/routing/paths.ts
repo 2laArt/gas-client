@@ -7,8 +7,9 @@ export interface ICatalogQueryParams extends Omit<IFiltersParams, 'limit'> {
 type Id = number | null | undefined
 
 export const paths = {
-  auth: '/',
-  dashboard: '/dashboard',
+  auth: '/auth',
+  loading: '/loading',
+  dashboard: '/',
   about: '/about',
   order: '/order',
   contacts: '/contacts',

@@ -3,6 +3,7 @@ import { useStore } from 'effector-react'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 import { useClickOutside } from 'shared/lib'
+import { paths } from 'shared/routing'
 import { $auth, logoutFx } from 'shared/store'
 import { Button } from 'shared/ui'
 import { Dropdown } from 'shared/ui/dropdown'
@@ -13,7 +14,9 @@ export const Profile: FC = () => {
   const user = useStore($auth)
   const router = useRouter()
   const redirect = () => {
-    user.userId ? logoutFx().then(() => router.push('/')) : router.push('/')
+    user.userId
+      ? logoutFx().then(() => window.location.reload())
+      : router.push(paths.auth)
   }
   const onClick = () => {
     setIsOpen((prev) => !prev)

@@ -14,7 +14,7 @@ export const ActiveLink: FC<IActiveLink> = ({
   children,
   className,
 }) => {
-  const isActive = href.includes(pathname)
+  const isActive = pathname === href.split('?')[0]
   return (
     <Link
       href={href}

@@ -1,9 +1,10 @@
-import { ISignInFields, ISignUpFields } from './type'
+import type { ISignInFields, ISignUpFields } from './type'
 import { AxiosError } from 'axios'
 import { createEffect } from 'effector-next'
 import { toast } from 'react-toastify'
 import { authService } from 'shared/api'
 import { HTTPStatus } from 'shared/config'
+import { paths } from 'shared/routing'
 
 export const signUpFx = createEffect(
   async ({
@@ -40,7 +41,7 @@ export const signInFx = createEffect(
       toast.success('Successful login')
       resetField('name')
       resetField('password')
-      router.push('/dashboard')
+      router.push(paths.dashboard)
       return data
     } catch (error) {
       const response = (error as AxiosError).response

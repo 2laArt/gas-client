@@ -1,8 +1,6 @@
 $duration: 1.25s;
 $transition: left $duration ease;
-.mood {
-  @apply absolute right-2 top-1 z-50;
-}
+
 .main {
   @apply relative h-screen min-h-[500px] w-full overflow-hidden bg-ice-blue p-6 dark:bg-black dark:text-white;
 }
