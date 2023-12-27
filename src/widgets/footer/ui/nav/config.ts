@@ -27,8 +27,8 @@ export const navItems = {
         href: paths.contacts,
       },
       {
-        text: 'Info for Buyers',
-        href: paths.infoBuyers,
+        text: 'Info about the Boiler',
+        href: paths.infoBoiler,
       },
     ],
   },

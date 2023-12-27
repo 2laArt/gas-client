@@ -14,7 +14,7 @@ export const paths = {
   order: '/order',
   contacts: '/contacts',
   shoppingPayment: '/shopping-payment',
-  infoBuyers: '/info-buyers',
+  infoBoiler: '/info-boiler',
   catalog: (
     params: ICatalogQueryParams = {
       offset: '0',

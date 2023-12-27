@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  @apply m-0 bg-aqua dark:bg-black;
+  @apply m-0 bg-bg-white dark:bg-black;
   &::-webkit-scrollbar {
     width: 10px;
   }

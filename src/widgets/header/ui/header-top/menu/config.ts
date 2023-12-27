@@ -5,5 +5,5 @@ export const items = [
   { text: 'About ', href: paths.about },
   { text: 'Catalog', href: paths.catalog() },
   { text: 'Contacts', href: paths.contacts },
-  { text: 'Info for Buyers', href: paths.infoBuyers },
+  { text: 'Info about the Boiler', href: paths.infoBoiler },
 ]

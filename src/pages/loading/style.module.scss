@@ -4,12 +4,11 @@ $pulse-light-end: rgba(255, 255, 255, 0.1);
 .loading {
   @apply grid h-screen w-full  place-items-center;
 }
-
 .icon {
-  @apply mb-6 inline-block h-56 w-36 text-dark dark:text-white;
+  @apply relative mb-6 inline-block h-56 w-36 text-dark dark:text-white;
 }
 .text {
-  @apply mb-2 text-center text-base italic;
+  @apply mb-3 text-center text-base italic;
 }
 
 :is([class~='dark'] .icon > svg) {

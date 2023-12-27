@@ -1,7 +1,7 @@
 import style from './style.module.scss'
 import { useStore } from 'effector-react'
 import { useRouter } from 'next/router'
-import { FC } from 'react'
+import { type FC } from 'react'
 import { useClickOutside } from 'shared/lib'
 import { paths } from 'shared/routing'
 import { $auth, logoutFx } from 'shared/store'

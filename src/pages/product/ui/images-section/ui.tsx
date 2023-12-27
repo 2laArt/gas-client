@@ -35,6 +35,7 @@ export const ProductPageImages: FC<{ images: string[] }> = ({ images }) => {
       />
     </div>
   )
+
   return (
     <div>
       {!is768 ? (
@@ -51,6 +52,7 @@ export const ProductPageImages: FC<{ images: string[] }> = ({ images }) => {
           <div className={style.images}>
             <Slider
               navigation={false}
+              slidesPerGroupSkip={undefined}
               items={images}
               renderItem={Item}
               options={options}

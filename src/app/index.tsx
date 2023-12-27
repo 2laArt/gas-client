@@ -25,7 +25,7 @@ const App = ({ Component, pageProps, ...appProps }: AppProps) => {
       <ComponentWrapper />
       <ToastContainer
         theme={mode}
-        position="top-right"
+        position="bottom-right"
         limit={10}
         closeOnClick
         rtl={false}

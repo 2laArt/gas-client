@@ -1,0 +1,1 @@
+export { InfoBoiler } from './ui'

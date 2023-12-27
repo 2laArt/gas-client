@@ -62,6 +62,7 @@ export function Slider<T>({
     ...options,
   }
   const DEFAULT_MODULES = [Navigation, Autoplay, Scrollbar]
+
   return (
     <Swiper
       className={clsx(style.slider, className)}

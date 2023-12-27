@@ -27,8 +27,9 @@ const getPriceRange = ({ currentPrice, maxLimit, minLimit }: IPriceRange) => {
   if (currentPrice + step > maxLimit) {
     return { priceFrom: currentPrice - step, priceTo: maxLimit }
   }
-  if (currentPrice - step > minLimit) {
+  if (currentPrice - step < minLimit) {
     return { priceFrom: minLimit, priceTo: currentPrice + step }
   }
+
   return { priceFrom: currentPrice - step, priceTo: currentPrice + step }
 }
