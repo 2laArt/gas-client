@@ -26,12 +26,14 @@ export const InfoDescription: FC<IInfoDescription> = ({
         anim ? style.first : style.second
       )}
     >
-      <Image
-        src={`/images/boiler/parts/${name}.png`}
-        alt={'part'}
-        width={imgSize}
-        height={imgSize}
-      />
+      <div className={style.wrapper}>
+        <Image
+          src={`/images/boiler/parts/${name}.png`}
+          alt={'part'}
+          width={imgSize}
+          height={imgSize}
+        />
+      </div>
       <Title size="medium" as="h2">
         {name}
       </Title>

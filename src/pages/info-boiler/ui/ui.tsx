@@ -1,15 +1,14 @@
-import clsx from 'clsx'
-import { type NextPage } from 'next'
-import { useMemo, useState } from 'react'
-import { useLockedBody, useMediaQuery } from 'shared/lib'
-import { Icon } from 'shared/ui'
 import { type IInteractiveSigns } from './config'
 import { InfoDescription } from './description'
 import { Exhibit } from './exhibit'
 import style from './style.module.scss'
 import { InfoWelcome } from './welcome'
+import clsx from 'clsx'
+import { type NextPage } from 'next'
+import { useMemo, useState } from 'react'
+import { useLockedBody, useMediaQuery } from 'shared/lib'
+import { Icon } from 'shared/ui'
 
-//is1024 ? 150 : 200
 export const InfoBoiler: NextPage = () => {
   const [activeSection, setActiveSection] = useState<IInteractiveSigns>()
   const is1024 = useMediaQuery(1024)

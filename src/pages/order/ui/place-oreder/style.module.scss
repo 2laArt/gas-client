@@ -30,7 +30,7 @@
   }
 }
 .label {
-  @apply cursor-pointer decoration-wavy;
+  @apply flex cursor-pointer items-center decoration-wavy;
   > input {
     @apply mr-4;
   }

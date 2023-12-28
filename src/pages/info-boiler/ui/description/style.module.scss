@@ -1,14 +1,16 @@
 .description {
   @apply max-h-full  overflow-x-hidden p-2  md:max-h-[300px] md:w-1/2 lg:max-h-[650px];
 
-  > img {
-    @apply float-right mb-3 ml-3;
-  }
   > h2 {
     @apply mb-4 capitalize;
   }
 }
-
+.wrapper {
+  @apply float-right mb-3 ml-3 inline-block max-w-[35%];
+  > img {
+    @apply h-auto w-auto;
+  }
+}
 .first {
   animation-name: show;
   animation-duration: 1s;

@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { useState, type FC } from 'react'
 import { type ICartItem } from 'shared/api'
 import { formatToCurrency } from 'shared/lib'
-import { Button, Title } from 'shared/ui'
+import { Button, Checkbox, Title } from 'shared/ui'
 
 interface IPaceOrder {
   isEdit: boolean
@@ -46,8 +46,8 @@ export const PlaceOrder: FC<IPaceOrder> = ({
         </div>
         {!!cart.length && (
           <label className={style.label}>
-            <input
-              type="checkbox"
+            <Checkbox
+              color="yellow"
               checked={isAgreed}
               onChange={() => setIsAgreed((prev) => !prev)}
             />

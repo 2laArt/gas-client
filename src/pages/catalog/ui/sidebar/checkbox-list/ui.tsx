@@ -8,6 +8,7 @@ import {
 } from 'pages/catalog/model'
 import { type FC } from 'react'
 import { brands } from 'shared/config'
+import { Checkbox } from 'shared/ui'
 
 interface ICheckboxList {
   section: TypeFiltersFieldsCheckbox
@@ -39,15 +40,14 @@ export const CheckboxList: FC<ICheckboxList> = ({
       <ul className={clsx('small_scroll', style.ul, className)}>
         {Object.keys(checkboxes).map((checkbox) => (
           <li className={style.li} key={checkbox}>
-            {/* 
-						TODO: CREATE CUSTOM CHECKBOX
-						*/}
             <label>
-              <input
-                type="checkbox"
+              <Checkbox
+                size="normal"
+                color="blue"
                 onChange={() => toggle(checkbox)}
                 checked={checkboxes[checkbox]}
               />
+
               {checkbox}
             </label>
           </li>
