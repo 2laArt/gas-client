@@ -5,12 +5,12 @@ export const observeAboutPage = (
   style: string
 ) => {
   if (!ref.current) return
-  const options = {
-    rootMargin: '5px',
+  const options: IntersectionObserverInit = {
+    rootMargin: '150px',
     threshold: 0.5,
   }
 
-  const callback: IntersectionObserverCallback = (entries, observer) => {
+  const callback: IntersectionObserverCallback = (entries, oberver) => {
     entries.forEach((entry) =>
       entry.isIntersecting
         ? entry.target.classList.add(style)

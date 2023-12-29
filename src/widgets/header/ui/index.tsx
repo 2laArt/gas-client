@@ -12,8 +12,7 @@ export const Header: FC = () => {
   const { userId } = useStore($auth)
   useEffect(() => {
     const paymentId = sessionStorage.getItem('paymentId')
-    if (paymentId && !checkedPaymentStatus)
-      checkPayment({ paymentId, userId: userId })
+    if (paymentId && !checkedPaymentStatus) checkPayment({ paymentId, userId })
   }, [])
   useEffect(() => {
     if (cartQueryStatus === 'start' && userId) {

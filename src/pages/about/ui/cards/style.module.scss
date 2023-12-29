@@ -1,0 +1,69 @@
+$transition-time: 1s;
+
+.card {
+  @apply relative m-3 aspect-square w-full overflow-hidden rounded-lg xs:w-[80%] sm:w-[45%] md:w-5/12 lg:w-[30%];
+  transition: ease transform $transition-time;
+  perspective: 1200px;
+  &:hover {
+    .cover {
+      transform: rotateY(-180deg);
+      &:before {
+        transform: translateZ(30px);
+      }
+      &:after {
+        @apply bg-dark bg-opacity-90;
+      }
+      h5 {
+        transform: translateZ(100px);
+      }
+      .card_back {
+        transform: translateZ(-60px);
+      }
+    }
+  }
+  .cover {
+    @apply absolute h-full w-full;
+    transform-style: preserve-3d;
+    transition: ease transform $transition-time;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: var(--image-bg);
+    &:before {
+      @apply absolute bottom-[20px] left-[20px] right-[20px] top-[20px] z-[2] border-8 border-light-gray border-opacity-50 content-[''];
+      transition-property: background, transform, z-index, opacity;
+      transition-timing-function: ease;
+      transition-duration: $transition-time;
+      transform-style: preserve-3d;
+      transform: translateZ(0px);
+    }
+    &:after {
+      @apply absolute bottom-0 left-0 right-0 top-0 z-[2] bg-dark bg-opacity-50 content-[''];
+      transition-property: background, transform;
+      transition-timing-function: ease;
+      transition-duration: 1.3s;
+    }
+
+    h5 {
+      @apply absolute bottom-[20%] left-[30px] z-[3] max-w-[60%] text-2xl text-white;
+      transform-style: preserve-3d;
+      transition: ease transform $transition-time;
+      transform: translateZ(0px);
+    }
+  }
+  .card_back {
+    @apply absolute left-0 top-0 box-border flex h-full w-full items-center justify-center overflow-hidden p-3 px-8 text-center;
+    direction: rtl;
+    transform-style: preserve-3d;
+    transition: ease transform $transition-time;
+    transform: translateZ(-1px);
+    .text {
+      @apply inline-block text-white;
+      transform-style: preserve-3d;
+      transition-property: color;
+      transition-duration: 0.3s;
+      transition-timing-function: ease;
+      transform: translateZ(-1px) rotateY(-180deg);
+    }
+  }
+}

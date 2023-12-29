@@ -4,9 +4,9 @@ import style from './style.module.scss'
 import clsx from 'clsx'
 import { useStore } from 'effector-react'
 import { type NextPage } from 'next'
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { type IBoilerPart } from 'shared/api'
-import { $cart, $cartQueryStatus, $cartTotalPrice } from 'shared/store'
+import { $cart, $cartQueryStatus, $cartTotalPrice, setMeta } from 'shared/store'
 import { Dropdown, Title } from 'shared/ui'
 import { ProductSlider } from 'widgets/product-slider'
 
@@ -20,6 +20,12 @@ export const Dashboard: NextPage<IDashboard> = ({ bestsellers, newParts }) => {
   const totalPrice = useStore($cartTotalPrice)
   const [isDisplayAlert, setDisplayAlert] = useState<boolean>(false)
 
+  useLayoutEffect(() => {
+    setMeta({
+      title: 'Dashboard',
+      description: 'Get to know our store',
+    })
+  }, [])
   useEffect(() => {
     if (cartQueryStatus === 'finished') {
       setTimeout(() => setDisplayAlert(!!cartLength), 3000)

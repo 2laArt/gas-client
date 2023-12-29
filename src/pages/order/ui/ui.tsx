@@ -4,18 +4,26 @@ import clsx from 'clsx'
 import { useStore } from 'effector-react'
 import { type NextPage } from 'next'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
-import { $cart, $cartTotalPrice, paymentFx } from 'shared/store'
+import { useLayoutEffect, useState } from 'react'
+import { $auth, $cart, $cartTotalPrice, paymentFx, setMeta } from 'shared/store'
 import { Icon, Title } from 'shared/ui'
 import { OrdersCart } from 'widgets/cart'
 
 export const Order: NextPage = () => {
   const cart = useStore($cart)
+  const { email } = useStore($auth)
   const totalPrice = useStore($cartTotalPrice)
   const [isEdit, setEdit] = useState<boolean>(true)
   const router = useRouter()
   const onPayment = () =>
-    paymentFx({ description: '', router, amount: totalPrice })
+    paymentFx({ description: email, router, amount: totalPrice })
+
+  useLayoutEffect(() => {
+    setMeta({
+      title: 'The Order',
+      description: 'Confirmation and Purchase of Goods',
+    })
+  }, [])
   return (
     <div className={clsx(style.order)}>
       <div className={style.order_box}>

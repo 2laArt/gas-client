@@ -4,7 +4,8 @@ import { IntroSwitch } from './intro-switch/ui'
 import style from './style.module.scss'
 import clsx from 'clsx'
 import { type NextPage } from 'next'
-import { useRef, useState, type MutableRefObject } from 'react'
+import { useLayoutEffect, useRef, useState, type MutableRefObject } from 'react'
+import { setMeta } from 'shared/store'
 
 export const AuthPage: NextPage = () => {
   const [isAnimated, setIsAnimated] = useState<boolean>(true)
@@ -38,6 +39,11 @@ export const AuthPage: NextPage = () => {
       bContainer.current.classList.toggle(style.is_z200)
     }, 0)
   }
+  useLayoutEffect(() => {
+    setMeta({
+      title: 'Authentication',
+    })
+  }, [])
   return (
     <div className={clsx(style.main)}>
       <div

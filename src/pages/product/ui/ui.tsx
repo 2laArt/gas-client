@@ -6,8 +6,9 @@ import clsx from 'clsx'
 import { useStore } from 'effector-react'
 import { type NextPage } from 'next'
 import { $filters } from 'pages/catalog/model'
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { type IBoilerPart } from 'shared/api'
+import { setMeta } from 'shared/store'
 import { Title } from 'shared/ui'
 import { ProductSlider } from 'widgets/product-slider'
 
@@ -31,7 +32,12 @@ export const ProductPage: NextPage<IProductPageProps> = ({ product }) => {
       .then((data) => setSimilar(data ?? []))
       .finally(() => setTimeout(() => setSpinner(false), 2000))
   }, [])
-
+  useLayoutEffect(() => {
+    setMeta({
+      title: product.name,
+      description: product.description,
+    })
+  }, [])
   return product ? (
     <>
       <div className={style.product}>

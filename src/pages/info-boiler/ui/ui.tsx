@@ -5,8 +5,9 @@ import style from './style.module.scss'
 import { InfoWelcome } from './welcome'
 import clsx from 'clsx'
 import { type NextPage } from 'next'
-import { useMemo, useState } from 'react'
+import { useLayoutEffect, useMemo, useState } from 'react'
 import { useLockedBody, useMediaQuery } from 'shared/lib'
+import { setMeta } from 'shared/store'
 import { Icon } from 'shared/ui'
 
 export const InfoBoiler: NextPage = () => {
@@ -15,6 +16,12 @@ export const InfoBoiler: NextPage = () => {
   const is768 = useMediaQuery(768)
   useLockedBody({ isOpen: !!activeSection?.id, bpHidden: 'md' })
   const descriptionImgSize = useMemo(() => (is1024 ? 150 : 200), [is1024])
+  useLayoutEffect(() => {
+    setMeta({
+      title: 'Info about the Boiler',
+      description: 'We will fill in the necessary information',
+    })
+  }, [])
   return (
     <div className={clsx(style.info_buyers)}>
       {is768 && <InfoWelcome />}

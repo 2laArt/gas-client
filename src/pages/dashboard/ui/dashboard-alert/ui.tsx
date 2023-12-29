@@ -23,7 +23,6 @@ export const DashboardAlert: FC<IDashboardAlert> = memo(
           <div>Total Price: {formatToCurrency(totalPrice)}</div>
         </div>
         <div className={style.alert_btns}>
-          <Link href={paths.order}>go to cart</Link>
           <Link href={paths.order}>place an order</Link>
         </div>
         <Button

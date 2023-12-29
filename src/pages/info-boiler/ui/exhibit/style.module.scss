@@ -1,5 +1,5 @@
 .interactive {
-  @apply relative inline-block min-w-[350px] md:w-1/2;
+  @apply relative inline-block min-w-[350px] max-lg:max-w-[50%] max-md:max-w-full;
 }
 
 .sign {

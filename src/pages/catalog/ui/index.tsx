@@ -17,8 +17,9 @@ import style from './style.module.scss'
 import type { ICatalogProps, ICatalogSidebarProps } from './type'
 import { Pagination } from 'features/pagination'
 import { type NextPage } from 'next'
-import { useCallback, useMemo } from 'react'
+import { useCallback, useLayoutEffect, useMemo } from 'react'
 import { useClickOutside, useMediaQuery } from 'shared/lib'
+import { setMeta } from 'shared/store'
 import { Title } from 'shared/ui'
 
 export const Catalog: NextPage = () => {
@@ -88,7 +89,12 @@ export const Catalog: NextPage = () => {
     setMinPrice,
     sidebarTitles,
   }
-
+  useLayoutEffect(() => {
+    setMeta({
+      title: 'Catalog',
+      description: 'We will help you choose the best options',
+    })
+  }, [])
   return (
     <div className={style.catalog}>
       <Title size="xl">Catalog</Title>

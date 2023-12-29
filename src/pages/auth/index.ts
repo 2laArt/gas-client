@@ -1,1 +1,1 @@
-export { AuthPage } from 'widgets/auth'
+export { AuthPage } from './ui'
