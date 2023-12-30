@@ -10,6 +10,7 @@ export const AboutCards: FC = () => {
       cardsContent.map((item) => (
         <div
           className={style.card}
+          key={item.title}
           style={
             {
               '--image-bg': `url(${item.imgBg})`,

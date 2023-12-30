@@ -1,1 +1,1 @@
-export { observeAboutPage } from './observe-about-page'
+export { useObserveAboutPage } from './use-observe-about-page'

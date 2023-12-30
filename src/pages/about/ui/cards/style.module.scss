@@ -38,7 +38,7 @@ $transition-time: 1s;
       transform: translateZ(0px);
     }
     &:after {
-      @apply absolute bottom-0 left-0 right-0 top-0 z-[2] bg-dark bg-opacity-50 content-[''];
+      @apply absolute left-0 top-0 z-[2] h-full w-full bg-dark bg-opacity-50 content-[''];
       transition-property: background, transform;
       transition-timing-function: ease;
       transition-duration: 1.3s;
@@ -58,7 +58,7 @@ $transition-time: 1s;
     transition: ease transform $transition-time;
     transform: translateZ(-1px);
     .text {
-      @apply inline-block text-white;
+      @apply inline-block text-base text-white;
       transform-style: preserve-3d;
       transition-property: color;
       transition-duration: 0.3s;

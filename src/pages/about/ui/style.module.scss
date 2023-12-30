@@ -5,7 +5,7 @@
 .child {
   @apply relative mx-auto flex max-w-[1000px] items-center justify-center;
   .text {
-    @apply absolute top-1/2 z-10 w-3/5 min-w-[300px] bg-[rgba(255,255,255,.8)] p-6 opacity-0 shadow-section dark:bg-[rgba(0,0,0,.6)];
+    @apply absolute top-1/2 z-10 w-3/5 min-w-[300px] bg-[rgba(255,255,255,.8)] p-6 opacity-0 shadow-section  dark:bg-[rgba(0,0,0,.6)];
   }
   > img {
     @apply translate-y-[10%] rounded-lg opacity-0 shadow-section;
@@ -56,7 +56,7 @@
   }
 }
 .cards_box {
-  @apply z-10 flex translate-x-[10%] flex-wrap items-center justify-center py-14 opacity-0 transition-[transform,opacity] duration-[2s] lg:flex-nowrap;
+  @apply z-10 flex translate-x-[10%] flex-wrap items-center justify-center py-14 opacity-0 transition-[transform,opacity] duration-[2s] max-sm:translate-x-0 max-sm:opacity-100 lg:flex-nowrap;
   &.show {
     @apply translate-x-0 opacity-100;
   }

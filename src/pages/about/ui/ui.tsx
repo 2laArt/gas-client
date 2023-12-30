@@ -1,17 +1,23 @@
-import { observeAboutPage } from '../lib'
+import { useObserveAboutPage } from '../lib'
 import { AboutCards } from './cards'
 import style from './style.module.scss'
 import clsx from 'clsx'
 import { type NextPage } from 'next'
 import Image from 'next/image'
-import { useEffect, useLayoutEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect } from 'react'
+import { useMediaQuery } from 'shared/lib'
 import { setMeta } from 'shared/store'
 
 export const About: NextPage = () => {
-  const ref = useRef<HTMLDivElement>(null)
+  const { ref, connect, disconnect } = useObserveAboutPage(style.show)
+  const is640 = useMediaQuery(640)
   useEffect(() => {
-    observeAboutPage(ref, style.show)
-  }, [])
+    if (is640) {
+      disconnect()
+    } else {
+      connect()
+    }
+  }, [is640])
   useLayoutEffect(() => {
     setMeta({
       title: 'About the Store',
@@ -19,30 +25,10 @@ export const About: NextPage = () => {
         'Here you will find and get acquainted with our ideology and goals',
     })
   }, [])
-  const arr = [...Array(4)].map((_, idx) => (
-    <div key={idx} className={style.child}>
-      <Image
-        src={`/images/about-imgs/about${idx + 1}.jpg`}
-        alt={`images-boiler${idx + 1}`}
-        width={400}
-        height={400}
-        priority
-      />
-      <div className={clsx('small_scroll', style.text)}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
-        animi veritatis doloremque, nostrum ea dolorum, unde dolores architecto
-        cum fugit atque. Quia vel quisquam facere, nihil reprehenderit
-        blanditiis quis at? Officiis ipsa quas doloribus sequi, placeat
-        cupiditate vel magnam at voluptatum tempora consectetur ratione nisi
-        tenetur necessitatibus eligendi iure deleniti quia explicabo eum maxime,
-        animi molestiae recusandae! Dolorum, at laborum.
-      </div>
-    </div>
-  ))
 
   return (
     <div className={style.parent} ref={ref}>
-      <div className={style.child}>
+      <div className={clsx(style.child)}>
         <Image
           src={`/images/about-imgs/about2.jpg`}
           alt={`images-boiler`}
@@ -51,19 +37,17 @@ export const About: NextPage = () => {
           priority
         />
         <div className={clsx('small_scroll', style.text)}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
-          animi veritatis doloremque, nostrum ea dolorum, unde dolores
-          architecto cum fugit atque. Quia vel quisquam facere, nihil
-          reprehenderit blanditiis quis at? Officiis ipsa quas doloribus sequi,
-          placeat cupiditate vel magnam at voluptatum tempora consectetur
-          ratione nisi tenetur necessitatibus eligendi iure deleniti quia
-          explicabo eum maxime, animi molestiae recusandae! Dolorum, at laborum.
+          The oil & gas industry works closely with government to protect the
+          health and safety of workers and public. Industry regulations reflect
+          modern scientific knowledge about hazards and the technology available
+          to reduce them. New designed management systems in petroleum industry
+          are safer not only for workers, but for environment too.
         </div>
       </div>
-      <div className={style.cards_box}>
+      <div className={clsx(style.cards_box)}>
         <AboutCards />
       </div>
-      <div className={style.child}>
+      <div className={clsx(style.child)}>
         <Image
           src={`/images/about-imgs/about3.jpg`}
           alt={`images-boiler`}
@@ -72,13 +56,16 @@ export const About: NextPage = () => {
           priority
         />
         <div className={clsx('small_scroll', style.text)}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
-          animi veritatis doloremque, nostrum ea dolorum, unde dolores
-          architecto cum fugit atque. Quia vel quisquam facere, nihil
-          reprehenderit blanditiis quis at? Officiis ipsa quas doloribus sequi,
-          placeat cupiditate vel magnam at voluptatum tempora consectetur
-          ratione nisi tenetur necessitatibus eligendi iure deleniti quia
-          explicabo eum maxime, animi molestiae recusandae! Dolorum, at laborum.
+          Today protecting terrestrial ecosystems is a key aspect of development
+          of oil & gas industry. Most land use by oil and gas industry is
+          temporary. Seismic crews conduct the surveys and move on. The average
+          well produces for about 20 to 25 years. Other facilities will be shut
+          down as soon resources are depleted and new technologies emerge.
+          National and foreign operating companies are responsible for sites
+          until reclamation is complete. New technologies allows the industry to
+          reduce impacts considerably. The design of new facilities now shall
+          include full cycle provisions - from construction through
+          decommissioning.
         </div>
       </div>
     </div>

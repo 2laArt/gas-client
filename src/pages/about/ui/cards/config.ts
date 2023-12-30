@@ -8,16 +8,16 @@ export const cardsContent: ICardContent[] = [
   {
     imgBg: '/images/about-imgs/eco1.jpg',
     title: 'Taking Care of Nature',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore porro, illo asperiores at officiis sed eius qua',
+    text: 'New control systems in the gas industry are safe not only for workers, but also for the environment',
   },
   {
     imgBg: '/images/about-imgs/eco2.jpg',
     title: 'The Comfort of Home',
-    text: ' gjklfjlk gk rhoo gjrhoig ob iojg ios ghagi hui  oeo9r iigg bgd ggb',
+    text: 'Create an atmosphere of warmth and comfort with our products',
   },
   {
     imgBg: '/images/about-imgs/eco3.jpg',
     title: 'Unusual Materials',
-    text: ';kjs aaksj wio vnxpo qpzmvc llaskfj [lkj kjgkdd dfowpq[pjk ljvmhmlv  gcsxhg,vhinu',
+    text: 'We create individual models that everyone will like',
   },
 ]
