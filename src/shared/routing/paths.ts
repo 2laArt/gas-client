@@ -13,7 +13,7 @@ export const paths = {
   about: '/about',
   order: '/order',
   contacts: '/contacts',
-  shoppingPayment: '/shopping-payment',
+  newParts: '/new-parts',
   infoBoiler: '/info-boiler',
   catalog: (
     params: ICatalogQueryParams = {

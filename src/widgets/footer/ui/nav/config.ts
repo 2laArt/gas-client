@@ -10,8 +10,8 @@ export const navItems = {
         href: paths.catalog(),
       },
       {
-        text: 'Shopping and payment',
-        href: paths.shoppingPayment,
+        text: 'New Parts',
+        href: paths.newParts,
       },
     ],
   },

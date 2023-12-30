@@ -16,7 +16,7 @@ export const useAccessedPages = (pathname: string) => {
       paths.about,
       paths.auth,
       paths.contacts,
-      paths.shoppingPayment,
+      paths.newParts,
       paths.infoBoiler,
       paths.dashboard,
     ],

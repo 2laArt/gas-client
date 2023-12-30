@@ -1,0 +1,14 @@
+.new_parts {
+  @apply my-10 flex flex-col;
+
+  > h1 {
+    @apply mb-10 ml-[12%];
+  }
+}
+.products {
+  @apply flex flex-wrap justify-center;
+
+  > div {
+    @apply inline-block;
+  }
+}

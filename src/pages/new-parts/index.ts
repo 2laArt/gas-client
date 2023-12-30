@@ -1,0 +1,1 @@
+export { NewParts } from './ui'

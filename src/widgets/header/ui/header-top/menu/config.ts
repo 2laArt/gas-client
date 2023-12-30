@@ -1,7 +1,7 @@
 import { paths } from 'shared/routing'
 
 export const items = [
-  { text: 'Shopping and Payment', href: paths.shoppingPayment },
+  { text: 'New Parts', href: paths.newParts },
   { text: 'About ', href: paths.about },
   { text: 'Catalog', href: paths.catalog() },
   { text: 'Contacts', href: paths.contacts },
