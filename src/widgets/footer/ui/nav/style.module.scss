@@ -1,6 +1,9 @@
 .nav {
   @apply flex py-4 max-md:flex-wrap;
 }
+.logo_box {
+  @apply w-1/2 py-2 pl-2 text-[11px]  max-xs:mr-2 max-xs:w-full;
+}
 .logo {
   @apply inline-block;
   > span {

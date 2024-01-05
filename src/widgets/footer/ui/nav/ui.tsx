@@ -12,20 +12,19 @@ export const FooterNav: FC = () => {
   const { route } = useRouter()
   return (
     <div className={style.nav}>
-      <FooterColum
-        title={
-          <ActiveLink
-            pathname={route}
-            href={paths.dashboard}
-            className={style.logo}
-          >
-            <span>
-              <Icon type="common" name="logo-footer" />
-            </span>
-            GAS
-          </ActiveLink>
-        }
-      />
+      <div className={style.logo_box}>
+        <ActiveLink
+          pathname={route}
+          href={paths.dashboard}
+          className={style.logo}
+        >
+          <span>
+            <Icon type="common" name="logo-footer" />
+          </span>
+          GAS
+        </ActiveLink>
+      </div>
+
       <FooterColum title={store.title}>
         {store.items.map((item) => (
           <div key={item.href}>

@@ -1,4 +1,3 @@
-import { Accordion } from '../accordion'
 import { ChangeButtons } from '../change-buttons'
 import type { ICatalogSidebarProps } from '../type'
 import { CheckboxList } from './checkbox-list'
@@ -7,7 +6,7 @@ import { InputPrice } from './input-price'
 import style from './style.module.scss'
 import clsx from 'clsx'
 import { type FC } from 'react'
-import { Title } from 'shared/ui'
+import { Accordion, Title } from 'shared/ui'
 
 export const CatalogSidebar: FC<ICatalogSidebarProps> = ({
   applyFilters,

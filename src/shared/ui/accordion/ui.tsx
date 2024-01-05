@@ -1,20 +1,22 @@
 import style from './style.module.scss'
 import clsx from 'clsx'
-import { useState, type FC, type PropsWithChildren } from 'react'
+import { ReactNode, useState, type FC, type PropsWithChildren } from 'react'
 import { Dropdown } from 'shared/ui'
 
 interface IAccordion extends PropsWithChildren {
-  title: string
-  defaultIsOpen?: boolean
+  title: ReactNode | string
+  defaultOpen?: boolean
+  className?: string
 }
 export const Accordion: FC<IAccordion> = ({
   title,
-  defaultIsOpen = true,
+  defaultOpen = true,
   children,
+  className,
 }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(defaultIsOpen)
+  const [isOpen, setIsOpen] = useState<boolean>(defaultOpen)
   return (
-    <div className={style.accordion}>
+    <div className={clsx(style.accordion, className)}>
       <button
         className={clsx(style.head, isOpen && style.open)}
         onClick={() => setIsOpen((prev) => !prev)}

@@ -1,5 +1,5 @@
 .section {
-  @apply my-3 flex border-y border-dark-gray py-3 max-md:ml-2 max-md:flex-wrap;
+  @apply my-3 flex border-y border-dark-gray py-3 max-md:ml-2 max-md:flex-wrap max-xs:border-t-0;
 
   > div {
     @apply flex w-1/2 items-center gap-2 max-md:w-full max-md:flex-wrap;

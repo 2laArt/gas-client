@@ -1,3 +1,4 @@
+export * from './accordion'
 export * from './active-link'
 export * from './button'
 export * from './checkbox'
