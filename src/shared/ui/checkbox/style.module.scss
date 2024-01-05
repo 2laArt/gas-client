@@ -1,5 +1,5 @@
 .checkbox {
-  @apply relative inline-grid h-[var(--size)] w-[var(--size)] cursor-pointer appearance-none place-items-center border border-[var(--color)] outline-none transition-[background,opacity];
+  @apply relative inline-grid h-[var(--size)] w-[var(--size)] min-h-[var(--size)] min-w-[var(--size)] cursor-pointer appearance-none place-items-center border border-[var(--color)] outline-none transition-[background,opacity];
   &::after {
     @apply block h-[50%] w-[80%] -translate-y-[20%] -rotate-45 border-b-[1px] border-l-[1px] border-white opacity-0 transition-[border,opacity] content-[''];
   }

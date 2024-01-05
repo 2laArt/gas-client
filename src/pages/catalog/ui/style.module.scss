@@ -5,7 +5,7 @@
   }
 }
 .main {
-  @apply flex items-start justify-between;
+  @apply relative flex items-start justify-between;
 }
 .middle {
   @apply w-full;
