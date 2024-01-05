@@ -10,10 +10,10 @@ body {
   }
 
   &::-webkit-scrollbar-track {
-    @apply rounded-3xl bg-aqua dark:bg-dark-gray;
+    @apply bg-light-gray dark:bg-dark-gray;
   }
 
   &::-webkit-scrollbar-thumb {
-    @apply rounded-3xl bg-gray;
+    @apply bg-gray;
   }
 }

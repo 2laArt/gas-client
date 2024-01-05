@@ -1,7 +1,7 @@
 import { getUserCityFx } from 'entities/location/model'
-import { Dispatch, SetStateAction } from 'react'
+import type { Dispatch, SetStateAction } from 'react'
 import { toast } from 'react-toastify'
-import { ICoords } from 'shared/api'
+import { type ICoords } from 'shared/api'
 
 export const getUserLocation = (
   setSpinner: Dispatch<SetStateAction<boolean>>

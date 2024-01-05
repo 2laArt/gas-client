@@ -17,6 +17,7 @@ export const useLockedBody = ({ isOpen, bpHidden, className }: ILockedBody) => {
     xs: 518,
   }
   const bp = bpHidden ? useMediaQuery(breakpoints[bpHidden]) : true
+  const scrollBarWidth = window.innerWidth - document.body.offsetWidth
   useEffect(() => {
     const isMobile =
       navigator.userAgent.includes('Android') ||
@@ -25,7 +26,6 @@ export const useLockedBody = ({ isOpen, bpHidden, className }: ILockedBody) => {
 
     document.body.style.overflow = isOpen && bp ? 'hidden' : 'auto'
 
-    const scrollBarWidth = window.innerWidth - document.body.offsetWidth
     !isMobile &&
       bp &&
       (document.body.style.borderRight = isOpen
@@ -35,7 +35,7 @@ export const useLockedBody = ({ isOpen, bpHidden, className }: ILockedBody) => {
       document.body.style.overflow = 'auto'
       document.body.style.borderRight = '0'
     }
-  }, [isOpen, bp])
+  }, [isOpen, bp, scrollBarWidth])
   return (
     isOpen &&
     bp &&

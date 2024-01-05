@@ -1,7 +1,7 @@
-import { FC, useState } from 'react'
+import style from './style.module.scss'
+import { FC, useEffect, useState } from 'react'
 import { updateCountCartItemFx } from 'shared/store/cart'
 import { Spinner } from 'shared/ui'
-import style from './style.module.scss'
 
 export interface ICartItemCounter {
   count: number
@@ -39,7 +39,9 @@ export const CartItemCounter: FC<ICartItemCounter> = ({
       setWarning((prev) => 'Min limit')
     }
   }
-
+  useEffect(() => {
+    setWarning('')
+  }, [count])
   return (
     <div className={style.counter}>
       <button onClick={countDecrement} disabled={spinner}>
@@ -52,7 +54,11 @@ export const CartItemCounter: FC<ICartItemCounter> = ({
         <span>+</span>
       </button>
       {!!warning && (
-        <span onClick={() => setWarning('')} className={style.warning}>
+        <span
+          data-include="included"
+          onClick={() => setWarning('')}
+          className={style.warning}
+        >
           {warning}
         </span>
       )}
