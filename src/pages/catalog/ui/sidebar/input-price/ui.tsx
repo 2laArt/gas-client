@@ -25,16 +25,16 @@ interface IIconCurrency {
   icon: ReactNode
 }
 
-const IconCurrency: FC<IIconCurrency> = ({ value, icon = '₽' }) =>
-  value !== '' && (
-    <span
-      style={{
-        left: value.length * 7 + 12 + 'px',
-      }}
-    >
-      {icon}
-    </span>
-  )
+const IconCurrency: FC<IIconCurrency> = ({ value, icon = '₽' }) => (
+  <span
+    style={{
+      left: value.length * 7 + 12 + 'px',
+      display: !!value ? 'inline-block' : 'none',
+    }}
+  >
+    {icon}
+  </span>
+)
 
 export const InputPrice: FC<IInputPrice> = ({
   price,

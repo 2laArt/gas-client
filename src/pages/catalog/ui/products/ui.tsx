@@ -13,6 +13,7 @@ interface ICatalogProducts {
   products: IBoilerPart[]
   limit: number
 }
+// eslint-disable-next-line react/display-name
 export const CatalogProducts: FC<ICatalogProducts> = memo(
   ({ isSpinner, products, limit }) => {
     const { username } = useStore($auth)

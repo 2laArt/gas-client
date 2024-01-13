@@ -7,6 +7,7 @@ interface SliderButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string
 }
 
+// eslint-disable-next-line react/display-name
 export const SliderButton = forwardRef<HTMLButtonElement, SliderButtonProps>(
   ({ className }, ref) => (
     <button className={clsx(styles.btn, className)} ref={ref}>

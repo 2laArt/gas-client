@@ -9,6 +9,7 @@ interface IExhibit {
   setActiveSection: Dispatch<SetStateAction<IInteractiveSigns | undefined>>
 }
 
+// eslint-disable-next-line react/display-name
 export const Exhibit: FC<IExhibit> = memo(({ setActiveSection }) => {
   return (
     <div className={style.interactive}>

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useAccessedPages } from 'app/lib/use-accessed-pages'
 import { type AppProps } from 'next/app'
 import { Loading } from 'pages/loading'

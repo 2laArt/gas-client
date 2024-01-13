@@ -1,0 +1,1 @@
+export { NewPartsProducts } from './ui'

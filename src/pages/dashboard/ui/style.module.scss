@@ -16,4 +16,11 @@
   > h2 {
     @apply mt-0;
   }
+  > ul {
+    @apply ml-3;
+    list-style-type: circle;
+    > li {
+      @apply my-2;
+    }
+  }
 }

@@ -1,0 +1,29 @@
+
+FROM node:20 as dependencies
+WORKDIR /gas/client
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile
+
+FROM node:20 as builder
+WORKDIR /gas/client
+COPY . .
+COPY --from=dependencies /gas/client/node_modules ./node_modules
+
+ENV NEXT_PUBLIC_SERVER_URL ${NEXT_PUBLIC_SERVER_URL}
+ENV NEXT_PUBLIC_GEOAPI_URL ${NEXT_PUBLIC_GEOAPI_URL}
+ENV NEXT_PUBLIC_GEOAPI_KEY ${NEXT_PUBLIC_GEOAPI_KEY}
+ENV NEXT_PUBLIC_EMAIL_PUBLIC_KEY ${NEXT_PUBLIC_EMAIL_PUBLIC_KEY}
+
+RUN yarn build
+
+FROM node:20 as production
+WORKDIR /gas/client
+
+COPY . .
+COPY --from=builder  /gas/client/package.json ./package.json
+COPY --from=builder  /gas/client/node_modules ./node_modules
+COPY --from=builder  /gas/client/public ./public
+COPY --from=builder  /gas/client/.next ./.next
+
+EXPOSE 3000
+CMD ["yarn", "start"]

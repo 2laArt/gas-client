@@ -27,8 +27,9 @@ export const AboutCards: FC = () => {
           </div>
         </div>
       )),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [cardsContent]
   )
 
-  return Items
+  return <>{Items}</>
 }

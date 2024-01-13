@@ -16,6 +16,7 @@ const App = ({ Component, pageProps, ...appProps }: AppProps) => {
         pageProps,
         ...appProps,
       }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [appProps.router.pathname, Component, pageProps]
   )
 

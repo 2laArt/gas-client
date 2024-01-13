@@ -27,12 +27,12 @@ export const CatalogHeader: FC<ICatalogHeader> = ({
   const toggleDetails = useCallback(
     (checkboxes: string[]) =>
       toggleCheckboxes({ section: details.title, checkboxes }),
-    []
+    [details.title, toggleCheckboxes]
   )
   const toggleRetailer = useCallback(
     (checkboxes: string[]) =>
       toggleCheckboxes({ section: retailer.title, checkboxes }),
-    []
+    [retailer.title, toggleCheckboxes]
   )
   return (
     <div className={clsx('card', style.header)}>
@@ -57,35 +57,4 @@ export const CatalogHeader: FC<ICatalogHeader> = ({
       <CatalogHeaderBottom {...props} isMobile={isMobile} />
     </div>
   )
-}
-{
-  /* <div className={style.header_bottom}>
-        <div className={style.bottom_left}>
-          <ChangeButtons
-            btnTop={{
-              title: 'Apply Filters',
-              disabled: disabledSubmit,
-              onClick: applyFilters,
-            }}
-            btnBottom={{
-              disabled: disabledReset,
-              title: 'Reset Filters',
-              onClick: resetFilters,
-            }}
-          />
-        </div>
-        <div className={style.bottom_right}>
-          {isMobile && (
-            <button
-              data-include="included"
-              className={style.filter}
-              onClick={setOpen}
-            >
-              <span>Δ</span> Filters
-            </button>
-          )}
-          <SelectSort setCatalogSort={setCatalogSort} sort={sort} />
-        </div>
-      </div>
-       */
 }

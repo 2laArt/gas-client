@@ -1,0 +1,6 @@
+.products {
+  @apply flex flex-wrap justify-center;
+  > div {
+    @apply inline-block;
+  }
+}

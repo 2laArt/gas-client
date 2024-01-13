@@ -17,6 +17,7 @@ export const About: NextPage = () => {
     } else {
       connect()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [is640])
   useLayoutEffect(() => {
     setMeta({

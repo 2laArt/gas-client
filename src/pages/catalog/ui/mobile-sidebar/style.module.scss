@@ -1,5 +1,5 @@
 .sidebar {
-  @apply z-40 flex h-screen w-80 max-w-full flex-col justify-between border-r border-dark-gray bg-white px-3 py-4 text-xs transition-[width0.5slinear] dark:bg-dark max-md:fixed max-md:left-0 max-md:top-0;
+  @apply z-40 flex h-[100svh] w-80 max-w-full flex-col justify-between border-r border-dark-gray bg-white px-3 py-4 text-xs transition-[width0.5slinear] dark:bg-dark max-md:fixed max-md:left-0 max-md:top-0;
   &.close {
     @apply max-md:-left-full max-md:-z-50;
   }

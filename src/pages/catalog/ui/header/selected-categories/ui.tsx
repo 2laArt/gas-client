@@ -11,6 +11,7 @@ interface ISelectedCategories extends IFilterChecklist {
   resetFilter: (checkbox: string[]) => TypeToggleCheckboxes
   isMobile: boolean
 }
+// eslint-disable-next-line react/display-name
 export const SelectedCategories: FC<ISelectedCategories> = memo(
   ({ checkboxes, title, resetFilter, isMobile }) => {
     const chips = useMemo(

@@ -20,7 +20,7 @@ export const useAccessedPages = (pathname: string) => {
       paths.infoBoiler,
       paths.dashboard,
     ],
-    [paths]
+    []
   )
 
   useEffect(() => {
@@ -28,6 +28,7 @@ export const useAccessedPages = (pathname: string) => {
       shouldCheckPage.current = false
       checkAuth()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname])
 
   const checkAuth = async () => {

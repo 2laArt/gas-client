@@ -13,6 +13,7 @@ interface IMenu {
   isOpen: boolean
 }
 
+// eslint-disable-next-line react/display-name
 export const Menu = forwardRef<HTMLElement, IMenu>(
   ({ className, isOpen }, ref) => {
     const is768 = useMediaQuery(768)
@@ -24,20 +25,26 @@ export const Menu = forwardRef<HTMLElement, IMenu>(
           className={clsx(style.nav, !isOpen && style.close, className)}
           ref={ref as LegacyRef<HTMLElement>}
         >
-          <div>
-            {is768 && (
-              <div className="absolute top-4 right-2">
-                <SwitchMode />
-              </div>
-            )}
+          {is768 && (
+            <div className={style.mode}>
+              <SwitchMode />
+            </div>
+          )}
+          <ul>
             {items.map(({ href, text }, idx) => (
-              <ActiveLink key={idx} href={href} pathname={route}>
-                {text}
-              </ActiveLink>
+              <li key={idx}>
+                <ActiveLink href={href} pathname={route}>
+                  {text}
+                </ActiveLink>
+              </li>
             ))}
 
-            {is768 && <Location />}
-          </div>
+            {is768 && (
+              <li>
+                <Location />
+              </li>
+            )}
+          </ul>
         </nav>
       </>
     )

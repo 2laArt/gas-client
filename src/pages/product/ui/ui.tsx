@@ -31,12 +31,14 @@ export const ProductPage: NextPage<IProductPageProps> = ({ product }) => {
     })
       .then((data) => setSimilar(data ?? []))
       .finally(() => setTimeout(() => setSpinner(false), 2000))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   useLayoutEffect(() => {
     setMeta({
       title: product.name,
       description: product.description,
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return product ? (
     <>

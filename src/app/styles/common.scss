@@ -20,6 +20,7 @@
 .skeleton {
   @apply animate-[wave_2s_ease-out_infinite] bg-skeleton-200 bg-skeleton bg-[800px,100px];
 }
+
 @keyframes wave {
   0% {
     background-position: -468px 0;

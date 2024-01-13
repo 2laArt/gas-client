@@ -16,8 +16,9 @@ export const useLockedBody = ({ isOpen, bpHidden, className }: ILockedBody) => {
     sm: 640,
     xs: 518,
   }
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const bp = bpHidden ? useMediaQuery(breakpoints[bpHidden]) : true
-  const scrollBarWidth = window.innerWidth - document.body.offsetWidth
+  const scrollBarWidth = window.innerWidth - document.body.offsetWidth || 10
   useEffect(() => {
     const isMobile =
       navigator.userAgent.includes('Android') ||

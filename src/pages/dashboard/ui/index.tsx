@@ -1,4 +1,5 @@
 import { BrandsSlider } from './brands-slider'
+import { advList } from './config'
 import { DashboardAlert } from './dashboard-alert'
 import style from './style.module.scss'
 import clsx from 'clsx'
@@ -6,8 +7,10 @@ import { useStore } from 'effector-react'
 import { type NextPage } from 'next'
 import { useEffect, useLayoutEffect, useState } from 'react'
 import { type IBoilerPart } from 'shared/api'
+import { useMediaQuery } from 'shared/lib'
 import { $cart, $cartQueryStatus, $cartTotalPrice, setMeta } from 'shared/store'
 import { Dropdown, Title } from 'shared/ui'
+import { type SwiperOptions } from 'swiper/types'
 import { ProductSlider } from 'widgets/product-slider'
 
 interface IDashboard {
@@ -19,7 +22,10 @@ export const Dashboard: NextPage<IDashboard> = ({ bestsellers, newParts }) => {
   const { length: cartLength } = useStore($cart)
   const totalPrice = useStore($cartTotalPrice)
   const [isDisplayAlert, setDisplayAlert] = useState<boolean>(false)
-
+  const is768 = useMediaQuery(768)
+  const options: SwiperOptions = {
+    autoplay: !is768,
+  }
   useLayoutEffect(() => {
     setMeta({
       title: 'Dashboard',
@@ -47,27 +53,23 @@ export const Dashboard: NextPage<IDashboard> = ({ bestsellers, newParts }) => {
         <Title className={style.title_slider} as="h2">
           Bestsellers
         </Title>
-        <ProductSlider products={bestsellers} />
+        <ProductSlider options={options} products={bestsellers} />
       </div>
       <div>
         <Title className={style.title_slider} as="h2">
           New Parts
         </Title>
-        <ProductSlider products={newParts} />
+        <ProductSlider options={options} products={newParts} />
       </div>
       <div className={clsx('card', style.about)}>
         <Title className={style.title_slider} as="h2">
-          About Company
+          List of Advantages
         </Title>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
-          ipsam illo consequatur voluptas, sed quaerat, cupiditate
-          reprehenderit, dolorum nemo rerum omnis! Ex sint illum dolores dolorum
-          ullam doloribus nam a? Illum quod blanditiis optio placeat delectus,
-          veniam ratione voluptatum dolor iure fuga excepturi ipsum. Debitis
-          mollitia ullam nesciunt nisi id voluptate vitae beatae accusantium
-          hic, sit quia dolores ipsum neque!
-        </p>
+        <ul>
+          {advList.map((item, idx) => (
+            <li key={idx}>{item}</li>
+          ))}
+        </ul>
       </div>
     </div>
   )

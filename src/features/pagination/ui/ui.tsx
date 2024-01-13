@@ -9,6 +9,7 @@ interface IPagination {
   offset: number
   setOffset: (offset: string) => void
 }
+// eslint-disable-next-line react/display-name
 export const Pagination: FC<IPagination> = memo(
   ({ totalCount, limit, offset, setOffset }) => {
     const pages = usePagination({

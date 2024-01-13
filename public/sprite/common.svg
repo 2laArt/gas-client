@@ -138,4 +138,10 @@ fill="currentColor" stroke="none">
   </g>
 </symbol>
 
+<symbol viewBox="0 -1 24 26" xmlns="http://www.w3.org/2000/svg" fill="none" id="arrow-back" >
+ <g>
+  <path stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-width="3" d="m1.18987,11.82279l21.36709,0m-21.36709,0l8.90296,-10.82279m-9.09283,10.82279l9.09283,10.82278l-9.09283,-10.82278z"/>
+ </g>
+</symbol>
+
 </svg>

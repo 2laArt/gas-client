@@ -10,6 +10,7 @@ export const PaymentSocial: FC = () => {
       items.payment.map((item) => (
         <Icon type="payment" name={item} key={item} />
       )),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [items.payment]
   )
   const Social = useMemo(
@@ -19,6 +20,7 @@ export const PaymentSocial: FC = () => {
           <Icon type="social" name={item.icon} />
         </Link>
       )),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [items.social]
   )
   return (

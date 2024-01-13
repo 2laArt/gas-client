@@ -14,6 +14,7 @@ interface IMobileSidebar extends ICatalogSidebarProps {
   setClose: VoidFunction
   isOpen: boolean
 }
+// eslint-disable-next-line react/display-name
 export const CatalogSidebarMobile = forwardRef<HTMLElement, IMobileSidebar>(
   (
     {

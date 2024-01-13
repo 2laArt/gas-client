@@ -9,23 +9,23 @@ export const sortingProductCatalog = (
     case 'cheap':
       return {
         ...state,
-        rows: state.rows.toSorted((a, b) => a.price - b.price),
+        rows: [...state.rows.sort((a, b) => a.price - b.price)],
       }
     case 'expensive':
       return {
         ...state,
-        rows: state.rows.toSorted((a, b) => b.price - a.price),
+        rows: [...state.rows.sort((a, b) => b.price - a.price)],
       }
     case 'popular':
       return {
         ...state,
-        rows: state.rows.toSorted((a, b) => b.popularity - a.popularity),
+        rows: [...state.rows.sort((a, b) => b.popularity - a.popularity)],
       }
     case 'alphabetically':
       const collator = new Intl.Collator('en')
       return {
         ...state,
-        rows: state.rows.toSorted((a, b) => collator.compare(a.name, b.name)),
+        rows: [...state.rows.sort((a, b) => collator.compare(a.name, b.name))],
       }
   }
 }

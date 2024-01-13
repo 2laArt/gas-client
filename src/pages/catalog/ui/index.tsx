@@ -35,10 +35,7 @@ export const Catalog: NextPage = () => {
 
   const is768 = useMediaQuery(768)
   const { isOpen, ref: sidebarRef, setIsOpen } = useClickOutside(false)
-  const isChanged = useMemo(
-    () => useIsChangedFilters(query, filtersToQuery(filters)),
-    [query, filters]
-  )
+  const isChanged = useIsChangedFilters(query, filtersToQuery(filters))
   const applyFilters = () => {
     updateRouter({ ...filtersToQuery(filters), ...{ offset: '0' } })
   }
@@ -72,7 +69,7 @@ export const Catalog: NextPage = () => {
       priceFrom: undefined,
       priceTo: undefined,
     })
-  }, [])
+  }, [updateRouter])
   const catalogProps: ICatalogProps = {
     details: filters.details,
     toggleCheckboxes,

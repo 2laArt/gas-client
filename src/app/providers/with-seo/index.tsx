@@ -5,6 +5,7 @@ import { $meta } from 'shared/store/meta'
 
 export const withSeo =
   <T extends object>(Component: ComponentType<T>) =>
+  // eslint-disable-next-line react/display-name
   (props: T) => {
     const { title, description } = useStore($meta)
     return (

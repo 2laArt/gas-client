@@ -6,6 +6,7 @@ import { memo, type FC } from 'react'
 
 interface IBottom
   extends Omit<ICatalogHeader, 'retailer' | 'details' | 'toggleCheckboxes'> {}
+// eslint-disable-next-line react/display-name
 export const CatalogHeaderBottom: FC<IBottom> = memo(
   ({
     applyFilters,

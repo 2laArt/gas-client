@@ -13,6 +13,7 @@ interface IDashboardSlider {
   options?: SwiperOptions
 }
 
+// eslint-disable-next-line react/display-name
 export const ProductSlider: FC<IDashboardSlider> = memo(
   ({ products, spinner, options = {} }) => {
     const { username } = useStore($auth)

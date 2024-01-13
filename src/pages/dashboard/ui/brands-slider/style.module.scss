@@ -4,6 +4,6 @@
 .slide_item {
   @apply relative mx-1 my-2 min-h-[60px] max-w-[170px] rounded-md p-2;
   > img {
-    @apply h-auto w-auto;
+    @apply h-full w-full;
   }
 }

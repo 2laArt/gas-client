@@ -2,13 +2,14 @@ import { getTitleNoDots } from '../lib'
 import style from './style.module.scss'
 import Image from 'next/image'
 import { memo, type FC } from 'react'
-import { ICartItem } from 'shared/api'
+import { type ICartItem } from 'shared/api'
 import { formatToCurrency } from 'shared/lib'
 
 interface ICartItemComponent<D = any, C = any> extends ICartItem {
   DeleteItem: FC<D>
   CounterItem: FC<C>
 }
+// eslint-disable-next-line react/display-name
 export const CartItem: FC<ICartItemComponent> = memo(
   ({
     count: countState,

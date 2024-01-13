@@ -10,17 +10,20 @@ interface ITextareaProps {
   options?: RegisterOptions
 }
 
-export const Textarea: FC<ITextareaProps> = memo(
-  ({ register, className, name, ...rest }) => {
-    if (register)
-      return (
-        <textarea
-          className={clsx(style.textarea, className)}
-          placeholder={`Enter  something`}
-          {...register(name)}
-          {...rest}
-        />
-      )
-    return <mark> Sorry Something`s Wrong</mark>
-  }
-)
+export const Textarea: FC<ITextareaProps> = ({
+  register,
+  className,
+  name,
+  ...rest
+}) => {
+  if (register)
+    return (
+      <textarea
+        className={clsx(style.textarea, className)}
+        placeholder={`Enter  something`}
+        {...register(name)}
+        {...rest}
+      />
+    )
+  return <mark> Sorry Something`s Wrong</mark>
+}

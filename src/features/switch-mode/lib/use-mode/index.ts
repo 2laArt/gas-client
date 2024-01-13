@@ -31,6 +31,7 @@ export const useMode = () => {
       setMode(themes.dark)
       return
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return { changeMode }
 }

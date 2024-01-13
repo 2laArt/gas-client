@@ -10,6 +10,7 @@ export interface Sprite {
     | 'pen'
     | 'chevron'
     | 'exclamation'
+    | 'arrow-back'
   social: 'vk' | 'facebook' | 'youtube' | 'instagram'
   payment: 'apple-pay' | 'google-pay' | 'master-card' | 'visa'
 }

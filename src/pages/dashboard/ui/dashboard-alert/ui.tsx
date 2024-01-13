@@ -11,6 +11,7 @@ interface IDashboardAlert {
   totalPrice: number
   closeAlert: () => void
 }
+// eslint-disable-next-line react/display-name
 export const DashboardAlert: FC<IDashboardAlert> = memo(
   ({ count, closeAlert, totalPrice }) => {
     const textMessage = count === 1 ? 'product' : 'products'

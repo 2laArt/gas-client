@@ -17,6 +17,7 @@ interface IProductItem {
   username: string
 }
 
+// eslint-disable-next-line react/display-name
 export const ProductItem: FC<IProductItem> = memo(
   ({ images, id, name, vendor_code, price, className, username }) => {
     return (

@@ -65,6 +65,7 @@ export const useCatalogLifeCycle = () => {
       isProducts,
       fetchProducts,
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query, router.isReady])
   return {
     query,

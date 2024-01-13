@@ -76,7 +76,9 @@ export const SearchInput: FC = () => {
           className={clsx(style.cancel__btn, isOpen && style.cancel__btn_show)}
           onClick={clearSearch}
         >
-          🡰
+          <span className={style.icon_back}>
+            <Icon type="common" name="arrow-back" />
+          </span>
         </button>
 
         <input

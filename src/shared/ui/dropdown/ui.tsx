@@ -8,6 +8,7 @@ interface IDropdown extends PropsWithChildren {
   className?: string
 }
 
+// eslint-disable-next-line react/display-name
 export const Dropdown = memo(({ children, isOpen, className }: IDropdown) => {
   return (
     <AnimatePresence>

@@ -8,9 +8,11 @@
     @apply block h-10 w-full rounded-md bg-transparent py-1 pl-2 pr-20 transition-shadow;
     &:focus {
       @apply outline-none;
-      //   box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
     }
   }
+}
+.icon_back {
+  @apply inline-block h-4 w-4;
 }
 .blocked {
   &::after {

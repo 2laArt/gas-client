@@ -1,5 +1,6 @@
 import style from './style.module.scss'
 import { type FC } from 'react'
+import { Icon } from 'shared/ui'
 
 interface ITopSide {
   comeback: () => void
@@ -16,7 +17,9 @@ export const MobileTopSide: FC<ITopSide> = ({
   return (
     <div className={style.top_btns}>
       <button onClick={comeback}>
-        <span>🡰</span>
+        <span className={style.icon}>
+          <Icon type="common" name="arrow-back" />
+        </span>
         <span>{section || 'Filters'}</span>
       </button>
     </div>

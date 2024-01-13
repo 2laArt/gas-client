@@ -13,11 +13,12 @@ export const Header: FC = () => {
   useEffect(() => {
     const paymentId = sessionStorage.getItem('paymentId')
     if (paymentId && !checkedPaymentStatus) checkPayment({ paymentId, userId })
-  }, [])
+  }, [checkedPaymentStatus, userId])
   useEffect(() => {
     if (cartQueryStatus === 'start' && userId) {
       getCartFx(userId)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId])
 
   return (

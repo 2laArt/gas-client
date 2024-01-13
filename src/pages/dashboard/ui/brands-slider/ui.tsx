@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { FC, memo } from 'react'
 import { Slider } from 'shared/ui'
 
+// eslint-disable-next-line react/display-name
 export const BrandsSlider: FC = memo(() => {
   const itemCallback = (item: IBrandItem) => (
     <div
@@ -17,7 +18,12 @@ export const BrandsSlider: FC = memo(() => {
   )
   return (
     <div className={style.slider}>
-      <Slider navigation={false} items={brandItems} renderItem={itemCallback} />
+      <Slider
+        navigation={false}
+        autoplay={false}
+        items={brandItems}
+        renderItem={itemCallback}
+      />
     </div>
   )
 })

@@ -1,9 +1,10 @@
 import { type GetStaticProps } from 'next'
-import { boilerService, type IBoilerParts } from 'shared/api'
+import { getNewPartsData } from 'pages/new-parts/lib'
+import { type IBoilerParts } from 'shared/api'
 
 export { NewParts as default } from 'pages/new-parts'
 
 export const getStaticProps = (async () => {
-  const { data } = await boilerService.new()
-  return { props: { newParts: data } }
-}) satisfies GetStaticProps<{ newParts: IBoilerParts }>
+  const newPartsResult = await getNewPartsData()
+  return { props: { newPartsResult } }
+}) satisfies GetStaticProps<{ newPartsResult: IBoilerParts | string }>
