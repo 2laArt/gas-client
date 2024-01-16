@@ -6,7 +6,7 @@ export { Dashboard as default } from 'pages/dashboard'
 
 export const getStaticProps = (async () => {
   const { bestsellers, newParts } = await getDashboardData()
-  return { props: { bestsellers, newParts } }
+  return { props: { bestsellers, newParts }, revalidate: 10 }
 }) satisfies GetStaticProps<{
   bestsellers: IBoilerPart[] | string
   newParts: IBoilerPart[] | string
