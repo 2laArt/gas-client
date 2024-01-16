@@ -3,12 +3,14 @@ import { useStore } from 'effector-react'
 import { $mode, useMode } from 'features/switch-mode'
 import { AppProps } from 'next/app'
 import NextNProgress from 'nextjs-progressbar'
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 import { ToastContainer } from 'react-toastify'
+import { healthCheckService } from 'shared/api'
 
 const App = ({ Component, pageProps, ...appProps }: AppProps) => {
   const mode = useStore($mode)
   useMode()
+
   const ComponentWrapper = useCallback(
     () =>
       withWrapper({
